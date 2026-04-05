@@ -13,7 +13,7 @@
  *   directly with the service account email).
  */
 
-import { writeFileSync, mkdirSync } from "node:fs";
+import { writeFileSync, mkdirSync, rmSync, existsSync } from "node:fs";
 import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { createSign } from "node:crypto";
@@ -22,6 +22,14 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = resolve(__dirname, "..");
 const OUTPUT_PATH = resolve(ROOT, "client/public/tss_data.json");
 const OUTPUT_PATH_SRC = resolve(ROOT, "client/src/data/tss_data.json");
+// Build-time image download targets. Images are served from the same
+// origin as the site so mobile carriers / ad blockers / missing Google
+// cookies can't block them. If a given Drive file can't be downloaded
+// (service account lacks access, network error, etc.) we fall back to
+// the drive.google.com/thumbnail URL for that file only — the page
+// still works for viewers with a Google session.
+const RIDER_PHOTOS_DIR = resolve(ROOT, "client/public/rider-photos");
+const TEAM_LOGOS_DIR = resolve(ROOT, "client/public/team-logos");
 
 const DOC_ID = "1rS5R-ECwJIcGepccHrVL2IzZPieYAIS6_MaN-SW0z3M";
 // Pull from the Google Form responses tab, not the 選手總表 aggregate.
@@ -66,7 +74,9 @@ async function getAccessToken(sa) {
   const header = { alg: "RS256", typ: "JWT" };
   const claim = {
     iss: sa.client_email,
-    scope: "https://www.googleapis.com/auth/spreadsheets.readonly",
+    scope:
+      "https://www.googleapis.com/auth/spreadsheets.readonly " +
+      "https://www.googleapis.com/auth/drive.readonly",
     aud: sa.token_uri || "https://oauth2.googleapis.com/token",
     iat: now,
     exp: now + 3600,
@@ -123,19 +133,112 @@ async function fetchSheetValues(accessToken) {
 }
 
 /**
- * Convert any Google Drive share URL into a direct-viewable thumbnail
- * URL. Browsers with an existing Google session load these in-cookie,
- * which is how the site displayed photos before the build-time download
- * detour. Pass-through for anything that isn't a Drive URL.
+ * Extract a Drive file ID from any supported share URL, or null if the
+ * string isn't a Drive URL.
  */
-function driveToImg(url) {
-  if (!url) return "";
+function extractDriveId(url) {
+  if (!url) return null;
   const s = String(url).trim();
-  if (!s) return "";
+  if (!s) return null;
   let m = s.match(/[?&]id=([^&]+)/);
   if (!m) m = s.match(/\/d\/([^/=?&]+)/);
-  if (!m) return s;
-  return `https://drive.google.com/thumbnail?id=${m[1]}&sz=w1000`;
+  return m ? m[1] : null;
+}
+
+/**
+ * Fallback URL (used when we can't download the file at build time).
+ * drive.google.com/thumbnail works for anyone with a Google session.
+ */
+function thumbnailUrl(fileId) {
+  return `https://drive.google.com/thumbnail?id=${fileId}&sz=w1000`;
+}
+
+/**
+ * Detect image format from the first bytes. Anything that isn't a real
+ * JPEG / PNG / GIF / WebP (e.g. a Google sign-in HTML page) returns
+ * null so we can reject it instead of writing garbage to disk.
+ */
+function detectImageExt(buf) {
+  if (!buf || buf.length < 12) return null;
+  if (buf[0] === 0xff && buf[1] === 0xd8 && buf[2] === 0xff) return "jpg";
+  if (buf[0] === 0x89 && buf[1] === 0x50 && buf[2] === 0x4e && buf[3] === 0x47)
+    return "png";
+  if (buf[0] === 0x47 && buf[1] === 0x49 && buf[2] === 0x46) return "gif";
+  if (
+    buf[0] === 0x52 &&
+    buf[1] === 0x49 &&
+    buf[2] === 0x46 &&
+    buf[3] === 0x46 &&
+    buf[8] === 0x57 &&
+    buf[9] === 0x45 &&
+    buf[10] === 0x42 &&
+    buf[11] === 0x50
+  )
+    return "webp";
+  return null;
+}
+
+/**
+ * Download a Drive file using the service-account bearer token and
+ * write it to the local filesystem. Returns the site-relative path on
+ * success, or "" on any failure (auth, network, non-image payload).
+ * The caller is responsible for falling back to thumbnailUrl().
+ */
+async function downloadDriveFile(fileId, kind, accessToken) {
+  const apiUrl = `https://www.googleapis.com/drive/v3/files/${fileId}?alt=media`;
+  const outDir = kind === "logo" ? TEAM_LOGOS_DIR : RIDER_PHOTOS_DIR;
+  const publicPrefix = kind === "logo" ? "/team-logos" : "/rider-photos";
+  try {
+    const res = await fetch(apiUrl, {
+      headers: { Authorization: `Bearer ${accessToken}` },
+      redirect: "follow",
+    });
+    if (!res.ok) {
+      return "";
+    }
+    const buf = Buffer.from(await res.arrayBuffer());
+    const ext = detectImageExt(buf);
+    if (!ext) {
+      return "";
+    }
+    const filename = `${fileId}.${ext}`;
+    writeFileSync(resolve(outDir, filename), buf);
+    return `${publicPrefix}/${filename}`;
+  } catch {
+    return "";
+  }
+}
+
+/**
+ * Resolve every unique Drive file ID to a final URL. Tries the Drive
+ * API first (same-origin local file); falls back to the thumbnail URL
+ * when download fails. Returns a map keyed by `${kind}:${fileId}`.
+ */
+async function resolveDriveImages(jobs, accessToken) {
+  const BATCH = 8;
+  const result = new Map();
+  const arr = Array.from(jobs.values());
+  let localCount = 0;
+  let fallbackCount = 0;
+  for (let i = 0; i < arr.length; i += BATCH) {
+    const slice = arr.slice(i, i + BATCH);
+    const resolved = await Promise.all(
+      slice.map(async (j) => {
+        const local = await downloadDriveFile(j.fileId, j.kind, accessToken);
+        if (local) {
+          localCount++;
+          return [`${j.kind}:${j.fileId}`, local];
+        }
+        fallbackCount++;
+        return [`${j.kind}:${j.fileId}`, thumbnailUrl(j.fileId)];
+      })
+    );
+    for (const [k, v] of resolved) result.set(k, v);
+  }
+  console.log(
+    `[tss-sync]   ↳ ${localCount} downloaded locally, ${fallbackCount} fell back to drive thumbnail URL`
+  );
+  return result;
 }
 
 function cellTrim(v) {
@@ -174,6 +277,35 @@ async function main() {
     throw new Error(`[tss-sync] Sheet only has ${rows.length} rows; aborting.`);
   }
 
+  // ----- Pass 1: collect every unique Drive file ID we need, then
+  // resolve them in parallel (local download with thumbnail fallback).
+  if (existsSync(RIDER_PHOTOS_DIR)) rmSync(RIDER_PHOTOS_DIR, { recursive: true });
+  if (existsSync(TEAM_LOGOS_DIR)) rmSync(TEAM_LOGOS_DIR, { recursive: true });
+  mkdirSync(RIDER_PHOTOS_DIR, { recursive: true });
+  mkdirSync(TEAM_LOGOS_DIR, { recursive: true });
+
+  const imageJobs = new Map(); // key = `${kind}:${fileId}`
+  for (let i = 1; i < rows.length; i++) {
+    const r = rows[i];
+    const photoId = extractDriveId(cellTrim(r[COL.photo]));
+    if (photoId)
+      imageJobs.set(`photo:${photoId}`, { fileId: photoId, kind: "photo" });
+    const logoId = extractDriveId(cellTrim(r[COL.teamLogo]));
+    if (logoId)
+      imageJobs.set(`logo:${logoId}`, { fileId: logoId, kind: "logo" });
+  }
+  console.log(`[tss-sync] → Resolving ${imageJobs.size} unique Drive images…`);
+  const imageMap = await resolveDriveImages(imageJobs, token);
+
+  // Helper: sheet cell → final URL (local path if we have it, otherwise
+  // thumbnail URL fallback, or "" if the cell wasn't a Drive URL at all).
+  const imgUrl = (cell, kind) => {
+    const id = extractDriveId(cell);
+    if (!id) return cell || "";
+    return imageMap.get(`${kind}:${id}`) || thumbnailUrl(id);
+  };
+
+  // ----- Pass 2: build teams using resolved URLs.
   const teams = {};
   let riderCount = 0;
   let updated = 0;
@@ -194,14 +326,14 @@ async function main() {
     const teamName = cellTrim(r[COL.teamName]) || "獨立車手";
     if (!teams[teamName]) {
       teams[teamName] = {
-        logo: driveToImg(cellTrim(r[COL.teamLogo])),
+        logo: imgUrl(cellTrim(r[COL.teamLogo]), "logo"),
         riders: [],
       };
     }
     // First non-empty team logo wins (preserves team branding from earliest
     // complete submission; later members with blank Q don't clobber it).
     if (!teams[teamName].logo) {
-      teams[teamName].logo = driveToImg(cellTrim(r[COL.teamLogo]));
+      teams[teamName].logo = imgUrl(cellTrim(r[COL.teamLogo]), "logo");
     }
 
     const className = cellTrim(r[COL.className]);
@@ -213,7 +345,7 @@ async function main() {
     const newRider = {
       name,
       intro: cellTrim(r[COL.bio]),
-      photo: driveToImg(cellTrim(r[COL.photo])),
+      photo: imgUrl(cellTrim(r[COL.photo]), "photo"),
       class: className,
       cc: classCc(className),
       bike,
