@@ -188,6 +188,15 @@ async function main() {
   for (let i = 1; i < rows.length; i++) {
     const r = rows[i];
     const name = cellTrim(r[COL.name]);
+    // DEBUG: dump every 趙哲緒 row so we can see if row 92 is being read correctly.
+    if ((r || []).some((c) => (c || "").toString().includes("趙哲緒"))) {
+      console.log(
+        `[tss-sync][DEBUG] row ${i + 1} 趙哲緒 raw → ` +
+          JSON.stringify(
+            (r || []).map((c, idx) => `${String.fromCharCode(65 + idx)}:${c || ""}`)
+          )
+      );
+    }
     if (!name) {
       skipped++;
       continue;
