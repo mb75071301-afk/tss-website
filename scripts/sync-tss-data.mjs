@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 /*
  * TSS Data Sync
- * Fetches the "選手總表" sheet from the (private) Google Sheet using a
- * Google Cloud service account, and regenerates client/public/tss_data.json
- * at build time.
+ * Fetches the "表單回覆 1" sheet (Google Form responses) from the private
+ * Google Sheet using a Google Cloud service account, and regenerates
+ * client/public/tss_data.json at build time.
  *
  * Runs automatically via `npm run prebuild` on every Netlify deploy.
  *
@@ -24,43 +24,50 @@ const OUTPUT_PATH = resolve(ROOT, "client/public/tss_data.json");
 const OUTPUT_PATH_SRC = resolve(ROOT, "client/src/data/tss_data.json");
 
 const DOC_ID = "1rS5R-ECwJIcGepccHrVL2IzZPieYAIS6_MaN-SW0z3M";
-// Sheet tab name for the "選手總表" tab (gid 1066812969).
-const SHEET_NAME = "選手總表";
-// Pull a wide range so columns A..AG (0..32) are always included.
-const RANGE = `${SHEET_NAME}!A1:AG1000`;
+// Pull from the Google Form responses tab, not the 選手總表 aggregate.
+const SHEET_NAME = "表單回覆 1";
+// Form columns span A..AD; pad generously for future fields.
+const RANGE = `${SHEET_NAME}!A1:AD2000`;
 
-// Column index → field mapping for "選手總表"
-// Row 0 header, row 1 totals, rows 2+ rider data
+// Column index → field mapping for "表單回覆 1"
+// Row 0 = header row, rows 1+ = form submissions.
 const COL = {
-  name: 0,
-  c150s: 2, c150sp: 3,
-  c250s: 4, c250sp: 5,
-  c300s: 6, c300sp: 7,
-  c400s: 8, c400sp: 9,
-  sp600: 10, sp1000: 11,
-  teamName: 23,   // 車隊名稱
-  bio: 26,        // 車手自我介紹
-  photo: 27,      // 車手大頭照
-  teamLogo: 28,   // 車隊商標圖檔LOGO
-  className1: 29, // 參賽組別(1)
-  bikeBrand: 30,  // 參賽車輛廠牌(1)
-  bikeModel: 31,  // 參賽車輛型號(1)
-  bikeNumber: 32, // 參賽車號碼(1-999)(1)
+  timestamp: 0,   // A 時間戳記
+  name: 2,        // C 車手姓名
+  teamName: 11,   // L 車隊名稱
+  bio: 14,        // O 車手自我介紹
+  photo: 15,      // P 車手大頭照
+  teamLogo: 16,   // Q 車隊商標圖檔LOGO
+  className: 17,  // R 參賽組別
+  bikeBrand: 18,  // S 參賽車輛廠牌
+  bikeModel: 19,  // T 參賽車輛型號
+  bikeNumber: 20, // U 參賽車號碼(1-999)
 };
 
-// Ordered from biggest cc to smallest, Stock before Sport.
-const CLASS_COLS = [
-  { col: COL.c400s, name: "Super Stock 400", cc: "400" },
-  { col: COL.c400sp, name: "Super Sport 400", cc: "400" },
-  { col: COL.c300s, name: "Super Stock 300", cc: "300" },
-  { col: COL.c300sp, name: "Super Sport 300", cc: "300" },
-  { col: COL.c250s, name: "Super Stock 250", cc: "250" },
-  { col: COL.c250sp, name: "Super Sport 250", cc: "250" },
-  { col: COL.c150s, name: "Super Stock 150", cc: "150" },
-  { col: COL.c150sp, name: "Super Sport 150", cc: "150" },
-  { col: COL.sp600, name: "Super Pole 600", cc: "600" },
-  { col: COL.sp1000, name: "Super Pole 1000", cc: "1000" },
+// Priority ordering used when the same rider submits multiple rows with
+// different classes — the higher-priority class wins for that rider.
+const CLASS_PRIORITY = [
+  "Super Stock 400",
+  "Super Sport 400",
+  "Super Stock 300",
+  "Super Sport 300",
+  "Super Stock 250",
+  "Super Sport 250",
+  "Super Stock 150",
+  "Super Sport 150",
+  "Super Pole 600",
+  "Super Pole 1000",
 ];
+
+function classPriorityIdx(name) {
+  const i = CLASS_PRIORITY.indexOf(name);
+  return i === -1 ? 999 : i;
+}
+
+function classCc(name) {
+  const m = (name || "").match(/(\d+)/);
+  return m ? m[1] : "";
+}
 
 // ---------- Service account auth (JWT → OAuth2 access token) ----------
 
@@ -184,28 +191,24 @@ async function main() {
   console.log(`[tss-sync] ✓ Got OAuth access token`);
 
   const rows = await fetchSheetValues(token);
-  console.log(`[tss-sync] ✓ Received ${rows.length} rows from Sheets API`);
-  if (rows.length < 3) {
+  console.log(`[tss-sync] ✓ Received ${rows.length} rows from "${SHEET_NAME}"`);
+  if (rows.length < 2) {
     throw new Error(`[tss-sync] Sheet only has ${rows.length} rows; aborting.`);
   }
 
   const teams = {};
   let riderCount = 0;
+  let updated = 0;
   let skipped = 0;
 
-  for (let i = 2; i < rows.length; i++) {
+  // Rows 1..N are form submissions (row 0 is the header).
+  // Iterating in chronological order means later submissions overwrite earlier
+  // ones for the same rider, which lets riders update their photo/bio/class by
+  // re-submitting the form.
+  for (let i = 1; i < rows.length; i++) {
     const r = rows[i];
     const name = cellTrim(r[COL.name]);
     if (!name) {
-      skipped++;
-      continue;
-    }
-
-    const classes = [];
-    for (const c of CLASS_COLS) {
-      if (cellTrim(r[c.col]) === "1") classes.push(c);
-    }
-    if (classes.length === 0) {
       skipped++;
       continue;
     }
@@ -217,28 +220,52 @@ async function main() {
         riders: [],
       };
     }
-    // Fill in the team logo if this rider has one and the team didn't yet.
+    // First non-empty team logo wins (preserves team branding from earliest
+    // complete submission; later members with blank Q don't clobber it).
     if (!teams[teamName].logo) {
       teams[teamName].logo = driveToImg(cellTrim(r[COL.teamLogo]));
     }
 
-    const primary = classes[0]; // already in 400→150 order
+    const className = cellTrim(r[COL.className]);
     const brand = cellTrim(r[COL.bikeBrand]);
     const model = cellTrim(r[COL.bikeModel]);
     const bike = [brand, model].filter(Boolean).join(" ");
-    const numberRaw = cellTrim(r[COL.bikeNumber]);
-    const number = parseInt(numberRaw, 10) || 0;
+    const number = parseInt(cellTrim(r[COL.bikeNumber]), 10) || 0;
 
-    teams[teamName].riders.push({
+    const newRider = {
       name,
       intro: cellTrim(r[COL.bio]),
       photo: driveToImg(cellTrim(r[COL.photo])),
-      class: primary.name,
-      cc: primary.cc,
+      class: className,
+      cc: classCc(className),
       bike,
       number,
-    });
-    riderCount++;
+    };
+
+    // Dedupe same rider within same team.
+    const existingIdx = teams[teamName].riders.findIndex(
+      (x) => x.name === name
+    );
+    if (existingIdx === -1) {
+      teams[teamName].riders.push(newRider);
+      riderCount++;
+    } else {
+      const existing = teams[teamName].riders[existingIdx];
+      // Merge: keep the higher-priority class across submissions, otherwise
+      // the latest row wins for every field (so resubmissions update info).
+      const prevIdx = classPriorityIdx(existing.class);
+      const nextIdx = classPriorityIdx(newRider.class);
+      const keepClass =
+        prevIdx < nextIdx
+          ? { class: existing.class, cc: existing.cc, bike: existing.bike, number: existing.number }
+          : { class: newRider.class, cc: newRider.cc, bike: newRider.bike, number: newRider.number };
+      teams[teamName].riders[existingIdx] = {
+        ...existing,
+        ...newRider,
+        ...keepClass,
+      };
+      updated++;
+    }
   }
 
   const output = { teams, generatedAt: new Date().toISOString() };
@@ -246,7 +273,6 @@ async function main() {
 
   mkdirSync(dirname(OUTPUT_PATH), { recursive: true });
   writeFileSync(OUTPUT_PATH, json, "utf8");
-  // Keep src/data copy in sync so developers see the latest locally.
   mkdirSync(dirname(OUTPUT_PATH_SRC), { recursive: true });
   writeFileSync(OUTPUT_PATH_SRC, json, "utf8");
 
@@ -257,13 +283,14 @@ async function main() {
   ).length;
 
   console.log(
-    `[tss-sync] ✓ Wrote ${teamNames.length} teams, ${riderCount} riders (skipped ${skipped} rows) → ${OUTPUT_PATH}`
+    `[tss-sync] ✓ Wrote ${teamNames.length} teams, ${riderCount} riders ` +
+      `(updated ${updated} via resubmission, skipped ${skipped} blank rows) → ${OUTPUT_PATH}`
   );
   console.log(
     `[tss-sync]   Logos: ${withLogo}/${teamNames.length} teams have a logo; ${driveLogos} use drive.google.com thumbnails`
   );
   // Sample first 3 team logos so the Netlify deploy log shows what was produced.
-  for (const n of teamNames.slice(0, 3)) {
+  for (const n of teamNames.slice(0, 5)) {
     console.log(`[tss-sync]   ${n} → ${(teams[n].logo || "(none)").substring(0, 120)}`);
   }
 }
