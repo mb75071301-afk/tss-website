@@ -44,26 +44,6 @@ const COL = {
   bikeNumber: 20, // U 參賽車號碼(1-999)
 };
 
-// Priority ordering used when the same rider submits multiple rows with
-// different classes — the higher-priority class wins for that rider.
-const CLASS_PRIORITY = [
-  "Super Stock 400",
-  "Super Sport 400",
-  "Super Stock 300",
-  "Super Sport 300",
-  "Super Stock 250",
-  "Super Sport 250",
-  "Super Stock 150",
-  "Super Sport 150",
-  "Super Pole 600",
-  "Super Pole 1000",
-];
-
-function classPriorityIdx(name) {
-  const i = CLASS_PRIORITY.indexOf(name);
-  return i === -1 ? 999 : i;
-}
-
 function classCc(name) {
   const m = (name || "").match(/(\d+)/);
   return m ? m[1] : "";
@@ -242,27 +222,20 @@ async function main() {
       number,
     };
 
-    // Dedupe same rider within same team.
+    // Dedupe by (name + class) within same team: a rider who registers for
+    // multiple classes appears once per class, but resubmitting the same
+    // (name, class) pair updates the existing row instead of duplicating it.
     const existingIdx = teams[teamName].riders.findIndex(
-      (x) => x.name === name
+      (x) => x.name === name && x.class === className
     );
     if (existingIdx === -1) {
       teams[teamName].riders.push(newRider);
       riderCount++;
     } else {
-      const existing = teams[teamName].riders[existingIdx];
-      // Merge: keep the higher-priority class across submissions, otherwise
-      // the latest row wins for every field (so resubmissions update info).
-      const prevIdx = classPriorityIdx(existing.class);
-      const nextIdx = classPriorityIdx(newRider.class);
-      const keepClass =
-        prevIdx < nextIdx
-          ? { class: existing.class, cc: existing.cc, bike: existing.bike, number: existing.number }
-          : { class: newRider.class, cc: newRider.cc, bike: newRider.bike, number: newRider.number };
+      // Latest resubmission for the same (name, class) wins on every field.
       teams[teamName].riders[existingIdx] = {
-        ...existing,
+        ...teams[teamName].riders[existingIdx],
         ...newRider,
-        ...keepClass,
       };
       updated++;
     }
