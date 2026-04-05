@@ -184,8 +184,13 @@ function detectImageExt(buf) {
  * success, or "" on any failure (auth, network, non-image payload).
  * The caller is responsible for falling back to thumbnailUrl().
  */
+// Track the first few download failures so we can see the actual
+// Drive API error without flooding the build log.
+let _dbgFailuresLogged = 0;
+const _DBG_MAX = 3;
+
 async function downloadDriveFile(fileId, kind, accessToken) {
-  const apiUrl = `https://www.googleapis.com/drive/v3/files/${fileId}?alt=media`;
+  const apiUrl = `https://www.googleapis.com/drive/v3/files/${fileId}?alt=media&supportsAllDrives=true`;
   const outDir = kind === "logo" ? TEAM_LOGOS_DIR : RIDER_PHOTOS_DIR;
   const publicPrefix = kind === "logo" ? "/team-logos" : "/rider-photos";
   try {
@@ -194,17 +199,38 @@ async function downloadDriveFile(fileId, kind, accessToken) {
       redirect: "follow",
     });
     if (!res.ok) {
+      if (_dbgFailuresLogged < _DBG_MAX) {
+        const body = (await res.text()).slice(0, 400);
+        console.log(
+          `[tss-sync]   ✗ ${kind} ${fileId} HTTP ${res.status} ${res.statusText} :: ${body.replace(/\s+/g, " ")}`
+        );
+        _dbgFailuresLogged++;
+      }
       return "";
     }
     const buf = Buffer.from(await res.arrayBuffer());
     const ext = detectImageExt(buf);
     if (!ext) {
+      if (_dbgFailuresLogged < _DBG_MAX) {
+        console.log(
+          `[tss-sync]   ✗ ${kind} ${fileId} non-image payload, first bytes: ${Array.from(
+            buf.slice(0, 16)
+          )
+            .map((b) => b.toString(16).padStart(2, "0"))
+            .join(" ")}`
+        );
+        _dbgFailuresLogged++;
+      }
       return "";
     }
     const filename = `${fileId}.${ext}`;
     writeFileSync(resolve(outDir, filename), buf);
     return `${publicPrefix}/${filename}`;
-  } catch {
+  } catch (e) {
+    if (_dbgFailuresLogged < _DBG_MAX) {
+      console.log(`[tss-sync]   ✗ ${kind} ${fileId} threw: ${e.message}`);
+      _dbgFailuresLogged++;
+    }
     return "";
   }
 }
