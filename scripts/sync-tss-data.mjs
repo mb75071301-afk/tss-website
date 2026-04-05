@@ -70,7 +70,9 @@ async function getAccessToken(sa) {
   const header = { alg: "RS256", typ: "JWT" };
   const claim = {
     iss: sa.client_email,
-    scope: "https://www.googleapis.com/auth/spreadsheets.readonly",
+    scope:
+      "https://www.googleapis.com/auth/spreadsheets.readonly " +
+      "https://www.googleapis.com/auth/drive.readonly",
     aud: sa.token_uri || "https://oauth2.googleapis.com/token",
     iat: now,
     exp: now + 3600,
@@ -140,42 +142,77 @@ function extractDriveId(url) {
 }
 
 /**
- * Download a Google Drive image to the local filesystem and return the
- * site-relative public path. This lets us serve rider photos and team
- * logos from the same origin as the site, which is the only reliable
- * way to get them through on mobile carrier networks, ad blockers, and
- * Google's per-IP rate limits on lh3.googleusercontent.com.
- *
- * We hit the lh3 CDN (not drive.google.com/thumbnail) because lh3 serves
- * the raw file without redirects / cookies, which is reachable from
- * Netlify's build workers without auth.
+ * Detect image format from the first few bytes. Returns one of
+ * "jpg" | "png" | "gif" | "webp", or null if the buffer is not a
+ * recognised raster image (HTML error pages, sign-in pages, etc. all
+ * fail this check — which is the whole point).
  */
-async function downloadDriveImage(fileId, kind) {
-  const lh3Url = `https://lh3.googleusercontent.com/d/${fileId}=w1000`;
+function detectImageExt(buf) {
+  if (!buf || buf.length < 12) return null;
+  // JPEG: FF D8 FF
+  if (buf[0] === 0xff && buf[1] === 0xd8 && buf[2] === 0xff) return "jpg";
+  // PNG: 89 50 4E 47 0D 0A 1A 0A
+  if (
+    buf[0] === 0x89 &&
+    buf[1] === 0x50 &&
+    buf[2] === 0x4e &&
+    buf[3] === 0x47
+  )
+    return "png";
+  // GIF: "GIF87a" or "GIF89a"
+  if (buf[0] === 0x47 && buf[1] === 0x49 && buf[2] === 0x46) return "gif";
+  // WebP: "RIFF....WEBP"
+  if (
+    buf[0] === 0x52 &&
+    buf[1] === 0x49 &&
+    buf[2] === 0x46 &&
+    buf[3] === 0x46 &&
+    buf[8] === 0x57 &&
+    buf[9] === 0x45 &&
+    buf[10] === 0x42 &&
+    buf[11] === 0x50
+  )
+    return "webp";
+  return null;
+}
+
+/**
+ * Download a Google Drive image to the local filesystem via the Drive
+ * API (files.get?alt=media), using the same service-account OAuth token
+ * as the Sheets call. This bypasses lh3.googleusercontent.com entirely,
+ * so we don't hit per-IP rate limits and we don't silently get back a
+ * Google sign-in HTML page pretending to be a JPEG.
+ *
+ * Every downloaded buffer is validated by magic bytes before being
+ * written to disk; if the content isn't a real image, we return "" so
+ * the page falls back to the placeholder avatar rather than serving a
+ * broken file.
+ */
+async function downloadDriveImage(fileId, kind, accessToken) {
+  const url = `https://www.googleapis.com/drive/v3/files/${fileId}?alt=media`;
   const outDir = kind === "logo" ? TEAM_LOGOS_DIR : RIDER_PHOTOS_DIR;
   const publicPrefix = kind === "logo" ? "/team-logos" : "/rider-photos";
   try {
-    const res = await fetch(lh3Url, { redirect: "follow" });
+    const res = await fetch(url, {
+      headers: { Authorization: `Bearer ${accessToken}` },
+      redirect: "follow",
+    });
     if (!res.ok) {
+      const body = await res.text().catch(() => "");
       console.warn(
-        `[tss-sync] ⚠ ${kind} ${fileId}: HTTP ${res.status} from lh3`
+        `[tss-sync] ⚠ ${kind} ${fileId}: Drive API HTTP ${res.status} ${body.slice(0, 120)}`
       );
       return "";
     }
     const buf = Buffer.from(await res.arrayBuffer());
-    if (buf.length < 200) {
-      // Too small to be a real image — probably an error page.
+    const ext = detectImageExt(buf);
+    if (!ext) {
+      const head = buf.slice(0, 16).toString("hex");
       console.warn(
-        `[tss-sync] ⚠ ${kind} ${fileId}: suspiciously small response (${buf.length} bytes)`
+        `[tss-sync] ⚠ ${kind} ${fileId}: not a recognised image (${buf.length}B, head=${head})`
       );
       return "";
     }
-    const ct = (res.headers.get("content-type") || "").toLowerCase();
-    let ext = "jpg";
-    if (ct.includes("png")) ext = "png";
-    else if (ct.includes("webp")) ext = "webp";
-    else if (ct.includes("gif")) ext = "gif";
-    else if (ct.includes("jpeg") || ct.includes("jpg")) ext = "jpg";
     const filename = `${fileId}.${ext}`;
     writeFileSync(resolve(outDir, filename), buf);
     return `${publicPrefix}/${filename}`;
@@ -189,7 +226,7 @@ async function downloadDriveImage(fileId, kind) {
  * Download all images in parallel (bounded concurrency) and return a
  * map from `${kind}:${fileId}` to the site-relative public path.
  */
-async function resolveDriveImages(jobs) {
+async function resolveDriveImages(jobs, accessToken) {
   const BATCH = 8;
   const result = new Map();
   const arr = Array.from(jobs.values());
@@ -197,7 +234,7 @@ async function resolveDriveImages(jobs) {
     const slice = arr.slice(i, i + BATCH);
     const downloaded = await Promise.all(
       slice.map(async (j) => {
-        const path = await downloadDriveImage(j.fileId, j.kind);
+        const path = await downloadDriveImage(j.fileId, j.kind, accessToken);
         return [`${j.kind}:${j.fileId}`, path];
       })
     );
@@ -258,7 +295,7 @@ async function main() {
     if (logoId) imageJobs.set(`logo:${logoId}`, { fileId: logoId, kind: "logo" });
   }
   console.log(`[tss-sync] → Downloading ${imageJobs.size} unique Drive images…`);
-  const imageMap = await resolveDriveImages(imageJobs);
+  const imageMap = await resolveDriveImages(imageJobs, token);
   const downloadedOk = Array.from(imageMap.values()).filter(Boolean).length;
   console.log(
     `[tss-sync] ✓ Downloaded ${downloadedOk}/${imageJobs.size} images to /rider-photos and /team-logos`
