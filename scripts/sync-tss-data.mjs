@@ -120,19 +120,22 @@ function cellTrim(v) {
 
 async function main() {
   console.log(`[tss-sync] Fetching CSV: ${CSV_URL}`);
-  let csv;
-  try {
-    const res = await fetch(CSV_URL, { redirect: "follow" });
-    if (!res.ok) throw new Error(`HTTP ${res.status} ${res.statusText}`);
-    csv = await res.text();
-  } catch (err) {
-    console.error(`[tss-sync] Failed to fetch Google Sheet: ${err.message}`);
-    if (existsSync(OUTPUT_PATH)) {
-      console.warn(`[tss-sync] Keeping existing ${OUTPUT_PATH} and continuing build.`);
-      return;
-    }
-    throw err;
+  const res = await fetch(CSV_URL, {
+    redirect: "follow",
+    headers: {
+      "User-Agent":
+        "Mozilla/5.0 (compatible; TSS-Website-Sync/1.0; +https://taiwansuperbikeseries.com)",
+      Accept: "text/csv,text/plain,*/*",
+    },
+  });
+  if (!res.ok) {
+    throw new Error(
+      `[tss-sync] HTTP ${res.status} ${res.statusText} when fetching Google Sheet CSV. ` +
+        `Make sure the sheet is shared as "Anyone with the link can view".`
+    );
   }
+  const csv = await res.text();
+  console.log(`[tss-sync] ✓ Fetched ${csv.length} bytes from Google Sheet`);
 
   const rows = parseCSV(csv);
   if (rows.length < 3) {
@@ -200,9 +203,22 @@ async function main() {
   mkdirSync(dirname(OUTPUT_PATH_SRC), { recursive: true });
   writeFileSync(OUTPUT_PATH_SRC, json, "utf8");
 
+  const teamNames = Object.keys(teams);
+  const withLogo = teamNames.filter((n) => teams[n].logo).length;
+  const driveLogos = teamNames.filter((n) =>
+    (teams[n].logo || "").includes("drive.google.com")
+  ).length;
+
   console.log(
-    `[tss-sync] ✓ Wrote ${Object.keys(teams).length} teams, ${riderCount} riders (skipped ${skipped} rows) → ${OUTPUT_PATH}`
+    `[tss-sync] ✓ Wrote ${teamNames.length} teams, ${riderCount} riders (skipped ${skipped} rows) → ${OUTPUT_PATH}`
   );
+  console.log(
+    `[tss-sync]   Logos: ${withLogo}/${teamNames.length} teams have a logo; ${driveLogos} use drive.google.com thumbnails`
+  );
+  // Sample first 3 team logos so the Netlify deploy log shows what was produced.
+  for (const n of teamNames.slice(0, 3)) {
+    console.log(`[tss-sync]   ${n} → ${(teams[n].logo || "(none)").substring(0, 120)}`);
+  }
 }
 
 main().catch((err) => {
