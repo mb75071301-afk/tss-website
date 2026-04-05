@@ -13,7 +13,7 @@
  *   directly with the service account email).
  */
 
-import { writeFileSync, mkdirSync, rmSync, existsSync } from "node:fs";
+import { writeFileSync, mkdirSync } from "node:fs";
 import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { createSign } from "node:crypto";
@@ -22,10 +22,6 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = resolve(__dirname, "..");
 const OUTPUT_PATH = resolve(ROOT, "client/public/tss_data.json");
 const OUTPUT_PATH_SRC = resolve(ROOT, "client/src/data/tss_data.json");
-// Downloaded Drive images are served from the same origin as the site,
-// so mobile browsers / ad blockers / Google rate limits don't affect them.
-const RIDER_PHOTOS_DIR = resolve(ROOT, "client/public/rider-photos");
-const TEAM_LOGOS_DIR = resolve(ROOT, "client/public/team-logos");
 
 const DOC_ID = "1rS5R-ECwJIcGepccHrVL2IzZPieYAIS6_MaN-SW0z3M";
 // Pull from the Google Form responses tab, not the 選手總表 aggregate.
@@ -70,9 +66,7 @@ async function getAccessToken(sa) {
   const header = { alg: "RS256", typ: "JWT" };
   const claim = {
     iss: sa.client_email,
-    scope:
-      "https://www.googleapis.com/auth/spreadsheets.readonly " +
-      "https://www.googleapis.com/auth/drive.readonly",
+    scope: "https://www.googleapis.com/auth/spreadsheets.readonly",
     aud: sa.token_uri || "https://oauth2.googleapis.com/token",
     iat: now,
     exp: now + 3600,
@@ -129,118 +123,19 @@ async function fetchSheetValues(accessToken) {
 }
 
 /**
- * Extract a Google Drive file ID from any supported share URL format.
- * Returns null for non-Drive URLs (which are passed through unchanged).
+ * Convert any Google Drive share URL into a direct-viewable thumbnail
+ * URL. Browsers with an existing Google session load these in-cookie,
+ * which is how the site displayed photos before the build-time download
+ * detour. Pass-through for anything that isn't a Drive URL.
  */
-function extractDriveId(url) {
-  if (!url) return null;
+function driveToImg(url) {
+  if (!url) return "";
   const s = String(url).trim();
-  if (!s) return null;
+  if (!s) return "";
   let m = s.match(/[?&]id=([^&]+)/);
   if (!m) m = s.match(/\/d\/([^/=?&]+)/);
-  return m ? m[1] : null;
-}
-
-/**
- * Detect image format from the first few bytes. Returns one of
- * "jpg" | "png" | "gif" | "webp", or null if the buffer is not a
- * recognised raster image (HTML error pages, sign-in pages, etc. all
- * fail this check — which is the whole point).
- */
-function detectImageExt(buf) {
-  if (!buf || buf.length < 12) return null;
-  // JPEG: FF D8 FF
-  if (buf[0] === 0xff && buf[1] === 0xd8 && buf[2] === 0xff) return "jpg";
-  // PNG: 89 50 4E 47 0D 0A 1A 0A
-  if (
-    buf[0] === 0x89 &&
-    buf[1] === 0x50 &&
-    buf[2] === 0x4e &&
-    buf[3] === 0x47
-  )
-    return "png";
-  // GIF: "GIF87a" or "GIF89a"
-  if (buf[0] === 0x47 && buf[1] === 0x49 && buf[2] === 0x46) return "gif";
-  // WebP: "RIFF....WEBP"
-  if (
-    buf[0] === 0x52 &&
-    buf[1] === 0x49 &&
-    buf[2] === 0x46 &&
-    buf[3] === 0x46 &&
-    buf[8] === 0x57 &&
-    buf[9] === 0x45 &&
-    buf[10] === 0x42 &&
-    buf[11] === 0x50
-  )
-    return "webp";
-  return null;
-}
-
-/**
- * Download a Google Drive image to the local filesystem via the Drive
- * API (files.get?alt=media), using the same service-account OAuth token
- * as the Sheets call. This bypasses lh3.googleusercontent.com entirely,
- * so we don't hit per-IP rate limits and we don't silently get back a
- * Google sign-in HTML page pretending to be a JPEG.
- *
- * Every downloaded buffer is validated by magic bytes before being
- * written to disk; if the content isn't a real image, we return "" so
- * the page falls back to the placeholder avatar rather than serving a
- * broken file.
- */
-async function downloadDriveImage(fileId, kind, accessToken) {
-  const url = `https://www.googleapis.com/drive/v3/files/${fileId}?alt=media`;
-  const outDir = kind === "logo" ? TEAM_LOGOS_DIR : RIDER_PHOTOS_DIR;
-  const publicPrefix = kind === "logo" ? "/team-logos" : "/rider-photos";
-  try {
-    const res = await fetch(url, {
-      headers: { Authorization: `Bearer ${accessToken}` },
-      redirect: "follow",
-    });
-    if (!res.ok) {
-      const body = await res.text().catch(() => "");
-      console.warn(
-        `[tss-sync] ⚠ ${kind} ${fileId}: Drive API HTTP ${res.status} ${body.slice(0, 120)}`
-      );
-      return "";
-    }
-    const buf = Buffer.from(await res.arrayBuffer());
-    const ext = detectImageExt(buf);
-    if (!ext) {
-      const head = buf.slice(0, 16).toString("hex");
-      console.warn(
-        `[tss-sync] ⚠ ${kind} ${fileId}: not a recognised image (${buf.length}B, head=${head})`
-      );
-      return "";
-    }
-    const filename = `${fileId}.${ext}`;
-    writeFileSync(resolve(outDir, filename), buf);
-    return `${publicPrefix}/${filename}`;
-  } catch (e) {
-    console.warn(`[tss-sync] ⚠ ${kind} ${fileId}: download failed: ${e.message}`);
-    return "";
-  }
-}
-
-/**
- * Download all images in parallel (bounded concurrency) and return a
- * map from `${kind}:${fileId}` to the site-relative public path.
- */
-async function resolveDriveImages(jobs, accessToken) {
-  const BATCH = 8;
-  const result = new Map();
-  const arr = Array.from(jobs.values());
-  for (let i = 0; i < arr.length; i += BATCH) {
-    const slice = arr.slice(i, i + BATCH);
-    const downloaded = await Promise.all(
-      slice.map(async (j) => {
-        const path = await downloadDriveImage(j.fileId, j.kind, accessToken);
-        return [`${j.kind}:${j.fileId}`, path];
-      })
-    );
-    for (const [k, v] of downloaded) result.set(k, v);
-  }
-  return result;
+  if (!m) return s;
+  return `https://drive.google.com/thumbnail?id=${m[1]}&sz=w1000`;
 }
 
 function cellTrim(v) {
@@ -279,36 +174,6 @@ async function main() {
     throw new Error(`[tss-sync] Sheet only has ${rows.length} rows; aborting.`);
   }
 
-  // ----- Pass 1: collect every unique Drive file ID we need to download.
-  // We clear the photo/logo output dirs first so stale files don't linger.
-  if (existsSync(RIDER_PHOTOS_DIR)) rmSync(RIDER_PHOTOS_DIR, { recursive: true });
-  if (existsSync(TEAM_LOGOS_DIR)) rmSync(TEAM_LOGOS_DIR, { recursive: true });
-  mkdirSync(RIDER_PHOTOS_DIR, { recursive: true });
-  mkdirSync(TEAM_LOGOS_DIR, { recursive: true });
-
-  const imageJobs = new Map(); // key = `${kind}:${fileId}`
-  for (let i = 1; i < rows.length; i++) {
-    const r = rows[i];
-    const photoId = extractDriveId(cellTrim(r[COL.photo]));
-    if (photoId) imageJobs.set(`photo:${photoId}`, { fileId: photoId, kind: "photo" });
-    const logoId = extractDriveId(cellTrim(r[COL.teamLogo]));
-    if (logoId) imageJobs.set(`logo:${logoId}`, { fileId: logoId, kind: "logo" });
-  }
-  console.log(`[tss-sync] → Downloading ${imageJobs.size} unique Drive images…`);
-  const imageMap = await resolveDriveImages(imageJobs, token);
-  const downloadedOk = Array.from(imageMap.values()).filter(Boolean).length;
-  console.log(
-    `[tss-sync] ✓ Downloaded ${downloadedOk}/${imageJobs.size} images to /rider-photos and /team-logos`
-  );
-
-  // Helper: Drive URL from the sheet → site-relative path (or pass-through).
-  const localPath = (url, kind) => {
-    const id = extractDriveId(url);
-    if (!id) return url || ""; // non-Drive URL: leave as-is
-    return imageMap.get(`${kind}:${id}`) || "";
-  };
-
-  // ----- Pass 2: build teams using local paths.
   const teams = {};
   let riderCount = 0;
   let updated = 0;
@@ -329,14 +194,14 @@ async function main() {
     const teamName = cellTrim(r[COL.teamName]) || "獨立車手";
     if (!teams[teamName]) {
       teams[teamName] = {
-        logo: localPath(cellTrim(r[COL.teamLogo]), "logo"),
+        logo: driveToImg(cellTrim(r[COL.teamLogo])),
         riders: [],
       };
     }
     // First non-empty team logo wins (preserves team branding from earliest
     // complete submission; later members with blank Q don't clobber it).
     if (!teams[teamName].logo) {
-      teams[teamName].logo = localPath(cellTrim(r[COL.teamLogo]), "logo");
+      teams[teamName].logo = driveToImg(cellTrim(r[COL.teamLogo]));
     }
 
     const className = cellTrim(r[COL.className]);
@@ -348,7 +213,7 @@ async function main() {
     const newRider = {
       name,
       intro: cellTrim(r[COL.bio]),
-      photo: localPath(cellTrim(r[COL.photo]), "photo"),
+      photo: driveToImg(cellTrim(r[COL.photo])),
       class: className,
       cc: classCc(className),
       bike,
@@ -390,7 +255,7 @@ async function main() {
       `(updated ${updated} via resubmission, skipped ${skipped} blank rows) → ${OUTPUT_PATH}`
   );
   console.log(
-    `[tss-sync]   Logos: ${withLogo}/${teamNames.length} teams have a logo (all served from same origin)`
+    `[tss-sync]   Logos: ${withLogo}/${teamNames.length} teams have a logo`
   );
   // Sample first 3 team logos so the Netlify deploy log shows what was produced.
   for (const n of teamNames.slice(0, 5)) {
