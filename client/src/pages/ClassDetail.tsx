@@ -34,6 +34,7 @@ export default function ClassDetail() {
   const { t, language } = useLanguage();
   const [rawRiderPhotos, setRawRiderPhotos] = useState<Record<string, string>>({});
   const [teamsData, setTeamsData] = useState<Record<string, TeamData>>({});
+  const [brokenPhotos, setBrokenPhotos] = useState<Record<string, boolean>>({});
   const { riderOverrideMap } = useOverrides();
 
   // Fix: scroll to top when entering class detail page
@@ -209,25 +210,31 @@ export default function ClassDetail() {
                             </h3>
                           </Link>
                           <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                            {riders.map((name, idx) => (
-                              <div key={idx} className="flex items-center gap-2 text-white/70 text-sm py-1">
-                                {riderPhotos[name] ? (
-                                  <img
-                                    src={riderPhotos[name]}
-                                    alt={name}
-                                    className="w-7 h-7 rounded-full object-cover flex-shrink-0 border border-white/20"
-                                    onError={(e) => {
-                                      (e.target as HTMLImageElement).style.display = "none";
-                                      (e.target as HTMLImageElement).nextElementSibling?.classList.remove("hidden");
-                                    }}
-                                  />
-                                ) : null}
-                                <div className={`w-7 h-7 rounded-full bg-white/10 flex items-center justify-center flex-shrink-0 border border-white/10 ${riderPhotos[name] ? 'hidden' : ''}`}>
-                                  <User size={14} className="text-white/40" />
+                            {riders.map((name, idx) => {
+                              const photo = riderPhotos[name];
+                              const showPhoto = photo && !brokenPhotos[name];
+                              return (
+                                <div key={idx} className="flex items-center gap-2 text-white/70 text-sm py-1">
+                                  {showPhoto ? (
+                                    <img
+                                      src={photo}
+                                      alt={name}
+                                      loading="lazy"
+                                      referrerPolicy="no-referrer"
+                                      className="w-7 h-7 rounded-full object-cover flex-shrink-0 border border-white/20"
+                                      onError={() =>
+                                        setBrokenPhotos((prev) => ({ ...prev, [name]: true }))
+                                      }
+                                    />
+                                  ) : (
+                                    <div className="w-7 h-7 rounded-full bg-white/10 flex items-center justify-center flex-shrink-0 border border-white/10">
+                                      <User size={14} className="text-white/40" />
+                                    </div>
+                                  )}
+                                  <span>{name}</span>
                                 </div>
-                                <span>{name}</span>
-                              </div>
-                            ))}
+                              );
+                            })}
                           </div>
                         </div>
                       ))}
