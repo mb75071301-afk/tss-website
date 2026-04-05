@@ -24,16 +24,19 @@ export default function Navbar() {
 
   const handleNavClick = (href: string) => {
     setMobileOpen(false);
-    // External routes
+    // External routes (e.g. /teams)
     if (href.startsWith("/")) {
       window.location.href = href;
       return;
     }
-    // If not on home page, navigate to home page with anchor
+    // If not on home page, navigate to home + hash. Use `/` for zh (default)
+    // and `/en/` for en so the wouter routes match. Home.tsx's useEffect
+    // picks up the hash and scrolls once the target section has mounted.
     const currentPath = window.location.pathname;
-    const pathWithoutLang = currentPath.replace(/^\/(zh|en)/, '') || '/';
+    const pathWithoutLang = currentPath.replace(/^\/(zh|en)/, "") || "/";
     if (pathWithoutLang !== "/") {
-      window.location.href = `/${language}${href}`;
+      const homePath = language === "en" ? "/en/" : "/";
+      window.location.href = `${homePath}${href}`;
       return;
     }
     if (href === "#hero") {
