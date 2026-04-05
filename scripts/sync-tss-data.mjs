@@ -123,12 +123,20 @@ async function fetchSheetValues(accessToken) {
 }
 
 /**
- * Convert a Google Drive share URL into a reliably-embeddable thumbnail URL.
+ * Convert a Google Drive share URL into a reliably-embeddable public CDN URL.
+ *
+ * We use Google's user-content CDN (lh3.googleusercontent.com/d/FILE_ID)
+ * instead of drive.google.com/thumbnail because the latter often 403s on
+ * mobile browsers (Safari iOS, Chrome Android) that don't carry Google
+ * auth cookies the same way desktop Chrome does. The lh3 domain is the
+ * same CDN that serves Drive previews publicly and works cross-device.
+ *
  * Accepts:
  *  - https://drive.google.com/open?id=FILE_ID
  *  - https://drive.google.com/file/d/FILE_ID/view
  *  - https://drive.google.com/uc?id=FILE_ID
- * Returns: https://drive.google.com/thumbnail?id=FILE_ID&sz=w1000
+ *  - https://drive.google.com/thumbnail?id=FILE_ID
+ * Returns: https://lh3.googleusercontent.com/d/FILE_ID=w1000
  */
 function driveToImg(url) {
   if (!url) return "";
@@ -137,7 +145,7 @@ function driveToImg(url) {
   let m = s.match(/[?&]id=([^&]+)/);
   if (!m) m = s.match(/\/d\/([^/]+)/);
   if (!m) return s; // leave non-Drive URLs as-is
-  return `https://drive.google.com/thumbnail?id=${m[1]}&sz=w1000`;
+  return `https://lh3.googleusercontent.com/d/${m[1]}=w1000`;
 }
 
 function cellTrim(v) {

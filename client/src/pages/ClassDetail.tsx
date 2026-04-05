@@ -220,7 +220,6 @@ export default function ClassDetail() {
                                       src={photo}
                                       alt={name}
                                       loading="lazy"
-                                      referrerPolicy="no-referrer"
                                       className="w-7 h-7 rounded-full object-cover flex-shrink-0 border border-white/20"
                                       onError={() =>
                                         setBrokenPhotos((prev) => ({ ...prev, [name]: true }))
