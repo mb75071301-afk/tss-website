@@ -7,7 +7,6 @@ import { useParams, useLocation, Link } from "wouter";
 import { motion } from "framer-motion";
 import { ChevronLeft, User } from "lucide-react";
 import { RACE_CLASSES, RACE_CLASSES_INFO } from "@/lib/data";
-import { getParticipantsByTeam } from "@/lib/participants";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { useOverrides } from "@/hooks/useOverrides";
 
@@ -34,6 +33,7 @@ export default function ClassDetail() {
   const [, setLocation] = useLocation();
   const { t, language } = useLanguage();
   const [rawRiderPhotos, setRawRiderPhotos] = useState<Record<string, string>>({});
+  const [teamsData, setTeamsData] = useState<Record<string, TeamData>>({});
   const { riderOverrideMap } = useOverrides();
 
   // Fix: scroll to top when entering class detail page
@@ -47,6 +47,7 @@ export default function ClassDetail() {
         const response = await fetch("/tss_data.json", { cache: "no-store" });
         const data: TeamsData = await response.json();
         if (data && data.teams) {
+          setTeamsData(data.teams);
           const photoMap: Record<string, string> = {};
           Object.values(data.teams).forEach((team) => {
             team.riders.forEach((rider) => {
@@ -166,9 +167,20 @@ export default function ClassDetail() {
                 {language === 'zh' ? '參賽名單' : 'Participants'}
               </h2>
               
-              {/* Get riders for this class */}
+              {/* Get riders for this class — derived live from tss_data.json
+                  so any new form submission shows up automatically. */}
               {(() => {
-                const teamMap = getParticipantsByTeam(classData.nameShort);
+                const teamMap: Record<string, string[]> = {};
+                Object.entries(teamsData).forEach(([teamName, team]) => {
+                  team.riders.forEach((rider) => {
+                    if (rider.class === classData.name) {
+                      if (!teamMap[teamName]) teamMap[teamName] = [];
+                      if (!teamMap[teamName].includes(rider.name)) {
+                        teamMap[teamName].push(rider.name);
+                      }
+                    }
+                  });
+                });
                 const teamEntries = Object.entries(teamMap);
                 
                 if (teamEntries.length === 0) {
