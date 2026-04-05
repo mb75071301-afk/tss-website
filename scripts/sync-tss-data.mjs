@@ -13,7 +13,7 @@
  *   directly with the service account email).
  */
 
-import { writeFileSync, mkdirSync } from "node:fs";
+import { writeFileSync, mkdirSync, rmSync, existsSync } from "node:fs";
 import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { createSign } from "node:crypto";
@@ -22,6 +22,10 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = resolve(__dirname, "..");
 const OUTPUT_PATH = resolve(ROOT, "client/public/tss_data.json");
 const OUTPUT_PATH_SRC = resolve(ROOT, "client/src/data/tss_data.json");
+// Downloaded Drive images are served from the same origin as the site,
+// so mobile browsers / ad blockers / Google rate limits don't affect them.
+const RIDER_PHOTOS_DIR = resolve(ROOT, "client/public/rider-photos");
+const TEAM_LOGOS_DIR = resolve(ROOT, "client/public/team-logos");
 
 const DOC_ID = "1rS5R-ECwJIcGepccHrVL2IzZPieYAIS6_MaN-SW0z3M";
 // Pull from the Google Form responses tab, not the 選手總表 aggregate.
@@ -123,29 +127,83 @@ async function fetchSheetValues(accessToken) {
 }
 
 /**
- * Convert a Google Drive share URL into a reliably-embeddable public CDN URL.
- *
- * We use Google's user-content CDN (lh3.googleusercontent.com/d/FILE_ID)
- * instead of drive.google.com/thumbnail because the latter often 403s on
- * mobile browsers (Safari iOS, Chrome Android) that don't carry Google
- * auth cookies the same way desktop Chrome does. The lh3 domain is the
- * same CDN that serves Drive previews publicly and works cross-device.
- *
- * Accepts:
- *  - https://drive.google.com/open?id=FILE_ID
- *  - https://drive.google.com/file/d/FILE_ID/view
- *  - https://drive.google.com/uc?id=FILE_ID
- *  - https://drive.google.com/thumbnail?id=FILE_ID
- * Returns: https://lh3.googleusercontent.com/d/FILE_ID=w1000
+ * Extract a Google Drive file ID from any supported share URL format.
+ * Returns null for non-Drive URLs (which are passed through unchanged).
  */
-function driveToImg(url) {
-  if (!url) return "";
+function extractDriveId(url) {
+  if (!url) return null;
   const s = String(url).trim();
-  if (!s) return "";
+  if (!s) return null;
   let m = s.match(/[?&]id=([^&]+)/);
-  if (!m) m = s.match(/\/d\/([^/]+)/);
-  if (!m) return s; // leave non-Drive URLs as-is
-  return `https://lh3.googleusercontent.com/d/${m[1]}=w1000`;
+  if (!m) m = s.match(/\/d\/([^/=?&]+)/);
+  return m ? m[1] : null;
+}
+
+/**
+ * Download a Google Drive image to the local filesystem and return the
+ * site-relative public path. This lets us serve rider photos and team
+ * logos from the same origin as the site, which is the only reliable
+ * way to get them through on mobile carrier networks, ad blockers, and
+ * Google's per-IP rate limits on lh3.googleusercontent.com.
+ *
+ * We hit the lh3 CDN (not drive.google.com/thumbnail) because lh3 serves
+ * the raw file without redirects / cookies, which is reachable from
+ * Netlify's build workers without auth.
+ */
+async function downloadDriveImage(fileId, kind) {
+  const lh3Url = `https://lh3.googleusercontent.com/d/${fileId}=w1000`;
+  const outDir = kind === "logo" ? TEAM_LOGOS_DIR : RIDER_PHOTOS_DIR;
+  const publicPrefix = kind === "logo" ? "/team-logos" : "/rider-photos";
+  try {
+    const res = await fetch(lh3Url, { redirect: "follow" });
+    if (!res.ok) {
+      console.warn(
+        `[tss-sync] ⚠ ${kind} ${fileId}: HTTP ${res.status} from lh3`
+      );
+      return "";
+    }
+    const buf = Buffer.from(await res.arrayBuffer());
+    if (buf.length < 200) {
+      // Too small to be a real image — probably an error page.
+      console.warn(
+        `[tss-sync] ⚠ ${kind} ${fileId}: suspiciously small response (${buf.length} bytes)`
+      );
+      return "";
+    }
+    const ct = (res.headers.get("content-type") || "").toLowerCase();
+    let ext = "jpg";
+    if (ct.includes("png")) ext = "png";
+    else if (ct.includes("webp")) ext = "webp";
+    else if (ct.includes("gif")) ext = "gif";
+    else if (ct.includes("jpeg") || ct.includes("jpg")) ext = "jpg";
+    const filename = `${fileId}.${ext}`;
+    writeFileSync(resolve(outDir, filename), buf);
+    return `${publicPrefix}/${filename}`;
+  } catch (e) {
+    console.warn(`[tss-sync] ⚠ ${kind} ${fileId}: download failed: ${e.message}`);
+    return "";
+  }
+}
+
+/**
+ * Download all images in parallel (bounded concurrency) and return a
+ * map from `${kind}:${fileId}` to the site-relative public path.
+ */
+async function resolveDriveImages(jobs) {
+  const BATCH = 8;
+  const result = new Map();
+  const arr = Array.from(jobs.values());
+  for (let i = 0; i < arr.length; i += BATCH) {
+    const slice = arr.slice(i, i + BATCH);
+    const downloaded = await Promise.all(
+      slice.map(async (j) => {
+        const path = await downloadDriveImage(j.fileId, j.kind);
+        return [`${j.kind}:${j.fileId}`, path];
+      })
+    );
+    for (const [k, v] of downloaded) result.set(k, v);
+  }
+  return result;
 }
 
 function cellTrim(v) {
@@ -184,6 +242,36 @@ async function main() {
     throw new Error(`[tss-sync] Sheet only has ${rows.length} rows; aborting.`);
   }
 
+  // ----- Pass 1: collect every unique Drive file ID we need to download.
+  // We clear the photo/logo output dirs first so stale files don't linger.
+  if (existsSync(RIDER_PHOTOS_DIR)) rmSync(RIDER_PHOTOS_DIR, { recursive: true });
+  if (existsSync(TEAM_LOGOS_DIR)) rmSync(TEAM_LOGOS_DIR, { recursive: true });
+  mkdirSync(RIDER_PHOTOS_DIR, { recursive: true });
+  mkdirSync(TEAM_LOGOS_DIR, { recursive: true });
+
+  const imageJobs = new Map(); // key = `${kind}:${fileId}`
+  for (let i = 1; i < rows.length; i++) {
+    const r = rows[i];
+    const photoId = extractDriveId(cellTrim(r[COL.photo]));
+    if (photoId) imageJobs.set(`photo:${photoId}`, { fileId: photoId, kind: "photo" });
+    const logoId = extractDriveId(cellTrim(r[COL.teamLogo]));
+    if (logoId) imageJobs.set(`logo:${logoId}`, { fileId: logoId, kind: "logo" });
+  }
+  console.log(`[tss-sync] → Downloading ${imageJobs.size} unique Drive images…`);
+  const imageMap = await resolveDriveImages(imageJobs);
+  const downloadedOk = Array.from(imageMap.values()).filter(Boolean).length;
+  console.log(
+    `[tss-sync] ✓ Downloaded ${downloadedOk}/${imageJobs.size} images to /rider-photos and /team-logos`
+  );
+
+  // Helper: Drive URL from the sheet → site-relative path (or pass-through).
+  const localPath = (url, kind) => {
+    const id = extractDriveId(url);
+    if (!id) return url || ""; // non-Drive URL: leave as-is
+    return imageMap.get(`${kind}:${id}`) || "";
+  };
+
+  // ----- Pass 2: build teams using local paths.
   const teams = {};
   let riderCount = 0;
   let updated = 0;
@@ -204,14 +292,14 @@ async function main() {
     const teamName = cellTrim(r[COL.teamName]) || "獨立車手";
     if (!teams[teamName]) {
       teams[teamName] = {
-        logo: driveToImg(cellTrim(r[COL.teamLogo])),
+        logo: localPath(cellTrim(r[COL.teamLogo]), "logo"),
         riders: [],
       };
     }
     // First non-empty team logo wins (preserves team branding from earliest
     // complete submission; later members with blank Q don't clobber it).
     if (!teams[teamName].logo) {
-      teams[teamName].logo = driveToImg(cellTrim(r[COL.teamLogo]));
+      teams[teamName].logo = localPath(cellTrim(r[COL.teamLogo]), "logo");
     }
 
     const className = cellTrim(r[COL.className]);
@@ -223,7 +311,7 @@ async function main() {
     const newRider = {
       name,
       intro: cellTrim(r[COL.bio]),
-      photo: driveToImg(cellTrim(r[COL.photo])),
+      photo: localPath(cellTrim(r[COL.photo]), "photo"),
       class: className,
       cc: classCc(className),
       bike,
@@ -259,16 +347,13 @@ async function main() {
 
   const teamNames = Object.keys(teams);
   const withLogo = teamNames.filter((n) => teams[n].logo).length;
-  const driveLogos = teamNames.filter((n) =>
-    (teams[n].logo || "").includes("drive.google.com")
-  ).length;
 
   console.log(
     `[tss-sync] ✓ Wrote ${teamNames.length} teams, ${riderCount} riders ` +
       `(updated ${updated} via resubmission, skipped ${skipped} blank rows) → ${OUTPUT_PATH}`
   );
   console.log(
-    `[tss-sync]   Logos: ${withLogo}/${teamNames.length} teams have a logo; ${driveLogos} use drive.google.com thumbnails`
+    `[tss-sync]   Logos: ${withLogo}/${teamNames.length} teams have a logo (all served from same origin)`
   );
   // Sample first 3 team logos so the Netlify deploy log shows what was produced.
   for (const n of teamNames.slice(0, 5)) {
