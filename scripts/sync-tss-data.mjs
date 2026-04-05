@@ -1,16 +1,22 @@
 #!/usr/bin/env node
 /*
  * TSS Data Sync
- * Fetches the "選手總表" sheet from the public Google Sheet and
- * regenerates client/public/tss_data.json at build time.
+ * Fetches the "選手總表" sheet from the (private) Google Sheet using a
+ * Google Cloud service account, and regenerates client/public/tss_data.json
+ * at build time.
  *
  * Runs automatically via `npm run prebuild` on every Netlify deploy.
- * To trigger a refresh, re-deploy (Netlify → Trigger deploy → Clear cache and deploy).
+ *
+ * Required env var:
+ *   GOOGLE_SERVICE_ACCOUNT_JSON – the full JSON key file for a service account
+ *   that has at least Viewer access to the spreadsheet (share the sheet
+ *   directly with the service account email).
  */
 
-import { writeFileSync, mkdirSync, existsSync } from "node:fs";
+import { writeFileSync, mkdirSync } from "node:fs";
 import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
+import { createSign } from "node:crypto";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = resolve(__dirname, "..");
@@ -18,9 +24,10 @@ const OUTPUT_PATH = resolve(ROOT, "client/public/tss_data.json");
 const OUTPUT_PATH_SRC = resolve(ROOT, "client/src/data/tss_data.json");
 
 const DOC_ID = "1rS5R-ECwJIcGepccHrVL2IzZPieYAIS6_MaN-SW0z3M";
-// gid of "選手總表" tab
-const GID = "1066812969";
-const CSV_URL = `https://docs.google.com/spreadsheets/d/${DOC_ID}/gviz/tq?tqx=out:csv&gid=${GID}`;
+// Sheet tab name for the "選手總表" tab (gid 1066812969).
+const SHEET_NAME = "選手總表";
+// Pull a wide range so columns A..AG (0..32) are always included.
+const RANGE = `${SHEET_NAME}!A1:AG1000`;
 
 // Column index → field mapping for "選手總表"
 // Row 0 header, row 1 totals, rows 2+ rider data
@@ -55,45 +62,77 @@ const CLASS_COLS = [
   { col: COL.sp1000, name: "Super Pole 1000", cc: "1000" },
 ];
 
-function parseCSV(text) {
-  const rows = [];
-  let cur = [];
-  let field = "";
-  let inQuotes = false;
-  for (let i = 0; i < text.length; i++) {
-    const c = text[i];
-    if (inQuotes) {
-      if (c === '"' && text[i + 1] === '"') {
-        field += '"';
-        i++;
-      } else if (c === '"') {
-        inQuotes = false;
-      } else {
-        field += c;
-      }
-    } else {
-      if (c === '"') {
-        inQuotes = true;
-      } else if (c === ",") {
-        cur.push(field);
-        field = "";
-      } else if (c === "\n") {
-        cur.push(field);
-        rows.push(cur);
-        cur = [];
-        field = "";
-      } else if (c === "\r") {
-        /* skip */
-      } else {
-        field += c;
-      }
-    }
+// ---------- Service account auth (JWT → OAuth2 access token) ----------
+
+function b64url(input) {
+  const b =
+    input instanceof Buffer ? input : Buffer.from(String(input), "utf8");
+  return b
+    .toString("base64")
+    .replace(/=/g, "")
+    .replace(/\+/g, "-")
+    .replace(/\//g, "_");
+}
+
+async function getAccessToken(sa) {
+  const now = Math.floor(Date.now() / 1000);
+  const header = { alg: "RS256", typ: "JWT" };
+  const claim = {
+    iss: sa.client_email,
+    scope: "https://www.googleapis.com/auth/spreadsheets.readonly",
+    aud: sa.token_uri || "https://oauth2.googleapis.com/token",
+    iat: now,
+    exp: now + 3600,
+  };
+  const signingInput = `${b64url(JSON.stringify(header))}.${b64url(
+    JSON.stringify(claim)
+  )}`;
+  const signer = createSign("RSA-SHA256");
+  signer.update(signingInput);
+  signer.end();
+  const signature = b64url(signer.sign(sa.private_key));
+  const jwt = `${signingInput}.${signature}`;
+
+  const res = await fetch(sa.token_uri || "https://oauth2.googleapis.com/token", {
+    method: "POST",
+    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+    body: new URLSearchParams({
+      grant_type: "urn:ietf:params:oauth:grant-type:jwt-bearer",
+      assertion: jwt,
+    }).toString(),
+  });
+  if (!res.ok) {
+    const body = await res.text();
+    throw new Error(
+      `[tss-sync] OAuth token exchange failed: HTTP ${res.status} ${res.statusText} – ${body}`
+    );
   }
-  if (field.length > 0 || cur.length > 0) {
-    cur.push(field);
-    rows.push(cur);
+  const data = await res.json();
+  if (!data.access_token) {
+    throw new Error(
+      `[tss-sync] OAuth response missing access_token: ${JSON.stringify(data)}`
+    );
   }
-  return rows;
+  return data.access_token;
+}
+
+async function fetchSheetValues(accessToken) {
+  const url = `https://sheets.googleapis.com/v4/spreadsheets/${DOC_ID}/values/${encodeURIComponent(
+    RANGE
+  )}?majorDimension=ROWS&valueRenderOption=FORMATTED_VALUE`;
+  console.log(`[tss-sync] Fetching via Sheets API: ${RANGE}`);
+  const res = await fetch(url, {
+    headers: { Authorization: `Bearer ${accessToken}` },
+  });
+  if (!res.ok) {
+    const body = await res.text();
+    throw new Error(
+      `[tss-sync] Sheets API HTTP ${res.status} ${res.statusText} – ${body}. ` +
+        `Make sure the spreadsheet is shared with the service account email as Viewer.`
+    );
+  }
+  const data = await res.json();
+  return data.values || [];
 }
 
 /**
@@ -119,27 +158,35 @@ function cellTrim(v) {
 }
 
 async function main() {
-  console.log(`[tss-sync] Fetching CSV: ${CSV_URL}`);
-  const res = await fetch(CSV_URL, {
-    redirect: "follow",
-    headers: {
-      "User-Agent":
-        "Mozilla/5.0 (compatible; TSS-Website-Sync/1.0; +https://taiwansuperbikeseries.com)",
-      Accept: "text/csv,text/plain,*/*",
-    },
-  });
-  if (!res.ok) {
+  const raw = process.env.GOOGLE_SERVICE_ACCOUNT_JSON;
+  if (!raw) {
     throw new Error(
-      `[tss-sync] HTTP ${res.status} ${res.statusText} when fetching Google Sheet CSV. ` +
-        `Make sure the sheet is shared as "Anyone with the link can view".`
+      "[tss-sync] GOOGLE_SERVICE_ACCOUNT_JSON env var is not set. " +
+        "Add the full service-account JSON as a Netlify environment variable."
     );
   }
-  const csv = await res.text();
-  console.log(`[tss-sync] ✓ Fetched ${csv.length} bytes from Google Sheet`);
+  let sa;
+  try {
+    sa = JSON.parse(raw);
+  } catch (e) {
+    throw new Error(
+      "[tss-sync] GOOGLE_SERVICE_ACCOUNT_JSON is not valid JSON: " + e.message
+    );
+  }
+  if (!sa.client_email || !sa.private_key) {
+    throw new Error(
+      "[tss-sync] GOOGLE_SERVICE_ACCOUNT_JSON missing client_email or private_key"
+    );
+  }
+  console.log(`[tss-sync] Auth as service account: ${sa.client_email}`);
 
-  const rows = parseCSV(csv);
+  const token = await getAccessToken(sa);
+  console.log(`[tss-sync] ✓ Got OAuth access token`);
+
+  const rows = await fetchSheetValues(token);
+  console.log(`[tss-sync] ✓ Received ${rows.length} rows from Sheets API`);
   if (rows.length < 3) {
-    throw new Error(`[tss-sync] CSV only has ${rows.length} rows; aborting.`);
+    throw new Error(`[tss-sync] Sheet only has ${rows.length} rows; aborting.`);
   }
 
   const teams = {};
