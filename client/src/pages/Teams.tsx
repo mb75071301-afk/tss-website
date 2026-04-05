@@ -61,7 +61,7 @@ export default function Teams() {
   useEffect(() => {
     const loadTeams = async () => {
       try {
-        const response = await fetch("/tss_data.json");
+        const response = await fetch("/tss_data.json", { cache: "no-store" });
         const data: TeamsData = await response.json();
         if (data && data.teams) {
           setRawTeams(data.teams);

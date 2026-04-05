@@ -44,7 +44,7 @@ export default function ClassDetail() {
   useEffect(() => {
     const loadPhotos = async () => {
       try {
-        const response = await fetch("/tss_data.json");
+        const response = await fetch("/tss_data.json", { cache: "no-store" });
         const data: TeamsData = await response.json();
         if (data && data.teams) {
           const photoMap: Record<string, string> = {};

@@ -4,3 +4,9 @@
 
 [build.environment]
   NODE_VERSION = "20"
+
+# 讓 /tss_data.json 永遠重新驗證，避免瀏覽器快取擋住 Sheet 更新
+[[headers]]
+  for = "/tss_data.json"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
