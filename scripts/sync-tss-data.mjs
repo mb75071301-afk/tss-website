@@ -180,6 +180,8 @@ async function main() {
   let riderCount = 0;
   let updated = 0;
   let skipped = 0;
+  // DEBUG: capture raw rows that mention 趙哲緒 anywhere (any column).
+  const debugZhao = [];
 
   // Rows 1..N are form submissions (row 0 is the header).
   // Iterating in chronological order means later submissions overwrite earlier
@@ -188,14 +190,15 @@ async function main() {
   for (let i = 1; i < rows.length; i++) {
     const r = rows[i];
     const name = cellTrim(r[COL.name]);
-    // DEBUG: dump every 趙哲緒 row so we can see if row 92 is being read correctly.
+    // DEBUG: capture every row mentioning 趙哲緒 (any column) into a file.
     if ((r || []).some((c) => (c || "").toString().includes("趙哲緒"))) {
-      console.log(
-        `[tss-sync][DEBUG] row ${i + 1} 趙哲緒 raw → ` +
-          JSON.stringify(
-            (r || []).map((c, idx) => `${String.fromCharCode(65 + idx)}:${c || ""}`)
-          )
-      );
+      debugZhao.push({
+        sheetRow: i + 1, // 1-based like the spreadsheet UI
+        cells: (r || []).map((c, idx) => ({
+          col: String.fromCharCode(65 + idx),
+          val: (c || "").toString(),
+        })),
+      });
     }
     if (!name) {
       skipped++;
@@ -257,6 +260,22 @@ async function main() {
   writeFileSync(OUTPUT_PATH, json, "utf8");
   mkdirSync(dirname(OUTPUT_PATH_SRC), { recursive: true });
   writeFileSync(OUTPUT_PATH_SRC, json, "utf8");
+
+  // DEBUG: ship the captured 趙哲緒 rows alongside tss_data.json so we can
+  // inspect them via a public URL without fighting the Netlify log viewer.
+  const debugPath = resolve(dirname(OUTPUT_PATH), "_debug_zhao.json");
+  writeFileSync(
+    debugPath,
+    JSON.stringify(
+      { totalSheetRows: rows.length, matches: debugZhao },
+      null,
+      2
+    ),
+    "utf8"
+  );
+  console.log(
+    `[tss-sync] DEBUG: wrote ${debugZhao.length} 趙哲緒 rows → _debug_zhao.json`
+  );
 
   const teamNames = Object.keys(teams);
   const withLogo = teamNames.filter((n) => teams[n].logo).length;
