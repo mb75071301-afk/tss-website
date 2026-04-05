@@ -1,0 +1,24 @@
+# TSS 台灣超級摩托車聯賽 - Robots.txt
+# 允許所有爬蟲爬取網站
+
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /.git/
+Disallow: /node_modules/
+
+# Sitemap 位置
+Sitemap: https://taiwansuperbikeseries.com/sitemap.xml
+
+# 爬蟲延遲（毫秒）
+Crawl-delay: 1
+
+# Google Bot 特定規則
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 0
+
+# Bing Bot 特定規則
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1

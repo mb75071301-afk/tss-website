@@ -1,0 +1,1731 @@
+{
+  "teams": {
+    "菇菇賽道日": {
+      "logo": "https://drive.google.com/open?id=1TJN0FgVGv1QcmEnAj_O26KK0Fo1Xi-bI",
+      "riders": [
+        {
+          "name": "吳宗銘",
+          "intro": "全台灣最速主辦人",
+          "photo": "https://drive.google.com/open?id=1PC4_w-BK6jSSPfi2NzbdZlqB1Frs_6Vt",
+          "class": "Super Sport 400",
+          "cc": "400",
+          "bike": "KAWASAKI NINJA400",
+          "number": 7
+        },
+        {
+          "name": "黃威",
+          "intro": "我是黃威！！！",
+          "photo": "https://drive.google.com/open?id=1iJydMs_lGa05i03O6h3oWojfqPQvsvW3",
+          "class": "Super Sport 400",
+          "cc": "400",
+          "bike": "KAWASAKI NINJA400",
+          "number": 89
+        },
+        {
+          "name": "陳冠傑",
+          "intro": "大家好",
+          "photo": "https://drive.google.com/open?id=1E86s8wvZmEe0ng_AZrv8hJJQJ4ym1tqT",
+          "class": "Super Stock 300",
+          "cc": "300",
+          "bike": "YAMAHA R3",
+          "number": 1
+        },
+        {
+          "name": "羅煜昶",
+          "intro": "你們的車手馬汀",
+          "photo": "https://drive.google.com/open?id=1ALMCzaIvuHIK5vNqeCkyvOAiUYeGcgJ7",
+          "class": "Super Pole 1000(Time Attack Challenge)",
+          "cc": "600",
+          "bike": "Aprilia RSV4 1100",
+          "number": 8
+        }
+      ]
+    },
+    "IGOL Racing team": {
+      "logo": "https://drive.google.com/open?id=150EH9pKbKhr5Dymbf71dQbQIAslbR0ae",
+      "riders": [
+        {
+          "name": "蕭詠議",
+          "intro": "小弟新手 請多指教",
+          "photo": "https://drive.google.com/open?id=1SEg8g3X1dt6YiWssw7Vxfkh6rzXT5rM2",
+          "class": "Super Stock 300",
+          "cc": "300",
+          "bike": "YAMAHA R3",
+          "number": 37
+        },
+        {
+          "name": "潘柏光",
+          "intro": "學長們好",
+          "photo": "https://drive.google.com/open?id=1JkWTmGP3vu9-a2kg3vMKefkG-VlA2sFx",
+          "class": "Super Stock 300",
+          "cc": "300",
+          "bike": "YAMAHA R3",
+          "number": 29
+        },
+        {
+          "name": "程懷文",
+          "intro": "希望今年比賽一切順利",
+          "photo": "https://drive.google.com/open?id=1p4ggzOGro_a1NduT-9F4opG5_Jp27bR2",
+          "class": "Super Sport 250",
+          "cc": "250",
+          "bike": "HONDA CBR250RR",
+          "number": 56
+        }
+      ]
+    },
+    "J.L.H RACING TEAM": {
+      "logo": "https://drive.google.com/open?id=1JTEyf2CiOYICBoSwIYknBV_Qdp1SBDVX",
+      "riders": [
+        {
+          "name": "陳禹翔",
+          "intro": "騎不快但長得很帥",
+          "photo": "https://drive.google.com/open?id=1Ukn6fgraT9asdafIrBBbVLF251k-jSXW",
+          "class": "Super Sport 400",
+          "cc": "400",
+          "bike": "KAWASAKI NINJA400",
+          "number": 71
+        },
+        {
+          "name": "鄧榆勳",
+          "intro": "勵志當全台最速部品店老闆",
+          "photo": "https://drive.google.com/open?id=1pGTybb8FBJQgoRAQ013p6vhIb7rKA3RZ",
+          "class": "Super Stock 300",
+          "cc": "300",
+          "bike": "YAMAHA R3",
+          "number": 23
+        },
+        {
+          "name": "陳禹翔",
+          "intro": "有點小帥",
+          "photo": "https://drive.google.com/open?id=1cQ95XbN61YYyehKsARJQ0oehngrqbvXl",
+          "class": "Super Sport 300",
+          "cc": "300",
+          "bike": "YAMAHA R3",
+          "number": 71
+        },
+        {
+          "name": "黃冠霖",
+          "intro": "大齡菜鳥",
+          "photo": "https://drive.google.com/open?id=1I6loMpRdkPFiqM-u20P3mxKT9dOH_JJC",
+          "class": "Super Stock 400",
+          "cc": "400",
+          "bike": "KAWASAKI NINJA400",
+          "number": 310
+        },
+        {
+          "name": "尤子嘉",
+          "intro": "王之行電話打不通",
+          "photo": "https://drive.google.com/open?id=1egh_J6UQ59dtcfPpGbmwHS-7ufjZauoV",
+          "class": "Super Stock 400",
+          "cc": "400",
+          "bike": "KAWASAKI NINJA400",
+          "number": 83
+        }
+      ]
+    },
+    "RPM x GOD LIGHT racing team": {
+      "logo": "https://drive.google.com/open?id=1FPyL--i5DfgMEFJmv7tVfm2EMeOYfwRU",
+      "riders": [
+        {
+          "name": "陳政勛",
+          "intro": "平安最重要",
+          "photo": "https://drive.google.com/open?id=1ahb5uOcDvo2fF4-To75XWvidXGgz5KuQ",
+          "class": "Super Stock 150",
+          "cc": "150",
+          "bike": "SUZUKI GSXR150",
+          "number": 376
+        },
+        {
+          "name": "許展齊",
+          "intro": "從小對車輛情有獨鍾，夢想一直是當一個賽車手，從完全的新手小白從山路到賽道，在到現在正規的比賽，一步步進步的感覺讓我很興奮很開心，我會在這條路繼續堅持下去，TSS我來了",
+          "photo": "https://drive.google.com/open?id=1U-fKBEIoYYj1m43ipBpvQauFa0o2BBfa",
+          "class": "Super Stock 150",
+          "cc": "150",
+          "bike": "YAMAHA R15",
+          "number": 92
+        },
+        {
+          "name": "何承烜",
+          "intro": "嗨👋",
+          "photo": "https://drive.google.com/open?id=17ntd3d9UVNX-Trf9ts50m5KBJ_lpMdvI",
+          "class": "Super Sport 150",
+          "cc": "150",
+          "bike": "SUZUKI GSX150",
+          "number": 97
+        },
+        {
+          "name": "汪蔚廷",
+          "intro": "Hi",
+          "photo": "https://drive.google.com/open?id=1C3YZ0J6IUG50XADrYeTqJ-bZE-wOfqCa",
+          "class": "Super Sport 150",
+          "cc": "150",
+          "bike": "YAMAHA R15",
+          "number": 99
+        }
+      ]
+    },
+    "萬威焦點車隊": {
+      "logo": "https://drive.google.com/open?id=1plBYpN7-CI2m65Ipz_zagTlOAJ__YVct",
+      "riders": [
+        {
+          "name": "李俊輝",
+          "intro": "繼續努力",
+          "photo": "https://drive.google.com/open?id=1tPhf_0JN2iHhurFj9j012l1E3RcG3AQt",
+          "class": "Super Sport 300",
+          "cc": "300",
+          "bike": "YAMAHA R3",
+          "number": 82
+        },
+        {
+          "name": "張益維",
+          "intro": "我是ㄧ尾",
+          "photo": "https://drive.google.com/open?id=1SGqpua9EBqumWEG0VoKjwrOL6fCsYs7i",
+          "class": "Super Stock 400",
+          "cc": "400",
+          "bike": "KAWASAKI NINJA400",
+          "number": 41
+        },
+        {
+          "name": "葛奕辰",
+          "intro": "你好我是葛奕辰",
+          "photo": "https://drive.google.com/open?id=1cetOBjqHcgP9dupnPDqkmehnyg04NPL2",
+          "class": "Super Stock 300",
+          "cc": "300",
+          "bike": "YAMAHA R3",
+          "number": 11
+        },
+        {
+          "name": "邱奕傑",
+          "intro": "大家好~~我是浣熊~~\n希望大家刷我刷小力一點~~感恩再感恩~",
+          "photo": "https://drive.google.com/open?id=1wvRX57fzewrpc2YBIRYki3-kz3DMmIRn",
+          "class": "Super Stock 300",
+          "cc": "300",
+          "bike": "YAMAHA R3",
+          "number": 18
+        },
+        {
+          "name": "婁淳祐",
+          "intro": "享受比賽 安全完賽",
+          "photo": "https://drive.google.com/open?id=1Fv7E8k3liNBSUW90wlRqLDezfBz0btHI",
+          "class": "Super Stock 400",
+          "cc": "400",
+          "bike": "KAWASAKI NINJA400",
+          "number": 56
+        }
+      ]
+    },
+    "凰顏生醫": {
+      "logo": "https://drive.google.com/open?id=1Kx66S4OaUF3i4ISJAaU8pb3lvnvBcUX5",
+      "riders": [
+        {
+          "name": "彭志豪",
+          "intro": "興趣是騎車，賽車是健身",
+          "photo": "https://drive.google.com/open?id=1SCLoNbhO0Yzyb3tLiCKtiCAnmCrP-l77",
+          "class": "Super Stock 150",
+          "cc": "150",
+          "bike": "YAMAHA R15",
+          "number": 10
+        }
+      ]
+    },
+    "久勝重機 x 98RA": {
+      "logo": "https://drive.google.com/open?id=1PAz0X5FKL827Yo4HxehGD_ptQaUw7uQL",
+      "riders": [
+        {
+          "name": "黃晧",
+          "intro": "哈哈是我啦炸彈客黃晧",
+          "photo": "https://drive.google.com/open?id=1GwwYEaUDx5j_gBONqzwjwaB-69OlUvuv",
+          "class": "Super Sport 400",
+          "cc": "400",
+          "bike": "KAWASAKI NINJA400",
+          "number": 98
+        },
+        {
+          "name": "林冠丞",
+          "intro": "很高興又可以跟大家一起比賽",
+          "photo": "https://drive.google.com/open?id=1rNqfZZGBHugEs6R4rNUq4PcVHVyuZ-d5",
+          "class": "Super Sport 400",
+          "cc": "400",
+          "bike": "KAWASAKI NINJA400",
+          "number": 53
+        },
+        {
+          "name": "侯明騏",
+          "intro": "嗨嗨我是威利",
+          "photo": "https://drive.google.com/open?id=1H5He8vavOW9lQBEziMGdbR8Fj-g0hR-B",
+          "class": "Super Stock 300",
+          "cc": "300",
+          "bike": "YAMAHA R3",
+          "number": 21
+        }
+      ]
+    },
+    "武田重車": {
+      "logo": "https://drive.google.com/open?id=1jWZvLzw6acRpVt3zdyvUXw8lfWWxtBk2",
+      "riders": [
+        {
+          "name": "連俊福",
+          "intro": "我愛菇菇賽道日",
+          "photo": "https://drive.google.com/open?id=1itS4tuuApmfslqhWtv2I_JsjYvS9-9Lr",
+          "class": "Super Sport 400",
+          "cc": "400",
+          "bike": "KAWASAKI NINJA400",
+          "number": 34
+        },
+        {
+          "name": "劉君眉",
+          "intro": "嗨大家好,我是劉君眉~~邀請大家來現場看比賽喔",
+          "photo": "https://drive.google.com/open?id=1ndW981R6aiExEZYPMzXhVJZDR7pI6d9-",
+          "class": "Super Sport 300",
+          "cc": "300",
+          "bike": "YAMAHA R3",
+          "number": 33
+        },
+        {
+          "name": "陳柄豪",
+          "intro": "賽道菜鳥",
+          "photo": "https://drive.google.com/open?id=1iNBtvh8ex2Tw3IhaEyAFI79v2lvmHUBE",
+          "class": "Super Stock 300",
+          "cc": "300",
+          "bike": "YAMAHA R3",
+          "number": 24
+        },
+        {
+          "name": "潘柏愷",
+          "intro": "第一次騎大鵬灣 好興奮",
+          "photo": "https://drive.google.com/open?id=15XD4n97hp4AmySc4c1oWdExS0k6uhnBO",
+          "class": "Super Sport 150",
+          "cc": "150",
+          "bike": "SUZUKI GSX150",
+          "number": 27
+        },
+        {
+          "name": "劉君眉",
+          "intro": "嗨~~ ",
+          "photo": "https://drive.google.com/open?id=11tnOgHHaZRom1Drc-dKPd1XVVHusQhGI",
+          "class": "Super Sport 400",
+          "cc": "400",
+          "bike": "KAWASAKI NINJA400",
+          "number": 33
+        }
+      ]
+    },
+    "波奇": {
+      "logo": "https://drive.google.com/open?id=1VNmY3tlZ0kFU7P7MmT5NdB0kysf6pAGE",
+      "riders": [
+        {
+          "name": "李曜全",
+          "intro": "享受比賽樂趣",
+          "photo": "https://drive.google.com/open?id=180Mzu4GJ0CQc-Gc5EhUy8yFuoWRjqnSZ",
+          "class": "Super Stock 150",
+          "cc": "150",
+          "bike": "SUZUKI GSXR150",
+          "number": 625
+        }
+      ]
+    },
+    "艾拉桑-灝驥重車": {
+      "logo": "https://drive.google.com/open?id=1zC_r0YDDd_D01jcIHV4IJ96Cy6RQjTHr",
+      "riders": [
+        {
+          "name": "李灃益",
+          "intro": "第一次跑大鵬灣  希望不會被海放",
+          "photo": "https://drive.google.com/open?id=1hmt4hccko9G7RuwUYooGnHOqWEpSCuWl",
+          "class": "Super Sport 300",
+          "cc": "300",
+          "bike": "KTM RC390",
+          "number": 68
+        },
+        {
+          "name": "廖振翔",
+          "intro": "大家都好快喔，怎麼辦",
+          "photo": "https://drive.google.com/open?id=1ayckrSi4eAFIM6C5nnjfNxXczBmfVG90",
+          "class": "Super Stock 150",
+          "cc": "150",
+          "bike": "YAMAHA R15",
+          "number": 326
+        },
+        {
+          "name": "陳信尹",
+          "intro": "第一次騎大鵬灣好緊張，感謝艾拉桑帶我來比賽！！",
+          "photo": "https://drive.google.com/open?id=1AbJWDloGBScmmRNxO3E9JUvf4M8fv8nG",
+          "class": "Super Stock 150",
+          "cc": "150",
+          "bike": "SUZUKI GSXR150",
+          "number": 67
+        }
+      ]
+    },
+    "榮全榮新車隊": {
+      "logo": "https://drive.google.com/open?id=1DOSOZa-M4U87kitLUkzHVXR6vNUgJFg2",
+      "riders": [
+        {
+          "name": "洪瑞鴻",
+          "intro": "給個機會讓我超車:)",
+          "photo": "https://drive.google.com/open?id=1oluYUaifrAwqafw5w1YcPbk3rU_c1FG3",
+          "class": "Super Stock 150",
+          "cc": "150",
+          "bike": "SUZUKI GSX150",
+          "number": 8
+        },
+        {
+          "name": "陳禹昊",
+          "intro": "榮全榮新最胖代表",
+          "photo": "https://drive.google.com/open?id=1a7uL0BcBybN8NHpaIBn6JN7FzU0YL7jO",
+          "class": "Super Stock 150",
+          "cc": "150",
+          "bike": "SUZUKI GSX150",
+          "number": 321
+        },
+        {
+          "name": "朱清和",
+          "intro": "最老頑童",
+          "photo": "https://drive.google.com/open?id=1CvMzEmXpeJiyvTjOsEIrvgF9YAfwJm_5",
+          "class": "Super Stock 250",
+          "cc": "250",
+          "bike": "HONDA CBR250RR",
+          "number": 8
+        },
+        {
+          "name": "朱清全",
+          "intro": "還能騎 就享受過程\n繼續挑戰自己",
+          "photo": "https://drive.google.com/open?id=1mb6G9h795X7gWpZQqPFxrwDVxOXR8Ld-",
+          "class": "Super Sport 250",
+          "cc": "250",
+          "bike": "HONDA CBR250RR",
+          "number": 5
+        },
+        {
+          "name": "陳乃源",
+          "intro": "我是阿源，阿源的阿，阿源的源",
+          "photo": "https://drive.google.com/open?id=1_nYlshklnDYHFGAQsk4spKVtvBUhIJxj",
+          "class": "Super Stock 250",
+          "cc": "250",
+          "bike": "HONDA CBR250RR",
+          "number": 14
+        },
+        {
+          "name": "王勝韋",
+          "intro": "今年是鈦合金戰士，請各位多多禮讓",
+          "photo": "https://drive.google.com/open?id=18ZpvIDyzE6_-KvoMfBLMOKmtDxwaxlr-",
+          "class": "Super Sport 250",
+          "cc": "250",
+          "bike": "HONDA CBR250RR",
+          "number": 84
+        },
+        {
+          "name": "徐權逸",
+          "intro": "大家好",
+          "photo": "https://drive.google.com/open?id=1QX1hbgnouyqIXl91LINvDOe_0ZSxZzjn",
+          "class": "Super Sport 250",
+          "cc": "250",
+          "bike": "HONDA CBR250RR",
+          "number": 333
+        },
+        {
+          "name": "朱峻霆",
+          "intro": "哈囉",
+          "photo": "https://drive.google.com/open?id=1DhV8ESSkSUVJmhpmhfJTq3_9cK3uy8Jz",
+          "class": "Super Stock 250",
+          "cc": "250",
+          "bike": "HONDA CBR250RR",
+          "number": 9
+        },
+        {
+          "name": "朱峻霆",
+          "intro": "哈囉",
+          "photo": "https://drive.google.com/open?id=1RA0I6QpkBp4raXUb-wvpwW04IbvXbhUY",
+          "class": "Super Stock 150",
+          "cc": "150",
+          "bike": "YAMAHA R15",
+          "number": 9
+        }
+      ]
+    },
+    "YX Racing": {
+      "logo": "https://drive.google.com/open?id=18CAO76pPHtLaE_hRrVp1LDEYjj1wxf8c",
+      "riders": [
+        {
+          "name": "張中瑋",
+          "intro": "我是來逛大街拿盃盃的",
+          "photo": "https://drive.google.com/open?id=1yuGA9VJPzi4Bud2D1g_XamolOZNxETGC",
+          "class": "Super Stock 300",
+          "cc": "300",
+          "bike": "YAMAHA R3",
+          "number": 721
+        },
+        {
+          "name": "許容銓",
+          "intro": "大家都叫我大夫",
+          "photo": "https://drive.google.com/open?id=1jOrqXsLOqMS3L6AEAjQqRkGAOsn-AFFY",
+          "class": "Super Stock 300",
+          "cc": "300",
+          "bike": "YAMAHA R3",
+          "number": 112
+        },
+        {
+          "name": "黃品紘",
+          "intro": "HI",
+          "photo": "https://drive.google.com/open?id=1HTtR1jODYTbpHY9eB6wnoHgmQMfEL2WL",
+          "class": "Super Sport 400",
+          "cc": "400",
+          "bike": "KAWASAKI NINJA400",
+          "number": 31
+        }
+      ]
+    },
+    "忠孝車業": {
+      "logo": "https://drive.google.com/open?id=1R5gQrWYagwmKy-ff4uLPMbDEnroZfbfR",
+      "riders": [
+        {
+          "name": "吳義傑",
+          "intro": "無",
+          "photo": "https://drive.google.com/open?id=1CkpcQbGVl37if9-bCMif2LUxCj3PUPu2",
+          "class": "Super Stock 150",
+          "cc": "150",
+          "bike": "YAMAHA R15",
+          "number": 39
+        },
+        {
+          "name": "劉耘青",
+          "intro": "我好想輸，誰能成全我！",
+          "photo": "https://drive.google.com/open?id=19LaIRKBj-8IR5OBqfHigz63gghI-f0C9",
+          "class": "Super Stock 300",
+          "cc": "300",
+          "bike": "KOVE 350RR",
+          "number": 666
+        },
+        {
+          "name": "林廷儒",
+          "intro": "大家好 我又來了",
+          "photo": "https://drive.google.com/open?id=1qvuwIB2HtgsHEjCCPHk7cWFaVw41sIbn",
+          "class": "Super Stock 300",
+          "cc": "300",
+          "bike": "YAMAHA R3",
+          "number": 999
+        },
+        {
+          "name": "趙哲緒",
+          "intro": "第一次比賽有新手安慰獎嗎",
+          "photo": "https://drive.google.com/open?id=1pYpvPv0m_s7QeqLYczLx8XxNcG_wHeCN",
+          "class": "Super Stock 400",
+          "cc": "400",
+          "bike": "KAWASAKI NINJA400",
+          "number": 77
+        },
+        {
+          "name": "唐李輔榮",
+          "intro": "有一個日本人來台灣看牙醫\n結果還沒開始拔牙就他們兩個就吵起來了\n你知道為什麼嗎?\n因為醫生會說：拔個牙囉",
+          "photo": "https://drive.google.com/open?id=1olzHLNmRXSiRVd8BIWl8Z10fWlq3qO4m",
+          "class": "Super Pole 1000(Time Attack Challenge)",
+          "cc": "600",
+          "bike": "YAMAHA R1",
+          "number": 121
+        }
+      ]
+    },
+    "45Racing Team TW": {
+      "logo": "https://drive.google.com/open?id=1v2slCL2UQiKuiZ4cQq-bcBZx_seJ-sSc",
+      "riders": [
+        {
+          "name": "黃至明",
+          "intro": "大叔的賽道白日夢",
+          "photo": "https://drive.google.com/open?id=1iEcMTedu7afO_KhEzcOHjeacs2f47NnC",
+          "class": "Super Sport 300",
+          "cc": "300",
+          "bike": "YAMAHA R3",
+          "number": 38
+        },
+        {
+          "name": "傅志豪",
+          "intro": "我好高又很帥 個性溫和又內向 蔡政佑很愛喝拿鐵",
+          "photo": "https://drive.google.com/open?id=17nrSvNpjefp-DiW43qtzaHMHUk0j2w5o",
+          "class": "Super Sport 300",
+          "cc": "300",
+          "bike": "YAMAHA R3",
+          "number": 31
+        },
+        {
+          "name": "黃政信",
+          "intro": "我是阿信 對 那台閃電麥坤",
+          "photo": "https://drive.google.com/open?id=1516Z2wIdMLmQaxTUALnHHxO7VbnvvlqW",
+          "class": "Super Sport 300",
+          "cc": "300",
+          "bike": "YAMAHA R3",
+          "number": 95
+        },
+        {
+          "name": "黃至孝",
+          "intro": "我叫黃至孝",
+          "photo": "https://drive.google.com/open?id=1jQPQiEOhS4emAcVmZlvxLPSClVGiD7im",
+          "class": "Super Stock 300",
+          "cc": "300",
+          "bike": "YAMAHA R3",
+          "number": 72
+        },
+        {
+          "name": "胡閔瑞",
+          "intro": "我是胡閔瑞，今年是我參加的第三場比賽，主要都跟45racing一起練車。",
+          "photo": "https://drive.google.com/open?id=1cCZwZSC6L_hoD8ZpYuvzrcqDFgqItHbT",
+          "class": "Super Stock 150",
+          "cc": "150",
+          "bike": "YAMAHA R15",
+          "number": 15
+        },
+        {
+          "name": "楊國廷",
+          "intro": "努力向上。",
+          "photo": "https://drive.google.com/open?id=1sQhWq5mjI01xknggsvaNKJsM3FeKf991",
+          "class": "Super Sport 300",
+          "cc": "300",
+          "bike": "YAMAHA R3",
+          "number": 42
+        },
+        {
+          "name": "王紹佾",
+          "intro": "我是小翼☺️",
+          "photo": "https://drive.google.com/open?id=1pk549zXtoJRRk_STcQUfmm9OB9j0P1OK",
+          "class": "Super Sport 400",
+          "cc": "400",
+          "bike": "KAWASAKI NINJA400",
+          "number": 35
+        }
+      ]
+    },
+    "RSV 霜暮 Racing Team": {
+      "logo": "https://drive.google.com/open?id=1bGHHNWNpjKv38_8_E0BuqPTE5yw1YrQZ",
+      "riders": [
+        {
+          "name": "游子峻",
+          "intro": "安安大家好聽說我叫游子峻",
+          "photo": "https://drive.google.com/open?id=1cFPF5rwQ7hr-MW_TwOKuCzasv7XLD6wK",
+          "class": "Super Sport 300",
+          "cc": "300",
+          "bike": "YAMAHA R3",
+          "number": 222
+        },
+        {
+          "name": "王聖華",
+          "intro": "王聖華",
+          "photo": "https://drive.google.com/open?id=1zs5Dtcq2Wh0c0UQj5_ZWNq13hChUbUEQ",
+          "class": "Super Stock 300",
+          "cc": "300",
+          "bike": "YAMAHA R3",
+          "number": 17
+        },
+        {
+          "name": "陳仕銘",
+          "intro": "無",
+          "photo": "https://drive.google.com/open?id=1oQBFmmp9ZyHmiGF8TbqNhieJhaZAtibH",
+          "class": "Super Stock 300",
+          "cc": "300",
+          "bike": "YAMAHA R3",
+          "number": 28
+        },
+        {
+          "name": "張惟",
+          "intro": "大家好 一起尬掐 騎得快 才會帥",
+          "photo": "https://drive.google.com/open?id=1GR5BpPLZYJw6-BEYmN4Gp6fWIUz9MsdV",
+          "class": "Super Sport 150",
+          "cc": "150",
+          "bike": "YAMAHA R15",
+          "number": 728
+        }
+      ]
+    },
+    "日德重車": {
+      "logo": "https://drive.google.com/open?id=14p2vFpcAvoqOf2bUAjaGUGrKunDpXKnK",
+      "riders": [
+        {
+          "name": "姜志樺",
+          "intro": "大家好！",
+          "photo": "https://drive.google.com/open?id=1lPK0kvkakYtoidG7CQMBSVsM_UNcR5fp",
+          "class": "Super Stock 400",
+          "cc": "400",
+          "bike": "KAWASAKI ZX4RR",
+          "number": 13
+        },
+        {
+          "name": "鍾竣凱",
+          "intro": "你好～",
+          "photo": "https://drive.google.com/open?id=1HfY97CamRYIvivhGyUaqIM0Wpzwudq5t",
+          "class": "Super Stock 400",
+          "cc": "400",
+          "bike": "KAWASAKI NINJA400",
+          "number": 23
+        },
+        {
+          "name": "楊浚鈿",
+          "intro": "Nothing to lose",
+          "photo": "https://drive.google.com/open?id=1Qrc4GQducokvFmK0igG57lOxgQNl8Lw4",
+          "class": "Super Stock 400",
+          "cc": "400",
+          "bike": "KAWASAKI NINJA400",
+          "number": 18
+        },
+        {
+          "name": "洪江坪",
+          "intro": "日德車隊",
+          "photo": "https://drive.google.com/open?id=1QCx4sun96pIdw6Ix4l1NHdREr7slhs4r",
+          "class": "Super Pole 1000(Time Attack Challenge)",
+          "cc": "600",
+          "bike": "KAWASAKI ZX-10R",
+          "number": 77
+        }
+      ]
+    },
+    "小鷹精前三名是大鷹精": {
+      "logo": "https://drive.google.com/open?id=18pJgGSA8qdLDHkYvW8pIZh2DNh4pMmpv",
+      "riders": [
+        {
+          "name": "葉圜燁",
+          "intro": "首次參賽的台中烏日R15",
+          "photo": "https://drive.google.com/open?id=1aXgCfc5XKxGos_ohrrYhg8K2E-MOa89W",
+          "class": "Super Stock 150",
+          "cc": "150",
+          "bike": "YAMAHA R15",
+          "number": 429
+        },
+        {
+          "name": "史青禾",
+          "intro": "沒想過第一次跑大鵬灣是TSS⋯",
+          "photo": "https://drive.google.com/open?id=1-t9hzpgYn2SJ5qb9qYA4Bzvy739PG0X7",
+          "class": "Super Sport 300",
+          "cc": "300",
+          "bike": "YAMAHA R3",
+          "number": 17
+        },
+        {
+          "name": "吳松言",
+          "intro": "FAHHHHHH",
+          "photo": "https://drive.google.com/open?id=1WSmS9VdTqYsSPFmAQj9i2kNDuSCay08l",
+          "class": "Super Sport 300",
+          "cc": "300",
+          "bike": "YAMAHA R3",
+          "number": 69
+        },
+        {
+          "name": "游政浩",
+          "intro": "翹班來跑比賽，老闆快氣死",
+          "photo": "https://drive.google.com/open?id=17zBvmBgmvJYIvEXsEVGL8adeHXH6sD7l",
+          "class": "Super Sport 300",
+          "cc": "300",
+          "bike": "YAMAHA R3",
+          "number": 26
+        }
+      ]
+    },
+    "SRP音速車隊": {
+      "logo": "https://drive.google.com/open?id=1LLd_78GAxuFxIzZxZegSRG-BATV-VVoH",
+      "riders": [
+        {
+          "name": "張志良",
+          "intro": "資深車手",
+          "photo": "https://drive.google.com/open?id=1eE_RPc9DAZI1hxi0J5XLO0Sj9wtIjihR",
+          "class": "Super Sport 300",
+          "cc": "300",
+          "bike": "YAMAHA R3",
+          "number": 22
+        },
+        {
+          "name": "陳建倫",
+          "intro": "體驗組",
+          "photo": "https://drive.google.com/open?id=1VQ1_68gR-VlOABjYRQgb6pCq3E9rHlOl",
+          "class": "Super Stock 300",
+          "cc": "300",
+          "bike": "YAMAHA R3",
+          "number": 92
+        },
+        {
+          "name": "白晉佳",
+          "intro": "哇哈哈",
+          "photo": "https://drive.google.com/open?id=1pZWwnkScpFgI9u7G7EYqp2xsEVrgmZLh",
+          "class": "Super Sport 300",
+          "cc": "300",
+          "bike": "YAMAHA R3",
+          "number": 21
+        },
+        {
+          "name": "周成翰",
+          "intro": "大家好",
+          "photo": "https://drive.google.com/open?id=15YOXcIB025xMPXNxFiN0U7oNfVKzFRz1",
+          "class": "Super Stock 300",
+          "cc": "300",
+          "bike": "YAMAHA R3",
+          "number": 32
+        }
+      ]
+    },
+    "超轉車隊": {
+      "logo": "https://drive.google.com/open?id=1Fx1nZY4-kM2S9rv7WJFuX4x2_ewvCCtb",
+      "riders": [
+        {
+          "name": "溫建和",
+          "intro": "買賣中古車快找我😁",
+          "photo": "https://drive.google.com/open?id=1twS9y675S2QKEwNuiflPmvCkOsYr2l1L",
+          "class": "Super Sport 300",
+          "cc": "300",
+          "bike": "YAMAHA R3",
+          "number": 27
+        }
+      ]
+    },
+    "JH moto Racing Team": {
+      "logo": "https://drive.google.com/open?id=1KE-hiB0c5EIggpiL2p2YgILxd5HuQL1f",
+      "riders": [
+        {
+          "name": "邱品翰",
+          "intro": "我來自屏東JHmoto摩托專門店 是有著專業與賽事熱忱的店家 個人從來沒有在大鵬灣嘗試過150CC賽車所以報名參賽挑戰",
+          "photo": "https://drive.google.com/open?id=1JRHKIU9bcgIqVQjaGcZdXDv0fmm5ItUf",
+          "class": "Super Stock 150",
+          "cc": "150",
+          "bike": "YAMAHA R15",
+          "number": 22
+        },
+        {
+          "name": "邱品翰",
+          "intro": "來自屏東JHmoto摩托專門店 是有著專業與賽事熱忱的店家 想說都報名150原廠組了 就順便用原廠組賽車挑戰看看150改裝組~",
+          "photo": "https://drive.google.com/open?id=1n2lDoVqanCGGmTn4Ae_tmX22K2X5ocy6",
+          "class": "Super Sport 150",
+          "cc": "150",
+          "bike": "YAMAHA R15",
+          "number": 22
+        }
+      ]
+    },
+    "艾銳重機": {
+      "logo": "https://drive.google.com/open?id=1dQxPsilQrazRdBhVa2Evk_pRkMDx_mPK",
+      "riders": [
+        {
+          "name": "劉柏宜",
+          "intro": "愛騎車的人",
+          "photo": "https://drive.google.com/open?id=1wI3T4ek_2RsQqNT2eNWy7jlF5-_in3P0",
+          "class": "Super Sport 300",
+          "cc": "300",
+          "bike": "YAMAHA R3",
+          "number": 57
+        }
+      ]
+    },
+    "泰陽 SUN RACING": {
+      "logo": "https://drive.google.com/open?id=16N_FGnIFn96hnlYkV16-jS6bRS9D_ahD",
+      "riders": [
+        {
+          "name": "胡偉誠",
+          "intro": "早安",
+          "photo": "https://drive.google.com/open?id=1UExDREbVs3USPmQz0vKgthKXmLlcQhMt",
+          "class": "Super Stock 150",
+          "cc": "150",
+          "bike": "YAMAHA R15",
+          "number": 11
+        }
+      ]
+    },
+    "豪威青訓賽車隊": {
+      "logo": "https://drive.google.com/open?id=1aJFz25FAJzfUrXbLQwdOwOHooAXL4T9p",
+      "riders": [
+        {
+          "name": "陳意勝",
+          "intro": "您好我是剛練一年的新手年初比了一場ESBK moto 4 \n這次比TSS是想收集經驗以及拿到執照並且我也從來沒有參加過任何台灣的比賽所以來玩看看。謝謝",
+          "photo": "https://drive.google.com/open?id=1HMH6YUY0xE08XcHfcVB-V7edH-dU1qVd",
+          "class": "Super Stock 300",
+          "cc": "300",
+          "bike": "YAMAHA R3",
+          "number": 15
+        },
+        {
+          "name": "李信儀",
+          "intro": "大家好，我來自豪威青訓賽車隊",
+          "photo": "https://drive.google.com/open?id=1XqyMzE1fiAYjQsAC2NPKeaJjIg5sUs3c",
+          "class": "Super Stock 300",
+          "cc": "300",
+          "bike": "YAMAHA R3",
+          "number": 69
+        }
+      ]
+    },
+    "翹班車手NR Racing Team": {
+      "logo": "https://drive.google.com/open?id=1TzGHcIw8Y2vN0hj2uBA6-7KUMsS7L01M",
+      "riders": [
+        {
+          "name": "陳祺昌",
+          "intro": "今年是第三年於翹班車手車隊的名義參賽 \n希望今年能夠有好的表現",
+          "photo": "https://drive.google.com/open?id=1Qfy4p6s4KAIfOZ6hrCfYpL0PtNA3s7Ao",
+          "class": "Super Stock 300",
+          "cc": "300",
+          "bike": "YAMAHA R3",
+          "number": 77
+        }
+      ]
+    },
+    "AS RACING TEAM": {
+      "logo": "https://drive.google.com/open?id=1-EVBUAtPqON9zF7zY5u5_qPQJWNLSs3F",
+      "riders": [
+        {
+          "name": "鐘蜂棋",
+          "intro": "大家好 第一次體驗300 請多多指教",
+          "photo": "https://drive.google.com/open?id=1YTs5b8H6ttponwxWPtjpH9rJV896a7xC",
+          "class": "Super Stock 300",
+          "cc": "300",
+          "bike": "KTM RC390",
+          "number": 78
+        },
+        {
+          "name": "呂昶陞",
+          "intro": "我是66傳承賽車學校創辦人-美強生，感謝賽會提供這麼優質的賽車舞台，讓我們能提攜更多有潛力熱愛賽車的後輩們。",
+          "photo": "https://drive.google.com/open?id=1JfU9NF4mvFx3SB8YakHdrNgDvcxAaTv3",
+          "class": "Super Stock 300",
+          "cc": "300",
+          "bike": "KTM RC390",
+          "number": 66
+        },
+        {
+          "name": "顏昭義",
+          "intro": "大家好我是昭義，榮幸與大家比賽！",
+          "photo": "https://drive.google.com/open?id=1FmSqNiz6ylJQHY0fMcgvYvRRDLrbMCk5",
+          "class": "Super Stock 300",
+          "cc": "300",
+          "bike": "KTM RC390",
+          "number": 7
+        }
+      ]
+    },
+    "CHC x 黃昏騎士": {
+      "logo": "https://drive.google.com/open?id=1nQ0WJUO7YYQbwc-pGzIiARambPHPRPZb",
+      "riders": [
+        {
+          "name": "蔣建廷",
+          "intro": "不務正業的車行老闆",
+          "photo": "https://drive.google.com/open?id=1fVdzIUWCoWN-m-9vPV61T3eUCbXahL5I",
+          "class": "Super Stock 300",
+          "cc": "300",
+          "bike": "YAMAHA R3",
+          "number": 22
+        }
+      ]
+    },
+    "willpower": {
+      "logo": "https://drive.google.com/open?id=1fiX0zXe6_DdjIOHVbuly9eSLsW7VGg0S",
+      "riders": [
+        {
+          "name": "郭和嘉",
+          "intro": 1234567,
+          "photo": "https://drive.google.com/open?id=1lTbhB66TY0t3wB2V5zAb-YRrH9U9y8BU",
+          "class": "Super Pole 1000(Time Attack Challenge)",
+          "cc": "600",
+          "bike": "BMW S1000RR",
+          "number": 79
+        }
+      ]
+    },
+    "RCB Racing Team": {
+      "logo": "https://drive.google.com/open?id=1ugSUaknrg94UErjragHD_LCLZtDIUm00",
+      "riders": [
+        {
+          "name": "莊安育",
+          "intro": "\n車手自我介紹\n大家好我叫莊安育\n很久沒有出來騎車了，目地想騎車運動一下\n另一個就是跟大家互相交流、分享經驗",
+          "photo": "https://drive.google.com/open?id=1EmIJFstQrKAu5HsgWq_-sOL1xqaPu_IY",
+          "class": "Super Stock 150",
+          "cc": "150",
+          "bike": "YAMAHA R15",
+          "number": 32
+        }
+      ]
+    },
+    "懶得洗車工藝": {
+      "logo": "https://drive.google.com/open?id=1WtIkeWqOCl1QpeDuani1DKb2bPWKJKyt",
+      "riders": [
+        {
+          "name": "張瑶進",
+          "intro": "張瑶進",
+          "photo": "https://drive.google.com/open?id=1AC89S7uqWgxN1eggUSQtshiI7trg4KwT",
+          "class": "Super Pole 1000(Time Attack Challenge)",
+          "cc": "600",
+          "bike": "DUCATI 1299",
+          "number": 103
+        }
+      ]
+    },
+    "忠孝車隊": {
+      "logo": "https://drive.google.com/open?id=10H_jBGrp887OSCcqVAmq2pyxorFXW36r",
+      "riders": [
+        {
+          "name": "陳維克托利亞",
+          "intro": "I'm just here to burn my life",
+          "photo": "https://drive.google.com/open?id=1yyLOqoPqh2zPgnKTx2KbmlXkOHBJiVkU",
+          "class": "Super Pole 1000(Time Attack Challenge)",
+          "cc": "600",
+          "bike": "KAWASAKI ZX-10R",
+          "number": 20
+        }
+      ]
+    }
+  },
+  "classes": {
+    "Super Sport 400": {
+      "cc": "400",
+      "riders": [
+        {
+          "name": "吳宗銘",
+          "team": "菇菇賽道日",
+          "intro": "全台灣最速主辦人",
+          "photo": "https://drive.google.com/open?id=1PC4_w-BK6jSSPfi2NzbdZlqB1Frs_6Vt",
+          "bike": "KAWASAKI NINJA400",
+          "number": 7
+        },
+        {
+          "name": "陳禹翔",
+          "team": "J.L.H RACING TEAM",
+          "intro": "騎不快但長得很帥",
+          "photo": "https://drive.google.com/open?id=1Ukn6fgraT9asdafIrBBbVLF251k-jSXW",
+          "bike": "KAWASAKI NINJA400",
+          "number": 71
+        },
+        {
+          "name": "黃晧",
+          "team": "久勝重機 x 98RA",
+          "intro": "哈哈是我啦炸彈客黃晧",
+          "photo": "https://drive.google.com/open?id=1GwwYEaUDx5j_gBONqzwjwaB-69OlUvuv",
+          "bike": "KAWASAKI NINJA400",
+          "number": 98
+        },
+        {
+          "name": "連俊福",
+          "team": "武田重車",
+          "intro": "我愛菇菇賽道日",
+          "photo": "https://drive.google.com/open?id=1itS4tuuApmfslqhWtv2I_JsjYvS9-9Lr",
+          "bike": "KAWASAKI NINJA400",
+          "number": 34
+        },
+        {
+          "name": "王紹佾",
+          "team": "45Racing Team TW",
+          "intro": "我是小翼☺️",
+          "photo": "https://drive.google.com/open?id=1pk549zXtoJRRk_STcQUfmm9OB9j0P1OK",
+          "bike": "KAWASAKI NINJA400",
+          "number": 35
+        },
+        {
+          "name": "林冠丞",
+          "team": "久勝重機 x 98RA",
+          "intro": "很高興又可以跟大家一起比賽",
+          "photo": "https://drive.google.com/open?id=1rNqfZZGBHugEs6R4rNUq4PcVHVyuZ-d5",
+          "bike": "KAWASAKI NINJA400",
+          "number": 53
+        },
+        {
+          "name": "黃威",
+          "team": "菇菇賽道日",
+          "intro": "我是黃威！！！",
+          "photo": "https://drive.google.com/open?id=1iJydMs_lGa05i03O6h3oWojfqPQvsvW3",
+          "bike": "KAWASAKI NINJA400",
+          "number": 89
+        },
+        {
+          "name": "劉君眉",
+          "team": "武田重車",
+          "intro": "嗨~~ ",
+          "photo": "https://drive.google.com/open?id=11tnOgHHaZRom1Drc-dKPd1XVVHusQhGI",
+          "bike": "KAWASAKI NINJA400",
+          "number": 33
+        },
+        {
+          "name": "黃品紘",
+          "team": "YX Racing",
+          "intro": "HI",
+          "photo": "https://drive.google.com/open?id=1HTtR1jODYTbpHY9eB6wnoHgmQMfEL2WL",
+          "bike": "KAWASAKI NINJA400",
+          "number": 31
+        }
+      ]
+    },
+    "Super Stock 300": {
+      "cc": "300",
+      "riders": [
+        {
+          "name": "蕭詠議",
+          "team": "IGOL Racing team",
+          "intro": "小弟新手 請多指教",
+          "photo": "https://drive.google.com/open?id=1SEg8g3X1dt6YiWssw7Vxfkh6rzXT5rM2",
+          "bike": "YAMAHA R3",
+          "number": 37
+        },
+        {
+          "name": "鄧榆勳",
+          "team": "J.L.H RACING TEAM",
+          "intro": "勵志當全台最速部品店老闆",
+          "photo": "https://drive.google.com/open?id=1pGTybb8FBJQgoRAQ013p6vhIb7rKA3RZ",
+          "bike": "YAMAHA R3",
+          "number": 23
+        },
+        {
+          "name": "葛奕辰",
+          "team": "萬威焦點車隊",
+          "intro": "你好我是葛奕辰",
+          "photo": "https://drive.google.com/open?id=1cetOBjqHcgP9dupnPDqkmehnyg04NPL2",
+          "bike": "YAMAHA R3",
+          "number": 11
+        },
+        {
+          "name": "邱奕傑",
+          "team": "萬威焦點車隊",
+          "intro": "大家好~~我是浣熊~~\n希望大家刷我刷小力一點~~感恩再感恩~",
+          "photo": "https://drive.google.com/open?id=1wvRX57fzewrpc2YBIRYki3-kz3DMmIRn",
+          "bike": "YAMAHA R3",
+          "number": 18
+        },
+        {
+          "name": "張中瑋",
+          "team": "YX Racing",
+          "intro": "我是來逛大街拿盃盃的",
+          "photo": "https://drive.google.com/open?id=1yuGA9VJPzi4Bud2D1g_XamolOZNxETGC",
+          "bike": "YAMAHA R3",
+          "number": 721
+        },
+        {
+          "name": "黃至孝",
+          "team": "45Racing Team TW",
+          "intro": "我叫黃至孝",
+          "photo": "https://drive.google.com/open?id=1jQPQiEOhS4emAcVmZlvxLPSClVGiD7im",
+          "bike": "YAMAHA R3",
+          "number": 72
+        },
+        {
+          "name": "許容銓",
+          "team": "YX Racing",
+          "intro": "大家都叫我大夫",
+          "photo": "https://drive.google.com/open?id=1jOrqXsLOqMS3L6AEAjQqRkGAOsn-AFFY",
+          "bike": "YAMAHA R3",
+          "number": 112
+        },
+        {
+          "name": "劉耘青",
+          "team": "忠孝車業",
+          "intro": "我好想輸，誰能成全我！",
+          "photo": "https://drive.google.com/open?id=19LaIRKBj-8IR5OBqfHigz63gghI-f0C9",
+          "bike": "KOVE 350RR",
+          "number": 666
+        },
+        {
+          "name": "林廷儒",
+          "team": "忠孝車業",
+          "intro": "大家好 我又來了",
+          "photo": "https://drive.google.com/open?id=1qvuwIB2HtgsHEjCCPHk7cWFaVw41sIbn",
+          "bike": "YAMAHA R3",
+          "number": 999
+        },
+        {
+          "name": "王聖華",
+          "team": "RSV 霜暮 Racing Team",
+          "intro": "王聖華",
+          "photo": "https://drive.google.com/open?id=1zs5Dtcq2Wh0c0UQj5_ZWNq13hChUbUEQ",
+          "bike": "YAMAHA R3",
+          "number": 17
+        },
+        {
+          "name": "陳仕銘",
+          "team": "RSV 霜暮 Racing Team",
+          "intro": "無",
+          "photo": "https://drive.google.com/open?id=1oQBFmmp9ZyHmiGF8TbqNhieJhaZAtibH",
+          "bike": "YAMAHA R3",
+          "number": 28
+        },
+        {
+          "name": "陳建倫",
+          "team": "SRP音速車隊",
+          "intro": "體驗組",
+          "photo": "https://drive.google.com/open?id=1VQ1_68gR-VlOABjYRQgb6pCq3E9rHlOl",
+          "bike": "YAMAHA R3",
+          "number": 92
+        },
+        {
+          "name": "潘柏光",
+          "team": "IGOL Racing team",
+          "intro": "學長們好",
+          "photo": "https://drive.google.com/open?id=1JkWTmGP3vu9-a2kg3vMKefkG-VlA2sFx",
+          "bike": "YAMAHA R3",
+          "number": 29
+        },
+        {
+          "name": "陳柄豪",
+          "team": "武田重車",
+          "intro": "賽道菜鳥",
+          "photo": "https://drive.google.com/open?id=1iNBtvh8ex2Tw3IhaEyAFI79v2lvmHUBE",
+          "bike": "YAMAHA R3",
+          "number": 24
+        },
+        {
+          "name": "侯明騏",
+          "team": "久勝重機 x 98RA",
+          "intro": "嗨嗨我是威利",
+          "photo": "https://drive.google.com/open?id=1H5He8vavOW9lQBEziMGdbR8Fj-g0hR-B",
+          "bike": "YAMAHA R3",
+          "number": 21
+        },
+        {
+          "name": "周成翰",
+          "team": "SRP音速車隊",
+          "intro": "大家好",
+          "photo": "https://drive.google.com/open?id=15YOXcIB025xMPXNxFiN0U7oNfVKzFRz1",
+          "bike": "YAMAHA R3",
+          "number": 32
+        },
+        {
+          "name": "陳意勝",
+          "team": "豪威青訓賽車隊",
+          "intro": "您好我是剛練一年的新手年初比了一場ESBK moto 4 \n這次比TSS是想收集經驗以及拿到執照並且我也從來沒有參加過任何台灣的比賽所以來玩看看。謝謝",
+          "photo": "https://drive.google.com/open?id=1HMH6YUY0xE08XcHfcVB-V7edH-dU1qVd",
+          "bike": "YAMAHA R3",
+          "number": 15
+        },
+        {
+          "name": "陳祺昌",
+          "team": "翹班車手NR Racing Team",
+          "intro": "今年是第三年於翹班車手車隊的名義參賽 \n希望今年能夠有好的表現",
+          "photo": "https://drive.google.com/open?id=1Qfy4p6s4KAIfOZ6hrCfYpL0PtNA3s7Ao",
+          "bike": "YAMAHA R3",
+          "number": 77
+        },
+        {
+          "name": "鐘蜂棋",
+          "team": "AS RACING TEAM",
+          "intro": "大家好 第一次體驗300 請多多指教",
+          "photo": "https://drive.google.com/open?id=1YTs5b8H6ttponwxWPtjpH9rJV896a7xC",
+          "bike": "KTM RC390",
+          "number": 78
+        },
+        {
+          "name": "李信儀",
+          "team": "豪威青訓賽車隊",
+          "intro": "大家好，我來自豪威青訓賽車隊",
+          "photo": "https://drive.google.com/open?id=1XqyMzE1fiAYjQsAC2NPKeaJjIg5sUs3c",
+          "bike": "YAMAHA R3",
+          "number": 69
+        },
+        {
+          "name": "呂昶陞",
+          "team": "AS RACING TEAM",
+          "intro": "我是66傳承賽車學校創辦人-美強生，感謝賽會提供這麼優質的賽車舞台，讓我們能提攜更多有潛力熱愛賽車的後輩們。",
+          "photo": "https://drive.google.com/open?id=1JfU9NF4mvFx3SB8YakHdrNgDvcxAaTv3",
+          "bike": "KTM RC390",
+          "number": 66
+        },
+        {
+          "name": "顏昭義",
+          "team": "AS RACING TEAM",
+          "intro": "大家好我是昭義，榮幸與大家比賽！",
+          "photo": "https://drive.google.com/open?id=1FmSqNiz6ylJQHY0fMcgvYvRRDLrbMCk5",
+          "bike": "KTM RC390",
+          "number": 7
+        },
+        {
+          "name": "陳冠傑",
+          "team": "菇菇賽道日",
+          "intro": "大家好",
+          "photo": "https://drive.google.com/open?id=1E86s8wvZmEe0ng_AZrv8hJJQJ4ym1tqT",
+          "bike": "YAMAHA R3",
+          "number": 1
+        },
+        {
+          "name": "蔣建廷",
+          "team": "CHC x 黃昏騎士",
+          "intro": "不務正業的車行老闆",
+          "photo": "https://drive.google.com/open?id=1fVdzIUWCoWN-m-9vPV61T3eUCbXahL5I",
+          "bike": "YAMAHA R3",
+          "number": 22
+        }
+      ]
+    },
+    "Super Stock 150": {
+      "cc": "150",
+      "riders": [
+        {
+          "name": "陳政勛",
+          "team": "RPM x GOD LIGHT racing team",
+          "intro": "平安最重要",
+          "photo": "https://drive.google.com/open?id=1ahb5uOcDvo2fF4-To75XWvidXGgz5KuQ",
+          "bike": "SUZUKI GSXR150",
+          "number": 376
+        },
+        {
+          "name": "彭志豪",
+          "team": "凰顏生醫",
+          "intro": "興趣是騎車，賽車是健身",
+          "photo": "https://drive.google.com/open?id=1SCLoNbhO0Yzyb3tLiCKtiCAnmCrP-l77",
+          "bike": "YAMAHA R15",
+          "number": 10
+        },
+        {
+          "name": "李曜全",
+          "team": "波奇",
+          "intro": "享受比賽樂趣",
+          "photo": "https://drive.google.com/open?id=180Mzu4GJ0CQc-Gc5EhUy8yFuoWRjqnSZ",
+          "bike": "SUZUKI GSXR150",
+          "number": 625
+        },
+        {
+          "name": "洪瑞鴻",
+          "team": "榮全榮新車隊",
+          "intro": "給個機會讓我超車:)",
+          "photo": "https://drive.google.com/open?id=1oluYUaifrAwqafw5w1YcPbk3rU_c1FG3",
+          "bike": "SUZUKI GSX150",
+          "number": 8
+        },
+        {
+          "name": "陳禹昊",
+          "team": "榮全榮新車隊",
+          "intro": "榮全榮新最胖代表",
+          "photo": "https://drive.google.com/open?id=1a7uL0BcBybN8NHpaIBn6JN7FzU0YL7jO",
+          "bike": "SUZUKI GSX150",
+          "number": 321
+        },
+        {
+          "name": "廖振翔",
+          "team": "艾拉桑-灝驥重車",
+          "intro": "大家都好快喔，怎麼辦",
+          "photo": "https://drive.google.com/open?id=1ayckrSi4eAFIM6C5nnjfNxXczBmfVG90",
+          "bike": "YAMAHA R15",
+          "number": 326
+        },
+        {
+          "name": "吳義傑",
+          "team": "忠孝車業",
+          "intro": "無",
+          "photo": "https://drive.google.com/open?id=1CkpcQbGVl37if9-bCMif2LUxCj3PUPu2",
+          "bike": "YAMAHA R15",
+          "number": 39
+        },
+        {
+          "name": "胡閔瑞",
+          "team": "45Racing Team TW",
+          "intro": "我是胡閔瑞，今年是我參加的第三場比賽，主要都跟45racing一起練車。",
+          "photo": "https://drive.google.com/open?id=1cCZwZSC6L_hoD8ZpYuvzrcqDFgqItHbT",
+          "bike": "YAMAHA R15",
+          "number": 15
+        },
+        {
+          "name": "葉圜燁",
+          "team": "小鷹精前三名是大鷹精",
+          "intro": "首次參賽的台中烏日R15",
+          "photo": "https://drive.google.com/open?id=1aXgCfc5XKxGos_ohrrYhg8K2E-MOa89W",
+          "bike": "YAMAHA R15",
+          "number": 429
+        },
+        {
+          "name": "邱品翰",
+          "team": "JH moto Racing Team",
+          "intro": "我來自屏東JHmoto摩托專門店 是有著專業與賽事熱忱的店家 個人從來沒有在大鵬灣嘗試過150CC賽車所以報名參賽挑戰",
+          "photo": "https://drive.google.com/open?id=1JRHKIU9bcgIqVQjaGcZdXDv0fmm5ItUf",
+          "bike": "YAMAHA R15",
+          "number": 22
+        },
+        {
+          "name": "陳信尹",
+          "team": "艾拉桑-灝驥重車",
+          "intro": "第一次騎大鵬灣好緊張，感謝艾拉桑帶我來比賽！！",
+          "photo": "https://drive.google.com/open?id=1AbJWDloGBScmmRNxO3E9JUvf4M8fv8nG",
+          "bike": "SUZUKI GSXR150",
+          "number": 67
+        },
+        {
+          "name": "朱峻霆",
+          "team": "榮全榮新車隊",
+          "intro": "哈囉",
+          "photo": "https://drive.google.com/open?id=1RA0I6QpkBp4raXUb-wvpwW04IbvXbhUY",
+          "bike": "YAMAHA R15",
+          "number": 9
+        },
+        {
+          "name": "許展齊",
+          "team": "RPM x GOD LIGHT racing team",
+          "intro": "從小對車輛情有獨鍾，夢想一直是當一個賽車手，從完全的新手小白從山路到賽道，在到現在正規的比賽，一步步進步的感覺讓我很興奮很開心，我會在這條路繼續堅持下去，TSS我來了",
+          "photo": "https://drive.google.com/open?id=1U-fKBEIoYYj1m43ipBpvQauFa0o2BBfa",
+          "bike": "YAMAHA R15",
+          "number": 92
+        },
+        {
+          "name": "胡偉誠",
+          "team": "泰陽 SUN RACING",
+          "intro": "早安",
+          "photo": "https://drive.google.com/open?id=1UExDREbVs3USPmQz0vKgthKXmLlcQhMt",
+          "bike": "YAMAHA R15",
+          "number": 11
+        },
+        {
+          "name": "莊安育",
+          "team": "RCB Racing Team",
+          "intro": "\n車手自我介紹\n大家好我叫莊安育\n很久沒有出來騎車了，目地想騎車運動一下\n另一個就是跟大家互相交流、分享經驗",
+          "photo": "https://drive.google.com/open?id=1EmIJFstQrKAu5HsgWq_-sOL1xqaPu_IY",
+          "bike": "YAMAHA R15",
+          "number": 32
+        }
+      ]
+    },
+    "Super Sport 300": {
+      "cc": "300",
+      "riders": [
+        {
+          "name": "李俊輝",
+          "team": "萬威焦點車隊",
+          "intro": "繼續努力",
+          "photo": "https://drive.google.com/open?id=1tPhf_0JN2iHhurFj9j012l1E3RcG3AQt",
+          "bike": "YAMAHA R3",
+          "number": 82
+        },
+        {
+          "name": "李灃益",
+          "team": "艾拉桑-灝驥重車",
+          "intro": "第一次跑大鵬灣  希望不會被海放",
+          "photo": "https://drive.google.com/open?id=1hmt4hccko9G7RuwUYooGnHOqWEpSCuWl",
+          "bike": "KTM RC390",
+          "number": 68
+        },
+        {
+          "name": "陳禹翔",
+          "team": "J.L.H RACING TEAM",
+          "intro": "有點小帥",
+          "photo": "https://drive.google.com/open?id=1cQ95XbN61YYyehKsARJQ0oehngrqbvXl",
+          "bike": "YAMAHA R3",
+          "number": 71
+        },
+        {
+          "name": "黃至明",
+          "team": "45Racing Team TW",
+          "intro": "大叔的賽道白日夢",
+          "photo": "https://drive.google.com/open?id=1iEcMTedu7afO_KhEzcOHjeacs2f47NnC",
+          "bike": "YAMAHA R3",
+          "number": 38
+        },
+        {
+          "name": "傅志豪",
+          "team": "45Racing Team TW",
+          "intro": "我好高又很帥 個性溫和又內向 蔡政佑很愛喝拿鐵",
+          "photo": "https://drive.google.com/open?id=17nrSvNpjefp-DiW43qtzaHMHUk0j2w5o",
+          "bike": "YAMAHA R3",
+          "number": 31
+        },
+        {
+          "name": "黃政信",
+          "team": "45Racing Team TW",
+          "intro": "我是阿信 對 那台閃電麥坤",
+          "photo": "https://drive.google.com/open?id=1516Z2wIdMLmQaxTUALnHHxO7VbnvvlqW",
+          "bike": "YAMAHA R3",
+          "number": 95
+        },
+        {
+          "name": "游子峻",
+          "team": "RSV 霜暮 Racing Team",
+          "intro": "安安大家好聽說我叫游子峻",
+          "photo": "https://drive.google.com/open?id=1cFPF5rwQ7hr-MW_TwOKuCzasv7XLD6wK",
+          "bike": "YAMAHA R3",
+          "number": 222
+        },
+        {
+          "name": "楊國廷",
+          "team": "45Racing Team TW",
+          "intro": "努力向上。",
+          "photo": "https://drive.google.com/open?id=1sQhWq5mjI01xknggsvaNKJsM3FeKf991",
+          "bike": "YAMAHA R3",
+          "number": 42
+        },
+        {
+          "name": "史青禾",
+          "team": "小鷹精前三名是大鷹精",
+          "intro": "沒想過第一次跑大鵬灣是TSS⋯",
+          "photo": "https://drive.google.com/open?id=1-t9hzpgYn2SJ5qb9qYA4Bzvy739PG0X7",
+          "bike": "YAMAHA R3",
+          "number": 17
+        },
+        {
+          "name": "張志良",
+          "team": "SRP音速車隊",
+          "intro": "資深車手",
+          "photo": "https://drive.google.com/open?id=1eE_RPc9DAZI1hxi0J5XLO0Sj9wtIjihR",
+          "bike": "YAMAHA R3",
+          "number": 22
+        },
+        {
+          "name": "吳松言",
+          "team": "小鷹精前三名是大鷹精",
+          "intro": "FAHHHHHH",
+          "photo": "https://drive.google.com/open?id=1WSmS9VdTqYsSPFmAQj9i2kNDuSCay08l",
+          "bike": "YAMAHA R3",
+          "number": 69
+        },
+        {
+          "name": "游政浩",
+          "team": "小鷹精前三名是大鷹精",
+          "intro": "翹班來跑比賽，老闆快氣死",
+          "photo": "https://drive.google.com/open?id=17zBvmBgmvJYIvEXsEVGL8adeHXH6sD7l",
+          "bike": "YAMAHA R3",
+          "number": 26
+        },
+        {
+          "name": "溫建和",
+          "team": "超轉車隊",
+          "intro": "買賣中古車快找我😁",
+          "photo": "https://drive.google.com/open?id=1twS9y675S2QKEwNuiflPmvCkOsYr2l1L",
+          "bike": "YAMAHA R3",
+          "number": 27
+        },
+        {
+          "name": "劉君眉",
+          "team": "武田重車",
+          "intro": "嗨大家好,我是劉君眉~~邀請大家來現場看比賽喔",
+          "photo": "https://drive.google.com/open?id=1ndW981R6aiExEZYPMzXhVJZDR7pI6d9-",
+          "bike": "YAMAHA R3",
+          "number": 33
+        },
+        {
+          "name": "白晉佳",
+          "team": "SRP音速車隊",
+          "intro": "哇哈哈",
+          "photo": "https://drive.google.com/open?id=1pZWwnkScpFgI9u7G7EYqp2xsEVrgmZLh",
+          "bike": "YAMAHA R3",
+          "number": 21
+        },
+        {
+          "name": "劉柏宜",
+          "team": "艾銳重機",
+          "intro": "愛騎車的人",
+          "photo": "https://drive.google.com/open?id=1wI3T4ek_2RsQqNT2eNWy7jlF5-_in3P0",
+          "bike": "YAMAHA R3",
+          "number": 57
+        }
+      ]
+    },
+    "Super Stock 400": {
+      "cc": "400",
+      "riders": [
+        {
+          "name": "張益維",
+          "team": "萬威焦點車隊",
+          "intro": "我是ㄧ尾",
+          "photo": "https://drive.google.com/open?id=1SGqpua9EBqumWEG0VoKjwrOL6fCsYs7i",
+          "bike": "KAWASAKI NINJA400",
+          "number": 41
+        },
+        {
+          "name": "婁淳祐",
+          "team": "萬威焦點車隊",
+          "intro": "享受比賽 安全完賽",
+          "photo": "https://drive.google.com/open?id=1Fv7E8k3liNBSUW90wlRqLDezfBz0btHI",
+          "bike": "KAWASAKI NINJA400",
+          "number": 56
+        },
+        {
+          "name": "黃冠霖",
+          "team": "J.L.H RACING TEAM",
+          "intro": "大齡菜鳥",
+          "photo": "https://drive.google.com/open?id=1I6loMpRdkPFiqM-u20P3mxKT9dOH_JJC",
+          "bike": "KAWASAKI NINJA400",
+          "number": 310
+        },
+        {
+          "name": "尤子嘉",
+          "team": "J.L.H RACING TEAM",
+          "intro": "王之行電話打不通",
+          "photo": "https://drive.google.com/open?id=1egh_J6UQ59dtcfPpGbmwHS-7ufjZauoV",
+          "bike": "KAWASAKI NINJA400",
+          "number": 83
+        },
+        {
+          "name": "姜志樺",
+          "team": "日德重車",
+          "intro": "大家好！",
+          "photo": "https://drive.google.com/open?id=1lPK0kvkakYtoidG7CQMBSVsM_UNcR5fp",
+          "bike": "KAWASAKI ZX4RR",
+          "number": 13
+        },
+        {
+          "name": "趙哲緒",
+          "team": "忠孝車業",
+          "intro": "第一次比賽有新手安慰獎嗎",
+          "photo": "https://drive.google.com/open?id=1pYpvPv0m_s7QeqLYczLx8XxNcG_wHeCN",
+          "bike": "KAWASAKI NINJA400",
+          "number": 77
+        },
+        {
+          "name": "鍾竣凱",
+          "team": "日德重車",
+          "intro": "你好～",
+          "photo": "https://drive.google.com/open?id=1HfY97CamRYIvivhGyUaqIM0Wpzwudq5t",
+          "bike": "KAWASAKI NINJA400",
+          "number": 23
+        },
+        {
+          "name": "楊浚鈿",
+          "team": "日德重車",
+          "intro": "Nothing to lose",
+          "photo": "https://drive.google.com/open?id=1Qrc4GQducokvFmK0igG57lOxgQNl8Lw4",
+          "bike": "KAWASAKI NINJA400",
+          "number": 18
+        }
+      ]
+    },
+    "Super Stock 250": {
+      "cc": "250",
+      "riders": [
+        {
+          "name": "朱清和",
+          "team": "榮全榮新車隊",
+          "intro": "最老頑童",
+          "photo": "https://drive.google.com/open?id=1CvMzEmXpeJiyvTjOsEIrvgF9YAfwJm_5",
+          "bike": "HONDA CBR250RR",
+          "number": 8
+        },
+        {
+          "name": "陳乃源",
+          "team": "榮全榮新車隊",
+          "intro": "我是阿源，阿源的阿，阿源的源",
+          "photo": "https://drive.google.com/open?id=1_nYlshklnDYHFGAQsk4spKVtvBUhIJxj",
+          "bike": "HONDA CBR250RR",
+          "number": 14
+        },
+        {
+          "name": "朱峻霆",
+          "team": "榮全榮新車隊",
+          "intro": "哈囉",
+          "photo": "https://drive.google.com/open?id=1DhV8ESSkSUVJmhpmhfJTq3_9cK3uy8Jz",
+          "bike": "HONDA CBR250RR",
+          "number": 9
+        }
+      ]
+    },
+    "Super Sport 250": {
+      "cc": "250",
+      "riders": [
+        {
+          "name": "朱清全",
+          "team": "榮全榮新車隊",
+          "intro": "還能騎 就享受過程\n繼續挑戰自己",
+          "photo": "https://drive.google.com/open?id=1mb6G9h795X7gWpZQqPFxrwDVxOXR8Ld-",
+          "bike": "HONDA CBR250RR",
+          "number": 5
+        },
+        {
+          "name": "王勝韋",
+          "team": "榮全榮新車隊",
+          "intro": "今年是鈦合金戰士，請各位多多禮讓",
+          "photo": "https://drive.google.com/open?id=18ZpvIDyzE6_-KvoMfBLMOKmtDxwaxlr-",
+          "bike": "HONDA CBR250RR",
+          "number": 84
+        },
+        {
+          "name": "徐權逸",
+          "team": "榮全榮新車隊",
+          "intro": "大家好",
+          "photo": "https://drive.google.com/open?id=1QX1hbgnouyqIXl91LINvDOe_0ZSxZzjn",
+          "bike": "HONDA CBR250RR",
+          "number": 333
+        },
+        {
+          "name": "程懷文",
+          "team": "IGOL Racing team",
+          "intro": "希望今年比賽一切順利",
+          "photo": "https://drive.google.com/open?id=1p4ggzOGro_a1NduT-9F4opG5_Jp27bR2",
+          "bike": "HONDA CBR250RR",
+          "number": 56
+        }
+      ]
+    },
+    "Super Sport 150": {
+      "cc": "150",
+      "riders": [
+        {
+          "name": "張惟",
+          "team": "RSV 霜暮 Racing Team",
+          "intro": "大家好 一起尬掐 騎得快 才會帥",
+          "photo": "https://drive.google.com/open?id=1GR5BpPLZYJw6-BEYmN4Gp6fWIUz9MsdV",
+          "bike": "YAMAHA R15",
+          "number": 728
+        },
+        {
+          "name": "潘柏愷",
+          "team": "武田重車",
+          "intro": "第一次騎大鵬灣 好興奮",
+          "photo": "https://drive.google.com/open?id=15XD4n97hp4AmySc4c1oWdExS0k6uhnBO",
+          "bike": "SUZUKI GSX150",
+          "number": 27
+        },
+        {
+          "name": "邱品翰",
+          "team": "JH moto Racing Team",
+          "intro": "來自屏東JHmoto摩托專門店 是有著專業與賽事熱忱的店家 想說都報名150原廠組了 就順便用原廠組賽車挑戰看看150改裝組~",
+          "photo": "https://drive.google.com/open?id=1n2lDoVqanCGGmTn4Ae_tmX22K2X5ocy6",
+          "bike": "YAMAHA R15",
+          "number": 22
+        },
+        {
+          "name": "何承烜",
+          "team": "RPM x GOD LIGHT racing team",
+          "intro": "嗨👋",
+          "photo": "https://drive.google.com/open?id=17ntd3d9UVNX-Trf9ts50m5KBJ_lpMdvI",
+          "bike": "SUZUKI GSX150",
+          "number": 97
+        },
+        {
+          "name": "汪蔚廷",
+          "team": "RPM x GOD LIGHT racing team",
+          "intro": "Hi",
+          "photo": "https://drive.google.com/open?id=1C3YZ0J6IUG50XADrYeTqJ-bZE-wOfqCa",
+          "bike": "YAMAHA R15",
+          "number": 99
+        }
+      ]
+    },
+    "Super Pole 1000(Time Attack Challenge)": {
+      "cc": "600",
+      "riders": [
+        {
+          "name": "郭和嘉",
+          "team": "willpower",
+          "intro": 1234567,
+          "photo": "https://drive.google.com/open?id=1lTbhB66TY0t3wB2V5zAb-YRrH9U9y8BU",
+          "bike": "BMW S1000RR",
+          "number": 79
+        },
+        {
+          "name": "張瑶進",
+          "team": "懶得洗車工藝",
+          "intro": "張瑶進",
+          "photo": "https://drive.google.com/open?id=1AC89S7uqWgxN1eggUSQtshiI7trg4KwT",
+          "bike": "DUCATI 1299",
+          "number": 103
+        },
+        {
+          "name": "唐李輔榮",
+          "team": "忠孝車業",
+          "intro": "有一個日本人來台灣看牙醫\n結果還沒開始拔牙就他們兩個就吵起來了\n你知道為什麼嗎?\n因為醫生會說：拔個牙囉",
+          "photo": "https://drive.google.com/open?id=1olzHLNmRXSiRVd8BIWl8Z10fWlq3qO4m",
+          "bike": "YAMAHA R1",
+          "number": 121
+        },
+        {
+          "name": "陳維克托利亞",
+          "team": "忠孝車隊",
+          "intro": "I'm just here to burn my life",
+          "photo": "https://drive.google.com/open?id=1yyLOqoPqh2zPgnKTx2KbmlXkOHBJiVkU",
+          "bike": "KAWASAKI ZX-10R",
+          "number": 20
+        },
+        {
+          "name": "羅煜昶",
+          "team": "菇菇賽道日",
+          "intro": "你們的車手馬汀",
+          "photo": "https://drive.google.com/open?id=1ALMCzaIvuHIK5vNqeCkyvOAiUYeGcgJ7",
+          "bike": "Aprilia RSV4 1100",
+          "number": 8
+        },
+        {
+          "name": "洪江坪",
+          "team": "日德重車",
+          "intro": "日德車隊",
+          "photo": "https://drive.google.com/open?id=1QCx4sun96pIdw6Ix4l1NHdREr7slhs4r",
+          "bike": "KAWASAKI ZX-10R",
+          "number": 77
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- 首頁 -->
+  <url>
+    <loc>https://taiwansuperbikeseries.com/</loc>
+    <lastmod>2026-04-04</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  
+  <!-- 中文版首頁 -->
+  <url>
+    <loc>https://taiwansuperbikeseries.com/zh/</loc>
+    <lastmod>2026-04-04</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <!-- 英文版首頁 -->
+  <url>
+    <loc>https://taiwansuperbikeseries.com/en/</loc>
+    <lastmod>2026-04-04</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <!-- 賽事組別頁面 -->
+  <url>
+    <loc>https://taiwansuperbikeseries.com/zh/classes</loc>
+    <lastmod>2026-04-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>https://taiwansuperbikeseries.com/en/classes</loc>
+    <lastmod>2026-04-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- 組別詳情頁面 -->
+  <url>
+    <loc>https://taiwansuperbikeseries.com/class/ST150</loc>
+    <lastmod>2026-04-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <url>
+    <loc>https://taiwansuperbikeseries.com/class/ST300</loc>
+    <lastmod>2026-04-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <url>
+    <loc>https://taiwansuperbikeseries.com/class/ST400</loc>
+    <lastmod>2026-04-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <url>
+    <loc>https://taiwansuperbikeseries.com/class/SBK</loc>
+    <lastmod>2026-04-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <!-- 車隊頁面 -->
+  <url>
+    <loc>https://taiwansuperbikeseries.com/zh/teams</loc>
+    <lastmod>2026-04-04</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>https://taiwansuperbikeseries.com/en/teams</loc>
+    <lastmod>2026-04-04</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- 聯絡頁面 -->
+  <url>
+    <loc>https://taiwansuperbikeseries.com/zh/contact</loc>
+    <lastmod>2026-04-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://taiwansuperbikeseries.com/en/contact</loc>
+    <lastmod>2026-04-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+</urlset>
