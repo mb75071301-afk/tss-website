@@ -10,6 +10,14 @@ export default function Footer() {
   const { t, language } = useLanguage();
   
   const handleNavClick = (href: string) => {
+    // If not on home page, navigate to home + hash
+    const currentPath = window.location.pathname;
+    const pathWithoutLang = currentPath.replace(/^\/(zh|en)/, "") || "/";
+    if (pathWithoutLang !== "/") {
+      const homePath = language === "en" ? "/en/" : "/";
+      window.location.href = `${homePath}${href}`;
+      return;
+    }
     if (href === "#hero") {
       window.scrollTo({ top: 0, behavior: "smooth" });
       return;
