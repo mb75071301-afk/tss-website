@@ -8,6 +8,7 @@ import { LanguageProvider } from "./contexts/LanguageContext";
 import Home from "./pages/Home";
 import Teams from "./pages/Teams";
 import ClassDetail from "./pages/ClassDetail";
+import SeoHead from "./components/SeoHead";
 
 function Router() {
   return (
@@ -37,6 +38,7 @@ function App() {
       <LanguageProvider>
         <ThemeProvider defaultTheme="dark">
           <TooltipProvider>
+            <SeoHead />
             <Toaster />
             <Router />
           </TooltipProvider>
