@@ -17,7 +17,7 @@ export const IMAGES = {
   // Original site images
   heroRace: "https://d2xsxph8kpxj0f.cloudfront.net/310519663412219175/S2436YpFoG9bkAdWgxxsXa/hero_race_3636bf9d.jpg",
   sponsorsBanner: "https://d2xsxph8kpxj0f.cloudfront.net/310519663412219175/S2436YpFoG9bkAdWgxxsXa/大會行政台背板W600xH220cm-一片_工作區域1_75852e14.webp",
-  trackMap: "https://d2xsxph8kpxj0f.cloudfront.net/310519663412219175/S2436YpFoG9bkAdWgxxsXa/dapengwan_circuit_diagram_c7c0de08.webp",
+  trackMap: "/trackmap.png",
 
   // Gallery - Updated with real race photos from Google Drive
   gallery: [
