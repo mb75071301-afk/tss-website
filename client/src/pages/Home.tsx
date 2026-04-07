@@ -11,6 +11,7 @@ import TeamsSection from "@/components/TeamsSection";
 import SponsorsSection from "@/components/SponsorsSection";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
+import CountdownTimer from "@/components/CountdownTimer";
 
 export default function Home() {
   // When arriving at home with a hash (e.g. /#classes after clicking a nav
@@ -83,6 +84,7 @@ export default function Home() {
     <div className="min-h-screen bg-background text-foreground">
       <Navbar />
       <HeroSection />
+      <CountdownTimer />
       <ClassesSection />
       <RecordsSection />
       <ChampionsSection />
