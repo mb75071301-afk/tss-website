@@ -45,6 +45,7 @@ export const SPONSORS = {
 
 export const NAV_ITEMS = [
   { label: "首頁", href: "#hero" },
+  { label: "賽程表", href: "#schedule" },
   { label: "關於賽事", href: "#about" },
   { label: "賽事組別", href: "#classes" },
   { label: "場地最速", href: "#records" },

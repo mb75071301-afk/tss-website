@@ -55,6 +55,7 @@ export default function Navbar() {
   const getNavLabel = (label: string): string => {
     const labelMap: Record<string, string> = {
       "首頁": "nav.home",
+      "賽程表": "nav.schedule",
       "關於賽事": "nav.about",
       "賽事組別": "nav.classes",
       "場地最速": "nav.records",

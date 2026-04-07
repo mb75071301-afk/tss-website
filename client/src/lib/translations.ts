@@ -8,6 +8,7 @@ export const translations = {
     // Navigation
     nav: {
       home: "首頁",
+      schedule: "賽程表",
       about: "關於賽事",
       classes: "賽事組別",
       records: "場地最速",
@@ -139,6 +140,7 @@ export const translations = {
     // Navigation
     nav: {
       home: "Home",
+      schedule: "Schedule",
       about: "About",
       classes: "Classes",
       records: "Lap Records",

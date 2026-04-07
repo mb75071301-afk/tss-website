@@ -12,6 +12,7 @@ import SponsorsSection from "@/components/SponsorsSection";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
 import CountdownTimer from "@/components/CountdownTimer";
+import ScheduleSection from "@/components/ScheduleSection";
 
 export default function Home() {
   // When arriving at home with a hash (e.g. /#classes after clicking a nav
@@ -85,6 +86,7 @@ export default function Home() {
       <Navbar />
       <HeroSection />
       <CountdownTimer />
+      <ScheduleSection />
       <ClassesSection />
       <RecordsSection />
       <ChampionsSection />
