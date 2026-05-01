@@ -19,16 +19,16 @@ export const IMAGES = {
   sponsorsBanner: "https://d2xsxph8kpxj0f.cloudfront.net/310519663412219175/S2436YpFoG9bkAdWgxxsXa/大會行政台背板W600xH220cm-一片_工作區域1_75852e14.webp",
   trackMap: "/trackmap.png",
 
-  // Gallery - Updated with real race photos from Google Drive
+  // Gallery - R1 2026 race photos from Google Drive (攝影, 花絮, 衝刺賽)
   gallery: [
-    "https://d2xsxph8kpxj0f.cloudfront.net/310519663412219175/S2436YpFoG9bkAdWgxxsXa/gallery_1_d73f1224.jpg",
-    "https://d2xsxph8kpxj0f.cloudfront.net/310519663412219175/S2436YpFoG9bkAdWgxxsXa/gallery_2_5fd64a6f.jpg",
-    "https://d2xsxph8kpxj0f.cloudfront.net/310519663412219175/S2436YpFoG9bkAdWgxxsXa/gallery_3_c9b6b7db.jpg",
-    "https://d2xsxph8kpxj0f.cloudfront.net/310519663412219175/S2436YpFoG9bkAdWgxxsXa/gallery_4_3a582909.jpg",
-    "https://d2xsxph8kpxj0f.cloudfront.net/310519663412219175/S2436YpFoG9bkAdWgxxsXa/gallery_5_19432bb3.jpg",
-    "https://d2xsxph8kpxj0f.cloudfront.net/310519663412219175/S2436YpFoG9bkAdWgxxsXa/gallery_6_4fcc5c8e.jpg",
-    "https://d2xsxph8kpxj0f.cloudfront.net/310519663412219175/S2436YpFoG9bkAdWgxxsXa/gallery_7_0db22a3b.jpg",
-    "https://d2xsxph8kpxj0f.cloudfront.net/310519663412219175/S2436YpFoG9bkAdWgxxsXa/gallery_8_2f7a3a50.jpg",
+    "/gallery/gallery_01.jpg",
+    "/gallery/gallery_02.jpg",
+    "/gallery/gallery_03.jpg",
+    "/gallery/gallery_04.jpg",
+    "/gallery/gallery_05.jpg",
+    "/gallery/gallery_06.jpg",
+    "/gallery/gallery_07.jpg",
+    "/gallery/gallery_08.jpg",
   ],
 
   // Record cards
@@ -43,10 +43,10 @@ export const IMAGES = {
     "https://d2xsxph8kpxj0f.cloudfront.net/310519663412219175/S2436YpFoG9bkAdWgxxsXa/record_400mod_391d1f73.jpg",
   ],
 
-  // Extra photos - Updated with real race photos from Google Drive
+  // Extra photos - R1 2026 sprint race action (ST150, SP300)
   extra: [
-    "https://d2xsxph8kpxj0f.cloudfront.net/310519663412219175/S2436YpFoG9bkAdWgxxsXa/gallery_9_655c9b8a.jpg",
-    "https://d2xsxph8kpxj0f.cloudfront.net/310519663412219175/S2436YpFoG9bkAdWgxxsXa/gallery_10_63fd783e.jpg",
-    "https://d2xsxph8kpxj0f.cloudfront.net/310519663412219175/S2436YpFoG9bkAdWgxxsXa/gallery_11_61557e0e.jpg",
+    "/gallery/gallery_09.jpg",
+    "/gallery/gallery_10.jpg",
+    "/gallery/gallery_11.jpg",
   ],
 } as const;
