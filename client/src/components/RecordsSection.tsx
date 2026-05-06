@@ -1,6 +1,6 @@
 /*
  * Design: Motorsport Editorial — grid layout record cards,
- * using original TSS record card images (which already contain all info)
+ * SP1000 featured large, remaining 8 cards in 2 rows of 4
  * Multi-language support
  */
 import { motion } from "framer-motion";
@@ -10,9 +10,10 @@ import { IMAGES } from "@/lib/images";
 export default function RecordsSection() {
   const { t } = useLanguage();
 
-  // Split into two rows
-  const firstRow = IMAGES.records.slice(0, 5);
-  const secondRow = IMAGES.records.slice(5);
+  // SP1000 is the first card (featured), rest in two rows of 4
+  const featured = IMAGES.records[0];
+  const row1 = IMAGES.records.slice(1, 5);
+  const row2 = IMAGES.records.slice(5);
 
   return (
     <section id="records" className="relative py-24 lg:py-32 overflow-hidden">
@@ -31,22 +32,39 @@ export default function RecordsSection() {
           </h2>
         </div>
 
-        {/* Row 1: 5 cards */}
+        {/* Featured: SP1000 */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7 }}
-          className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 mb-4"
+          className="flex justify-center mb-4"
         >
-          {firstRow.map((src, i) => (
+          <div className="relative overflow-hidden group rounded-lg w-full max-w-sm">
+            <img
+              src={featured}
+              alt="Track record SP1000"
+              className="w-full h-auto object-contain transition-transform duration-300 group-hover:scale-105"
+            />
+          </div>
+        </motion.div>
+
+        {/* Row 1: 4 cards (400, 300) */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7, delay: 0.1 }}
+          className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-4"
+        >
+          {row1.map((src, i) => (
             <div
               key={i}
               className="relative overflow-hidden group rounded-lg"
             >
               <img
                 src={src}
-                alt={`Track record ${i + 1}`}
+                alt={`Track record ${i + 2}`}
                 className="w-full h-auto object-contain transition-transform duration-300 group-hover:scale-105"
                 loading="lazy"
               />
@@ -54,24 +72,22 @@ export default function RecordsSection() {
           ))}
         </motion.div>
 
-        {/* Row 2: 4 cards, centered */}
+        {/* Row 2: 4 cards (250, 150) */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.7, delay: 0.15 }}
-          className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4"
+          transition={{ duration: 0.7, delay: 0.2 }}
+          className="grid grid-cols-2 sm:grid-cols-4 gap-4"
         >
-          {/* Offset by half a column on lg to center 4 cards */}
-          <div className="hidden lg:block" />
-          {secondRow.map((src, i) => (
+          {row2.map((src, i) => (
             <div
               key={i}
               className="relative overflow-hidden group rounded-lg"
             >
               <img
                 src={src}
-                alt={`Track record ${firstRow.length + i + 1}`}
+                alt={`Track record ${i + 6}`}
                 className="w-full h-auto object-contain transition-transform duration-300 group-hover:scale-105"
                 loading="lazy"
               />
