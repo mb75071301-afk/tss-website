@@ -7,17 +7,7 @@ import { motion } from "framer-motion";
 import { useRef } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
-
-const RECORD_LABELS = [
-  "Super Stock 400",
-  "Super Sport 400",
-  "Super Stock 300",
-  "Super Sport 300",
-  "Super Stock 250",
-  "Super Sport 250",
-  "Super Stock 150",
-  "Super Sport 150",
-];
+import { IMAGES } from "@/lib/images";
 
 export default function RecordsSection() {
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -82,19 +72,17 @@ export default function RecordsSection() {
             className="flex gap-4 overflow-x-auto pb-4 scroll-smooth"
             style={{ scrollBehavior: "smooth" }}
           >
-            {RECORD_LABELS.map((label, i) => (
+            {IMAGES.records.map((src, i) => (
               <div
-                key={label}
-                className="flex-shrink-0 w-80 h-96 relative overflow-hidden group"
+                key={i}
+                className="flex-shrink-0 w-64 sm:w-72 relative overflow-hidden group rounded-lg"
               >
-                {/* Image placeholder - reserved for future use */}
-                <div className="w-full h-full bg-white/[0.03] border border-white/[0.06]" />
-                <div className="absolute inset-0 flex items-end p-6">
-                  <div>
-                    <h3 className="font-heading text-xl font-bold text-white">{label}</h3>
-                    <p className="text-white/60 text-sm mt-2">{t('records.label')}</p>
-                  </div>
-                </div>
+                <img
+                  src={src}
+                  alt={`Track record ${i + 1}`}
+                  className="w-full h-auto object-contain transition-transform duration-300 group-hover:scale-105"
+                  loading="lazy"
+                />
               </div>
             ))}
           </div>

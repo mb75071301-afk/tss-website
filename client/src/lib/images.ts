@@ -31,16 +31,17 @@ export const IMAGES = {
     "/gallery/gallery_08.jpg",
   ],
 
-  // Record cards
+  // Record cards - R1 2026 場地最速
   records: [
-    "https://d2xsxph8kpxj0f.cloudfront.net/310519663412219175/S2436YpFoG9bkAdWgxxsXa/record_150stock_6b94e369.jpg",
-    "https://d2xsxph8kpxj0f.cloudfront.net/310519663412219175/S2436YpFoG9bkAdWgxxsXa/record_150mod_8dd9d8b3.jpg",
-    "https://d2xsxph8kpxj0f.cloudfront.net/310519663412219175/S2436YpFoG9bkAdWgxxsXa/record_250stock_25c1891d.jpg",
-    "https://d2xsxph8kpxj0f.cloudfront.net/310519663412219175/S2436YpFoG9bkAdWgxxsXa/record_250mod_8eac026d.jpg",
-    "https://d2xsxph8kpxj0f.cloudfront.net/310519663412219175/S2436YpFoG9bkAdWgxxsXa/record_300stock_57c1c1ef.jpg",
-    "https://d2xsxph8kpxj0f.cloudfront.net/310519663412219175/S2436YpFoG9bkAdWgxxsXa/record_300mod_1031b3d7.jpg",
-    "https://d2xsxph8kpxj0f.cloudfront.net/310519663412219175/S2436YpFoG9bkAdWgxxsXa/record_400stock_52e3d583.jpg",
-    "https://d2xsxph8kpxj0f.cloudfront.net/310519663412219175/S2436YpFoG9bkAdWgxxsXa/record_400mod_391d1f73.jpg",
+    "/records/record_150stock.jpg",
+    "/records/record_150mod.jpg",
+    "/records/record_250stock.jpg",
+    "/records/record_250mod.jpg",
+    "/records/record_300stock.jpg",
+    "/records/record_300mod.jpg",
+    "/records/record_400stock.jpg",
+    "/records/record_400mod.jpg",
+    "/records/record_sp1000.jpg",
   ],
 
   // Extra photos - R1 2026 sprint race action (ST150, SP300)
