@@ -31,17 +31,17 @@ export const IMAGES = {
     "/gallery/gallery_08.jpg",
   ],
 
-  // Record cards - R1 2026 場地最速
+  // Record cards - R1 2026 場地最速 (大CC數→小CC數)
   records: [
-    "/records/record_150stock.jpg",
-    "/records/record_150mod.jpg",
-    "/records/record_250stock.jpg",
-    "/records/record_250mod.jpg",
-    "/records/record_300stock.jpg",
-    "/records/record_300mod.jpg",
+    "/records/record_sp1000.jpg",
     "/records/record_400stock.jpg",
     "/records/record_400mod.jpg",
-    "/records/record_sp1000.jpg",
+    "/records/record_300stock.jpg",
+    "/records/record_300mod.jpg",
+    "/records/record_250stock.jpg",
+    "/records/record_250mod.jpg",
+    "/records/record_150stock.jpg",
+    "/records/record_150mod.jpg",
   ],
 
   // Extra photos - R1 2026 sprint race action (ST150, SP300)
