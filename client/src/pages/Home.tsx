@@ -12,6 +12,7 @@ import SponsorsSection from "@/components/SponsorsSection";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
 import CountdownTimer from "@/components/CountdownTimer";
+import RegistrationSection from "@/components/RegistrationSection";
 import ScheduleSection from "@/components/ScheduleSection";
 
 export default function Home() {
@@ -86,6 +87,7 @@ export default function Home() {
       <Navbar />
       <HeroSection />
       <CountdownTimer />
+      <RegistrationSection />
       <ScheduleSection />
       <ClassesSection />
       <RecordsSection />
