@@ -1,4 +1,4 @@
-/**
+﻿/**
  * ScheduleSection — R2 2026 Race Weekend Timetable
  * Friday 7/3: Practice / Scrutineering / Check-in (noted above tabs)
  * Saturday (Qualifying + Sprint) & Sunday (Warm-Up + Race)
@@ -19,40 +19,44 @@ interface ScheduleRow {
 
 const SATURDAY: ScheduleRow[] = [
   { start: "09:00", end: "09:15", section: "Qualifying", sectionZh: "排位賽", cls: "Super Stock 150 (ST150)", laps: "15 mins" },
-  { start: "09:25", end: "09:40", section: "Qualifying", sectionZh: "排位賽", cls: "Super Stock 250 (ST250)\nSuper Sport 250 (SP250)", laps: "15 mins" },
-  { start: "09:50", end: "10:05", section: "Qualifying", sectionZh: "排位賽", cls: "Super Stock 300 (ST300)", laps: "15 mins" },
-  { start: "10:15", end: "10:30", section: "Qualifying", sectionZh: "排位賽", cls: "Super Stock 400 (ST400)\nSuper Sport 400 (SP400)", laps: "15 mins" },
-  { start: "10:40", end: "10:55", section: "Qualifying", sectionZh: "排位賽", cls: "Super Sport 300 (SP300)", laps: "15 mins" },
-  { start: "11:05", end: "11:20", section: "Qualifying", sectionZh: "排位賽", cls: "Super Sport 150 (SP150)", laps: "15 mins" },
-  { start: "11:30", end: "11:50", section: "Free Practice 1", sectionZh: "自由練習 1", cls: "Super Pole 1000", laps: "20 mins" },
+  { start: "09:20", end: "09:35", section: "Qualifying", sectionZh: "排位賽", cls: "Super Stock 250 (ST250)", laps: "15 mins" },
+  { start: "09:40", end: "09:55", section: "Qualifying", sectionZh: "排位賽", cls: "Super Stock 300 (ST300)", laps: "15 mins" },
+  { start: "10:00", end: "10:15", section: "Qualifying", sectionZh: "排位賽", cls: "Super Stock 400 (ST400)\nSuper Sport 400 (SP400)", laps: "15 mins" },
+  { start: "10:20", end: "10:35", section: "Qualifying", sectionZh: "排位賽", cls: "Super Sport 300 (SP300)", laps: "15 mins" },
+  { start: "10:40", end: "10:55", section: "Qualifying", sectionZh: "排位賽", cls: "Super Sport 150 (SP150)", laps: "15 mins" },
+  { start: "11:00", end: "11:20", section: "Free Practice 1", sectionZh: "自由練習 1", cls: "Super Pole 600", laps: "20 mins" },
+  { start: "11:25", end: "11:45", section: "Free Practice 1", sectionZh: "自由練習 1", cls: "Super Pole 1000", laps: "20 mins" },
   { start: "12:00", end: "13:20", section: "LUNCH", sectionZh: "午休時間", cls: "", laps: "", isBreak: true },
-  { start: "13:30", end: "13:50", section: "Sprint Race", sectionZh: "衝刺賽", cls: "Super Stock 150 (ST150A&B)", laps: "5 Laps" },
-  { start: "13:55", end: "14:15", section: "Sprint Race", sectionZh: "衝刺賽", cls: "Super Stock 250 (ST250A)\nSuper Sport 250 (SP250A)", laps: "5 Laps" },
-  { start: "14:20", end: "14:40", section: "Sprint Race", sectionZh: "衝刺賽", cls: "Super Stock 300 (ST300A&B)", laps: "5 Laps" },
-  { start: "14:45", end: "15:05", section: "Sprint Race", sectionZh: "衝刺賽", cls: "Super Stock 400 (ST400A)\nSuper Sport 400 (SP400A)", laps: "5 Laps" },
-  { start: "15:10", end: "15:30", section: "Sprint Race", sectionZh: "衝刺賽", cls: "Super Sport 300 (SP300A&B)", laps: "5 Laps" },
-  { start: "15:35", end: "15:55", section: "Sprint Race", sectionZh: "衝刺賽", cls: "Super Sport 150 (SP150A)", laps: "5 Laps" },
-  { start: "16:00", end: "16:20", section: "Free Practice 2", sectionZh: "自由練習 2", cls: "Super Pole 1000", laps: "20 mins" },
-  { start: "16:25", end: "16:55", section: "AWARDS", sectionZh: "頒獎", cls: "", laps: "", isBreak: true },
+  { start: "13:35", end: "13:55", section: "Sprint Race", sectionZh: "衝刺賽", cls: "Super Stock 150 (ST150A&B)", laps: "5 Laps" },
+  { start: "14:00", end: "14:20", section: "Sprint Race", sectionZh: "衝刺賽", cls: "Super Stock 250 (ST250A)\nSuper Sport 250 (SP250A)", laps: "5 Laps" },
+  { start: "14:25", end: "14:45", section: "Sprint Race", sectionZh: "衝刺賽", cls: "Super Stock 300 (ST300A&B)", laps: "5 Laps" },
+  { start: "14:50", end: "15:10", section: "Sprint Race", sectionZh: "衝刺賽", cls: "Super Stock 400 (ST400A)\nSuper Sport 400 (SP400A)", laps: "5 Laps" },
+  { start: "15:15", end: "15:35", section: "Sprint Race", sectionZh: "衝刺賽", cls: "Super Sport 300 (SP300A&B)", laps: "5 Laps" },
+  { start: "15:40", end: "16:00", section: "Sprint Race", sectionZh: "衝刺賽", cls: "Super Sport 150 (SP150A)", laps: "5 Laps" },
+  { start: "16:05", end: "16:25", section: "Free Practice 2", sectionZh: "自由練習 2", cls: "Super Pole 600", laps: "20 mins" },
+  { start: "16:30", end: "16:50", section: "Free Practice 2", sectionZh: "自由練習 2", cls: "Super Pole 1000", laps: "20 mins" },
+  { start: "17:00", end: "17:30", section: "AWARDS", sectionZh: "頒獎", cls: "", laps: "", isBreak: true },
 ];
 
 const SUNDAY: ScheduleRow[] = [
   { start: "09:00", end: "09:10", section: "Warm-Up", sectionZh: "暖身", cls: "Super Stock 150 (ST150A&B)", laps: "10 mins" },
   { start: "09:15", end: "09:25", section: "Warm-Up", sectionZh: "暖身", cls: "Super Stock 250 (ST250A)\nSuper Sport 250 (SP250A)", laps: "10 mins" },
-  { start: "09:30", end: "09:40", section: "Warm-Up", sectionZh: "暖身", cls: "Super Stock 300 (ST300A&B)", laps: "10 mins" },
-  { start: "09:45", end: "09:55", section: "Warm-Up", sectionZh: "暖身", cls: "Super Stock 400 (ST400A)\nSuper Sport 400 (SP400A)", laps: "10 mins" },
-  { start: "10:00", end: "10:10", section: "Warm-Up", sectionZh: "暖身", cls: "Super Sport 300 (SP300A&B)", laps: "10 mins" },
-  { start: "10:15", end: "10:25", section: "Warm-Up", sectionZh: "暖身", cls: "Super Sport 150 (SP150A)", laps: "10 mins" },
-  { start: "10:30", end: "10:45", section: "Super Pole 1", sectionZh: "超級桿位 1", cls: "Super Pole 1000", laps: "15 mins" },
-  { start: "10:50", end: "11:15", section: "Race", sectionZh: "正賽", cls: "Super Stock 150 (ST150A&B)", laps: "7 Laps" },
-  { start: "11:20", end: "11:45", section: "Race", sectionZh: "正賽", cls: "Super Stock 250 (ST250A)\nSuper Sport 250 (SP250A)", laps: "7 Laps" },
+  { start: "09:25", end: "09:35", section: "Warm-Up", sectionZh: "暖身", cls: "Super Stock 300 (ST300A&B)", laps: "10 mins" },
+  { start: "09:40", end: "09:50", section: "Warm-Up", sectionZh: "暖身", cls: "Super Stock 400 (ST400A)\nSuper Sport 400 (SP400A)", laps: "10 mins" },
+  { start: "09:50", end: "10:00", section: "Warm-Up", sectionZh: "暖身", cls: "Super Sport 300 (SP300A&B)", laps: "10 mins" },
+  { start: "10:05", end: "10:15", section: "Warm-Up", sectionZh: "暖身", cls: "Super Sport 150 (SP150A)", laps: "10 mins" },
+  { start: "10:20", end: "10:35", section: "Super Pole 1", sectionZh: "超級桿位 1", cls: "Super Pole 600", laps: "15 mins" },
+  { start: "10:40", end: "10:55", section: "Super Pole 1", sectionZh: "超級桿位 1", cls: "Super Pole 1000", laps: "15 mins" },
+  { start: "11:00", end: "11:25", section: "Race", sectionZh: "正賽", cls: "Super Stock 150 (ST150A&B)", laps: "7 Laps" },
+  { start: "11:30", end: "11:55", section: "Race", sectionZh: "正賽", cls: "Super Stock 250 (ST250A)\nSuper Sport 250 (SP250A)", laps: "7 Laps" },
   { start: "12:00", end: "13:20", section: "LUNCH", sectionZh: "午休時間", cls: "", laps: "", isBreak: true },
-  { start: "13:30", end: "13:55", section: "Race", sectionZh: "正賽", cls: "Super Stock 300 (ST300A&B)", laps: "7 Laps" },
-  { start: "14:00", end: "14:25", section: "Race", sectionZh: "正賽", cls: "Super Stock 400 (ST400A)\nSuper Sport 400 (SP400A)", laps: "7 Laps" },
-  { start: "14:30", end: "14:55", section: "Race", sectionZh: "正賽", cls: "Super Sport 300 (SP300A&B)", laps: "7 Laps" },
-  { start: "15:00", end: "15:25", section: "Race", sectionZh: "正賽", cls: "Super Sport 150 (SP150A)", laps: "7 Laps" },
-  { start: "15:30", end: "15:45", section: "Super Pole 2", sectionZh: "超級桿位 2", cls: "Super Pole 1000", laps: "15 mins" },
-  { start: "16:00", end: "16:30", section: "AWARDS", sectionZh: "頒獎", cls: "", laps: "", isBreak: true },
+  { start: "13:30", end: "13:55", section: "Sprint Race", sectionZh: "衝刺賽", cls: "Super Stock 300 (ST300A&B)", laps: "7 Laps" },
+  { start: "14:00", end: "14:25", section: "Sprint Race", sectionZh: "衝刺賽", cls: "Super Stock 400 (ST400A)\nSuper Sport 400 (SP400A)", laps: "7 Laps" },
+  { start: "14:30", end: "14:55", section: "Sprint Race", sectionZh: "衝刺賽", cls: "Super Sport 300 (SP300A&B)", laps: "7 Laps" },
+  { start: "15:00", end: "15:25", section: "Sprint Race", sectionZh: "衝刺賽", cls: "Super Sport 150 (SP150A)", laps: "7 Laps" },
+  { start: "15:30", end: "15:45", section: "Super Pole 2", sectionZh: "超級桿位 2", cls: "Super Pole 600", laps: "15 mins" },
+  { start: "15:50", end: "16:05", section: "Super Pole 2", sectionZh: "超級桿位 2", cls: "Super Pole 1000", laps: "15 mins" },
+  { start: "16:20", end: "17:00", section: "AWARDS", sectionZh: "頒獎", cls: "", laps: "", isBreak: true },
 ];
 
 function getSectionColor(section: string): string {
@@ -131,7 +135,7 @@ export default function ScheduleSection() {
           >
             {isZh ? "週六 7/4" : "SAT 7/4"}
             <span className="block text-[10px] tracking-[0.2em] mt-0.5 opacity-60">
-              {isZh ? "排位賽 + 衝刺賽" : "QUALIFYING + SPRINT"}
+              {isZh ? "排位賽・衝刺賽" : "QUALIFYING + SPRINT"}
             </span>
           </button>
           <button
@@ -146,7 +150,7 @@ export default function ScheduleSection() {
           >
             {isZh ? "週日 7/5" : "SUN 7/5"}
             <span className="block text-[10px] tracking-[0.2em] mt-0.5 opacity-60">
-              {isZh ? "暖身 + 正賽" : "WARM-UP + RACE"}
+              {isZh ? "暖身・正賽" : "WARM-UP + RACE"}
             </span>
           </button>
         </div>
