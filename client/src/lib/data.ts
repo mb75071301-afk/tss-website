@@ -1,16 +1,16 @@
 // TSS Website - Race Data
 
 export const RACE_CLASSES = [
-  { name: "Super Pole 1000(Time Attack Challenge)", nameShort: "SP1000", cc: "1000cc", description: "計時挑戰賽" },
-  { name: "Super Pole 600(Time Attack Challenge)", nameShort: "SP600", cc: "600cc", description: "計時挑戰賽" },
-  { name: "Super Stock 400", nameShort: "ST400", cc: "400cc", description: "400cc 原廠" },
-  { name: "Super Sport 400", nameShort: "SP400", cc: "400cc", description: "400cc 改裝" },
-  { name: "Super Stock 300", nameShort: "ST300", cc: "300cc", description: "300cc 原廠" },
-  { name: "Super Sport 300", nameShort: "SP300", cc: "300cc", description: "300cc 改裝" },
-  { name: "Super Stock 250", nameShort: "ST250", cc: "250cc", description: "250cc 原廠" },
-  { name: "Super Sport 250", nameShort: "SP250", cc: "250cc", description: "250cc 改裝" },
   { name: "Super Stock 150", nameShort: "ST150", cc: "150cc", description: "150cc 原廠" },
   { name: "Super Sport 150", nameShort: "SP150", cc: "150cc", description: "150cc 改裝" },
+  { name: "Super Stock 250", nameShort: "ST250", cc: "250cc", description: "250cc 原廠" },
+  { name: "Super Sport 250", nameShort: "SP250", cc: "250cc", description: "250cc 改裝" },
+  { name: "Super Stock 300", nameShort: "ST300", cc: "300cc", description: "300cc 原廠" },
+  { name: "Super Sport 300", nameShort: "SP300", cc: "300cc", description: "300cc 改裝" },
+  { name: "Super Stock 400", nameShort: "ST400", cc: "400cc", description: "400cc 原廠" },
+  { name: "Super Sport 400", nameShort: "SP400", cc: "400cc", description: "400cc 改裝" },
+  { name: "Super Pole 600(Time Attack Challenge)", nameShort: "SP600", cc: "600cc", description: "計時挑戰賽" },
+  { name: "Super Pole 1000(Time Attack Challenge)", nameShort: "SP1000", cc: "1000cc", description: "計時挑戰賽" },
 ];
 
 export const RACE_CLASSES_INFO = {
