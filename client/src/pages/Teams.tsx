@@ -123,7 +123,15 @@ export default function Teams() {
                   <div className="p-6">
                     <div className="flex items-start justify-between gap-4 mb-4">
                       <div className="flex items-center gap-3">
-                        <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center flex-shrink-0 border border-white/10">
+                        <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center flex-shrink-0 border border-white/10 overflow-hidden relative">
+                          {rider.photo && (
+                            <img
+                              src={rider.photo}
+                              alt={rider.name}
+                              className="absolute inset-0 w-full h-full object-cover"
+                              onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }}
+                            />
+                          )}
                           <User size={18} className="text-white/40" />
                         </div>
                         <h3 className="text-xl font-bold text-white">

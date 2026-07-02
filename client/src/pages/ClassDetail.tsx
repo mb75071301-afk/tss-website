@@ -152,7 +152,15 @@ export default function ClassDetail() {
                           <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                             {riders.map((rider, idx) => (
                               <div key={idx} className="flex items-center gap-2 text-white/70 text-sm py-1">
-                                <div className="w-7 h-7 rounded-full bg-white/10 flex items-center justify-center flex-shrink-0 border border-white/10">
+                                <div className="w-7 h-7 rounded-full bg-white/10 flex items-center justify-center flex-shrink-0 border border-white/10 overflow-hidden relative">
+                                  {rider.photo && (
+                                    <img
+                                      src={rider.photo}
+                                      alt={rider.name}
+                                      className="absolute inset-0 w-full h-full object-cover"
+                                      onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }}
+                                    />
+                                  )}
                                   {rider.number ? (
                                     <span className="font-mono text-[10px] font-bold text-red-400">
                                       {rider.number}
