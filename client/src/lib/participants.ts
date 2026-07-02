@@ -80,7 +80,7 @@ export const classParticipants: ClassParticipants = {
     { name: "呂昶陞", team: "AS RACING TEAM", brand: "KTM", model: "RC390", number: "66" },
     { name: "顏昭義", team: "AS RACING TEAM", brand: "KTM", model: "RC390", number: "7" },
     { name: "鐘蜂棋", team: "AS RACING TEAM", brand: "KTM", model: "RC390", number: "78" },
-    { name: "許容銓", team: "YX Racing team", brand: "YAMAHA", model: "R3", number: "112" },
+    { name: "許容銓", team: "YX Racing Team", brand: "YAMAHA", model: "R3", number: "112" },
   ],
   "SP300": [
     { name: "柯羅比", team: "極樂HRT with Kushitani TW", brand: "YAMAHA", model: "R3", number: "51" },
@@ -137,7 +137,7 @@ export const classParticipants: ClassParticipants = {
     { name: "黃威", team: "菇菇賽道日", brand: "YAMAHA", model: "R6", number: "89" },
   ],
   "SP1000": [
-    { name: "郭和嘉", team: "WILLPOWER", brand: "BMW", model: "S1000RR", number: "79" },
+    { name: "郭和嘉", team: "WillPOWER", brand: "BMW", model: "S1000RR", number: "79" },
     { name: "黃文鑫", team: "武人重車", brand: "YAMAHA", model: "R1", number: "99" },
     { name: "陳俊豪", team: "Peter-Bike 馹達豐 RDF Performance Works", brand: "YAMAHA", model: "R1", number: "65" },
     { name: "張煜堂", team: "Peter-Bike 馹達豐 RDF Performance Works", brand: "YAMAHA", model: "R1", number: "20" },
@@ -150,7 +150,7 @@ export const classParticipants: ClassParticipants = {
     { name: "徐心仁", team: "Peter-Bike 馹達豐 RDF Performance Works", brand: "YAMAHA", model: "R1", number: "9" },
     { name: "沈士弘", team: "萬威焦點車隊", brand: "YAMAHA", model: "R1", number: "78" },
     { name: "郭士煒", team: "No Name Racing Team", brand: "YAMAHA", model: "R1", number: "67" },
-    { name: "李昌庭", team: "WILLPOWER", brand: "APRILIA", model: "RSV4 STD", number: "97" },
+    { name: "李昌庭", team: "WillPOWER", brand: "APRILIA", model: "RSV4 STD", number: "97" },
     { name: "何韋澄", team: "No Name Racing Team", brand: "BMW", model: "S1000RR", number: "12" },
     { name: "李柏勳", team: "JH Moto Racing Team", brand: "HONDA", model: "CBR1000RR", number: "52" },
     { name: "陳維克托利亞", team: "忠孝車業", brand: "KAWASAKI", model: "ZX10R", number: "2" },

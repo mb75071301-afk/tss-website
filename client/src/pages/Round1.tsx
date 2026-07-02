@@ -3,6 +3,7 @@ import { useLocation } from "wouter";
 import { ArrowLeft } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import TeamLogo from "@/components/TeamLogo";
 import { motion } from "framer-motion";
 
 interface Rider {
@@ -22,6 +23,41 @@ interface Team {
 
 interface TeamsData {
   teams: Record<string, Team>;
+}
+
+/** 選手大頭照；沒有照片或載入失敗時顯示名字首字與車號。 */
+function RiderPhoto({ rider }: { rider: Rider }) {
+  const [failed, setFailed] = useState(false);
+
+  if (!rider.photo || failed) {
+    return (
+      <div className="aspect-square bg-neutral-900 flex flex-col items-center justify-center gap-3">
+        <span className="text-7xl font-bold text-white/15">
+          {rider.name.charAt(0)}
+        </span>
+        {rider.number != null && (
+          <span
+            className="font-mono text-2xl font-bold text-red-500/60"
+            style={{ fontFamily: "'Orbitron', monospace" }}
+          >
+            #{rider.number}
+          </span>
+        )}
+      </div>
+    );
+  }
+
+  return (
+    <div className="aspect-square bg-neutral-900 overflow-hidden flex items-center justify-center">
+      <img
+        src={rider.photo}
+        alt={rider.name}
+        loading="lazy"
+        className="w-full h-full object-contain"
+        onError={() => setFailed(true)}
+      />
+    </div>
+  );
 }
 
 /**
@@ -159,23 +195,13 @@ export default function Round1() {
                 <div key={teamName}>
                   {/* Team header */}
                   <div className="flex items-center gap-4 mb-8 border-l-2 border-red-500 pl-4">
-                    <div className="w-14 h-14 flex-shrink-0 rounded-full bg-white/10 overflow-hidden flex items-center justify-center border border-white/10">
-                      {team.logo ? (
-                        <img
-                          src={team.logo}
-                          alt={teamName}
-                          className="w-full h-full object-contain p-1.5"
-                          onError={(e) => {
-                            (e.target as HTMLImageElement).style.display =
-                              "none";
-                          }}
-                        />
-                      ) : (
-                        <span className="text-white/30 text-sm font-bold">
-                          {teamName.charAt(0)}
-                        </span>
-                      )}
-                    </div>
+                    <TeamLogo
+                      name={teamName}
+                      logo={team.logo}
+                      className="w-14 h-14"
+                      imgClassName="p-1.5"
+                      textClassName="text-sm"
+                    />
                     <div>
                       <h3 className="font-heading text-2xl font-bold text-white">
                         {teamName}
@@ -197,19 +223,7 @@ export default function Round1() {
                         viewport={{ once: true }}
                         className="bg-white/[0.05] border border-white/[0.1] rounded-lg overflow-hidden hover:border-red-500/50 transition-all"
                       >
-                        {rider.photo && (
-                          <div className="aspect-square bg-neutral-900 overflow-hidden flex items-center justify-center">
-                            <img
-                              src={rider.photo}
-                              alt={rider.name}
-                              className="w-full h-full object-contain"
-                              onError={(e) => {
-                                (e.target as HTMLImageElement).style.display =
-                                  "none";
-                              }}
-                            />
-                          </div>
-                        )}
+                        <RiderPhoto rider={rider} />
 
                         <div className="p-6">
                           <h4 className="text-xl font-bold text-white mb-2">

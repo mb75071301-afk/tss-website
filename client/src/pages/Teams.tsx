@@ -6,10 +6,8 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { motion } from "framer-motion";
 import { getR2Teams, type TeamRider } from "@/lib/participants";
-
-interface R1TeamsData {
-  teams: Record<string, { logo: string }>;
-}
+import { loadTeamLogos } from "@/lib/teamLogos";
+import TeamLogo from "@/components/TeamLogo";
 
 export default function Teams() {
   const params = useParams();
@@ -39,31 +37,16 @@ export default function Teams() {
   }, [teamName]);
 
   const [searchTerm, setSearchTerm] = useState<string>("");
-  // 車隊 Logo 沿用 R1 資料（同名車隊），R2 報名資料尚無 Logo
-  const [teamLogos, setTeamLogos] = useState<Record<string, string>>({});
-
-  useEffect(() => {
-    const loadLogos = async () => {
-      try {
-        const response = await fetch("/tss_data.json", { cache: "no-store" });
-        const data: R1TeamsData = await response.json();
-        if (data && data.teams) {
-          const logos: Record<string, string> = {};
-          Object.entries(data.teams).forEach(([name, team]) => {
-            if (team.logo) logos[name] = team.logo;
-          });
-          setTeamLogos(logos);
-        }
-      } catch (error) {
-        console.error("Failed to load team logos:", error);
-      }
-    };
-
-    loadLogos();
-  }, []);
 
   // R2 參賽車隊與車手（來自 participants.ts）
   const allTeams: Record<string, TeamRider[]> = useMemo(() => getR2Teams(), []);
+
+  // 車隊 Logo 沿用報名表單／R1 資料（以正規化隊名比對）
+  const [teamLogos, setTeamLogos] = useState<Record<string, string>>({});
+
+  useEffect(() => {
+    loadTeamLogos(Object.keys(allTeams)).then(setTeamLogos);
+  }, [allTeams]);
 
   const teamList = Object.entries(allTeams).sort(([nameA], [nameB]) =>
     nameA.localeCompare(nameB, "zh-TW")
@@ -93,19 +76,14 @@ export default function Teams() {
             </button>
 
             <div className="flex flex-col md:flex-row items-center gap-8">
-              {/* Big Logo - 點進來才顯示大 Logo */}
-              {logo && (
-                <div className="w-48 h-48 md:w-56 md:h-56 flex-shrink-0 bg-white/5 rounded-xl overflow-hidden border border-white/10 flex items-center justify-center p-4">
-                  <img
-                    src={logo}
-                    alt={teamName}
-                    className="w-full h-full object-contain"
-                    onError={(e) => {
-                      (e.target as HTMLImageElement).style.display = "none";
-                    }}
-                  />
-                </div>
-              )}
+              {/* Big Logo - 點進來才顯示大 Logo，沒有 Logo 時顯示隊名首字 */}
+              <TeamLogo
+                name={teamName}
+                logo={logo}
+                className="w-48 h-48 md:w-56 md:h-56 rounded-xl bg-white/5"
+                imgClassName="p-4"
+                textClassName="text-7xl text-white/20"
+              />
 
               <div className="flex-1 text-center md:text-left">
                 <h1 className="font-heading text-4xl md:text-5xl lg:text-6xl tracking-widest text-white mb-4">
@@ -281,22 +259,13 @@ export default function Teams() {
                   className="group flex items-center gap-4 px-4 py-3 rounded-lg hover:bg-white/[0.06] transition-all border border-transparent hover:border-red-500/30"
                 >
                   {/* Small Round Logo */}
-                  <div className="w-12 h-12 flex-shrink-0 rounded-full bg-white/10 overflow-hidden flex items-center justify-center border border-white/10 group-hover:border-red-500/50 transition-colors">
-                    {teamLogos[name] ? (
-                      <img
-                        src={teamLogos[name]}
-                        alt={name}
-                        className="w-full h-full object-contain p-1.5"
-                        onError={(e) => {
-                          (e.target as HTMLImageElement).style.display = "none";
-                        }}
-                      />
-                    ) : (
-                      <span className="text-white/30 text-sm font-bold">
-                        {name.charAt(0)}
-                      </span>
-                    )}
-                  </div>
+                  <TeamLogo
+                    name={name}
+                    logo={teamLogos[name]}
+                    className="w-12 h-12 group-hover:border-red-500/50 transition-colors"
+                    imgClassName="p-1.5"
+                    textClassName="text-sm"
+                  />
 
                   {/* Team Name & Rider Count */}
                   <div className="flex-1 min-w-0">

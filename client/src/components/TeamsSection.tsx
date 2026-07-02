@@ -3,37 +3,19 @@ import { Link } from "wouter";
 import { motion } from "framer-motion";
 import { ChevronRight } from "lucide-react";
 import { getR2Teams } from "@/lib/participants";
-
-interface R1TeamsData {
-  teams: Record<string, { logo: string }>;
-}
+import { loadTeamLogos } from "@/lib/teamLogos";
+import TeamLogo from "@/components/TeamLogo";
 
 export default function TeamsSection() {
-  // 車隊 Logo 沿用 R1 資料（同名車隊），R2 報名資料尚無 Logo
+  // R2 參賽車隊與車手（來自 participants.ts）
+  const teams = useMemo(() => getR2Teams(), []);
+
+  // 車隊 Logo 沿用報名表單／R1 資料（以正規化隊名比對）
   const [teamLogos, setTeamLogos] = useState<Record<string, string>>({});
 
   useEffect(() => {
-    const loadLogos = async () => {
-      try {
-        const response = await fetch("/tss_data.json", { cache: "no-store" });
-        const data: R1TeamsData = await response.json();
-        if (data && data.teams) {
-          const logos: Record<string, string> = {};
-          Object.entries(data.teams).forEach(([name, team]) => {
-            if (team.logo) logos[name] = team.logo;
-          });
-          setTeamLogos(logos);
-        }
-      } catch (error) {
-        console.error("Failed to load team logos:", error);
-      }
-    };
-
-    loadLogos();
-  }, []);
-
-  // R2 參賽車隊與車手（來自 participants.ts）
-  const teams = useMemo(() => getR2Teams(), []);
+    loadTeamLogos(Object.keys(teams)).then(setTeamLogos);
+  }, [teams]);
 
   const teamList = Object.entries(teams).sort(([nameA], [nameB]) =>
     nameA.localeCompare(nameB, "zh-TW")
@@ -91,23 +73,11 @@ export default function TeamsSection() {
                 className="group flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-white/[0.06] transition-all border border-transparent hover:border-red-500/30"
               >
                 {/* Small Round Logo */}
-                <div className="w-10 h-10 flex-shrink-0 rounded-full bg-white/10 overflow-hidden flex items-center justify-center border border-white/10 group-hover:border-red-500/50 transition-colors">
-                  {teamLogos[teamName] ? (
-                    <img
-                      src={teamLogos[teamName]}
-                      alt={teamName}
-                      className="w-full h-full object-contain p-1"
-                      onError={(e) => {
-                        (e.target as HTMLImageElement).src =
-                          "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect fill='%23333' width='100' height='100' rx='50'/%3E%3Ctext x='50' y='50' font-size='14' fill='%23999' text-anchor='middle' dominant-baseline='middle'%3ET%3C/text%3E%3C/svg%3E";
-                      }}
-                    />
-                  ) : (
-                    <span className="text-white/30 text-xs font-bold">
-                      {teamName.charAt(0)}
-                    </span>
-                  )}
-                </div>
+                <TeamLogo
+                  name={teamName}
+                  logo={teamLogos[teamName]}
+                  className="w-10 h-10 group-hover:border-red-500/50 transition-colors"
+                />
 
                 {/* Team Name & Rider Count */}
                 <div className="flex-1 min-w-0">
