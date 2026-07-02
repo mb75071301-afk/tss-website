@@ -19,7 +19,7 @@ interface ScheduleRow {
 
 const SATURDAY: ScheduleRow[] = [
   { start: "09:00", end: "09:15", section: "Qualifying", sectionZh: "排位賽", cls: "Super Stock 150 (ST150)", laps: "15 mins" },
-  { start: "09:20", end: "09:35", section: "Qualifying", sectionZh: "排位賽", cls: "Super Stock 250 (ST250)", laps: "15 mins" },
+  { start: "09:20", end: "09:35", section: "Qualifying", sectionZh: "排位賽", cls: "Super Stock 250 (ST250)\nSuper Sport 250 (SP250)", laps: "15 mins" },
   { start: "09:40", end: "09:55", section: "Qualifying", sectionZh: "排位賽", cls: "Super Stock 300 (ST300)", laps: "15 mins" },
   { start: "10:00", end: "10:15", section: "Qualifying", sectionZh: "排位賽", cls: "Super Stock 400 (ST400)\nSuper Sport 400 (SP400)", laps: "15 mins" },
   { start: "10:20", end: "10:35", section: "Qualifying", sectionZh: "排位賽", cls: "Super Sport 300 (SP300)", laps: "15 mins" },
