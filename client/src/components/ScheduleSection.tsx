@@ -1,5 +1,6 @@
 /**
- * ScheduleSection — R1 2026 Race Weekend Timetable
+ * ScheduleSection — R2 2026 Race Weekend Timetable
+ * Friday 7/3: Practice / Scrutineering / Check-in (noted above tabs)
  * Saturday (Qualifying + Sprint) & Sunday (Warm-Up + Race)
  * Tabbed layout with motorsport-style dark design
  */
@@ -100,8 +101,20 @@ export default function ScheduleSection() {
             {isZh ? "賽程表" : "Race "}<span className="text-red-500">{isZh ? "" : "Schedule"}</span>
           </h2>
           <p className="text-white/40 mt-3 text-sm tracking-wide">
-            2026 TSS Round 1 — {isZh ? "大鵬灣國際賽車場" : "DaPeng Bay International Circuit"}
+            2026 TSS Round 2 — {isZh ? "大鵬灣國際賽車場" : "DaPeng Bay International Circuit"}
           </p>
+        </div>
+
+        {/* Practice / Scrutineering / Check-in note */}
+        <div className="max-w-4xl mx-auto mb-8">
+          <div className="flex items-center justify-center gap-3 rounded-lg border border-white/[0.08] bg-white/[0.04] px-4 py-3 text-center">
+            <span className="inline-block w-1.5 h-1.5 rounded-full bg-red-500 shrink-0" />
+            <span className="text-white/70 text-xs sm:text-sm tracking-wide">
+              {isZh
+                ? "7/3（五）練習 / 驗車 / 報到"
+                : "July 3 (Fri) — Practice / Scrutineering / Check-in"}
+            </span>
+          </div>
         </div>
 
         {/* Day tabs */}
@@ -116,7 +129,7 @@ export default function ScheduleSection() {
               }
             `}
           >
-            {isZh ? "週六 4/11" : "SAT 4/11"}
+            {isZh ? "週六 7/4" : "SAT 7/4"}
             <span className="block text-[10px] tracking-[0.2em] mt-0.5 opacity-60">
               {isZh ? "排位賽 + 衝刺賽" : "QUALIFYING + SPRINT"}
             </span>
@@ -131,7 +144,7 @@ export default function ScheduleSection() {
               }
             `}
           >
-            {isZh ? "週日 4/12" : "SUN 4/12"}
+            {isZh ? "週日 7/5" : "SUN 7/5"}
             <span className="block text-[10px] tracking-[0.2em] mt-0.5 opacity-60">
               {isZh ? "暖身 + 正賽" : "WARM-UP + RACE"}
             </span>
