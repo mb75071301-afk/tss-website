@@ -1,36 +1,21 @@
-import { useState, useEffect } from "react";
-import { useParams, useLocation } from "wouter";
+import { useState, useEffect, useMemo } from "react";
+import { useParams, useLocation, Link } from "wouter";
 import { useLayoutEffect } from "react";
-import { useOverrides } from "@/hooks/useOverrides";
-import { ArrowLeft, ChevronRight } from "lucide-react";
+import { ArrowLeft, ChevronRight, User } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { motion } from "framer-motion";
+import { getR2Teams, type TeamRider } from "@/lib/participants";
 
-interface Rider {
-  name: string;
-  intro: string;
-  photo: string;
-  class: string;
-  bike: string;
-  model?: string;
-  number?: number;
-}
-
-interface Team {
-  logo: string;
-  riders: Rider[];
-}
-
-interface TeamsData {
-  teams: Record<string, Team>;
+interface R1TeamsData {
+  teams: Record<string, { logo: string }>;
 }
 
 export default function Teams() {
   const params = useParams();
   const [, setLocation] = useLocation();
   const teamName = params?.team ? decodeURIComponent(params.team) : null;
-  
+
   // Fix: scroll to top when entering team page
   useLayoutEffect(() => {
     window.scrollTo(0, 0);
@@ -48,58 +33,37 @@ export default function Teams() {
       document.title = '車隊介紹 - TSS 台灣超級摩托車聯賽';
       const metaDescription = document.querySelector('meta[name="description"]');
       if (metaDescription) {
-        metaDescription.setAttribute('content', '認識參加 2026 年 TSS 台灣超級摩托車聯賽的所有車隊與車手，瀏覽完整的車隊名單和車手資訊。');
+        metaDescription.setAttribute('content', '認識參加 2026 年 TSS 台灣超級摩托車聯賽第二站（R2）的所有車隊與車手，瀏覽完整的車隊名單和車手資訊。');
       }
     }
   }, [teamName]);
-  
-  const [rawTeams, setRawTeams] = useState<Record<string, Team>>({});
+
   const [searchTerm, setSearchTerm] = useState<string>("");
-  const [loading, setLoading] = useState(true);
-  const { getTeamLogo, getRiderData, isLoading: overridesLoading } = useOverrides();
+  // 車隊 Logo 沿用 R1 資料（同名車隊），R2 報名資料尚無 Logo
+  const [teamLogos, setTeamLogos] = useState<Record<string, string>>({});
 
   useEffect(() => {
-    const loadTeams = async () => {
+    const loadLogos = async () => {
       try {
         const response = await fetch("/tss_data.json", { cache: "no-store" });
-        const data: TeamsData = await response.json();
+        const data: R1TeamsData = await response.json();
         if (data && data.teams) {
-          setRawTeams(data.teams);
+          const logos: Record<string, string> = {};
+          Object.entries(data.teams).forEach(([name, team]) => {
+            if (team.logo) logos[name] = team.logo;
+          });
+          setTeamLogos(logos);
         }
       } catch (error) {
-        console.error("Failed to load teams data:", error);
+        console.error("Failed to load team logos:", error);
       }
-      setLoading(false);
     };
 
-    loadTeams();
+    loadLogos();
   }, []);
 
-  // Apply overrides: merge database customizations over raw data
-  const allTeams: Record<string, Team> = Object.fromEntries(
-    Object.entries(rawTeams).map(([name, team]) => [
-      name,
-      {
-        ...team,
-        logo: getTeamLogo(name, team.logo),
-        riders: team.riders.map((rider) => {
-          const overridden = getRiderData(rider.name, {
-            photo: rider.photo,
-            bike: rider.bike,
-            model: rider.model,
-            number: rider.number,
-          });
-          return {
-            ...rider,
-            photo: overridden.photo || rider.photo,
-            bike: overridden.bike || rider.bike,
-            model: overridden.model || rider.model,
-            number: overridden.number ? Number(overridden.number) : rider.number,
-          };
-        }),
-      },
-    ])
-  );
+  // R2 參賽車隊與車手（來自 participants.ts）
+  const allTeams: Record<string, TeamRider[]> = useMemo(() => getR2Teams(), []);
 
   const teamList = Object.entries(allTeams).sort(([nameA], [nameB]) =>
     nameA.localeCompare(nameB, "zh-TW")
@@ -107,12 +71,13 @@ export default function Teams() {
 
   // 如果指定了車隊名稱，顯示該車隊的詳情（大 Logo）
   if (teamName && allTeams[teamName]) {
-    const team = allTeams[teamName];
-    
+    const riders = allTeams[teamName];
+    const logo = teamLogos[teamName];
+
     return (
       <div className="min-h-screen bg-background">
         <Navbar />
-        
+
         {/* Hero Section with Big Logo */}
         <section className="relative py-20 border-b border-white/[0.06] z-10">
           <div className="container">
@@ -126,13 +91,13 @@ export default function Teams() {
               <ArrowLeft size={18} />
               <span>返回</span>
             </button>
-            
+
             <div className="flex flex-col md:flex-row items-center gap-8">
               {/* Big Logo - 點進來才顯示大 Logo */}
-              {team.logo && (
+              {logo && (
                 <div className="w-48 h-48 md:w-56 md:h-56 flex-shrink-0 bg-white/5 rounded-xl overflow-hidden border border-white/10 flex items-center justify-center p-4">
                   <img
-                    src={team.logo}
+                    src={logo}
                     alt={teamName}
                     className="w-full h-full object-contain"
                     onError={(e) => {
@@ -141,13 +106,13 @@ export default function Teams() {
                   />
                 </div>
               )}
-              
+
               <div className="flex-1 text-center md:text-left">
                 <h1 className="font-heading text-4xl md:text-5xl lg:text-6xl tracking-widest text-white mb-4">
                   {teamName}
                 </h1>
                 <p className="text-lg text-white/70">
-                  {team.riders.length} 位車手參賽
+                  {riders.length} 位車手參賽（R2）
                 </p>
               </div>
             </div>
@@ -163,11 +128,11 @@ export default function Teams() {
           />
         </section>
 
-        {/* Riders Section - 正方形縮圖不裁切 */}
+        {/* Riders Section - R2 基本資料（車號、姓名、車輛） */}
         <section className="py-16">
           <div className="container">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {team.riders.map((rider, idx) => (
+              {riders.map((rider, idx) => (
                 <motion.div
                   key={idx}
                   initial={{ opacity: 0, y: 20 }}
@@ -176,45 +141,48 @@ export default function Teams() {
                   viewport={{ once: true }}
                   className="bg-white/[0.05] border border-white/[0.1] rounded-lg overflow-hidden hover:border-red-500/50 transition-all"
                 >
-                  {/* Photo - 正方形 object-contain 不裁切 */}
-                  {rider.photo && (
-                    <div className="aspect-square bg-neutral-900 overflow-hidden flex items-center justify-center">
-                      <img
-                        src={rider.photo}
-                        alt={rider.name}
-                        className="w-full h-full object-contain"
-                        onError={(e) => {
-                          (e.target as HTMLImageElement).style.display = "none";
-                        }}
-                      />
-                    </div>
-                  )}
-
                   {/* Info */}
                   <div className="p-6">
-                    <h3 className="text-xl font-bold text-white mb-2">
-                      {rider.name}
-                    </h3>
-                    
-                    <p className="text-sm text-white/60 mb-4">
-                      {rider.intro}
-                    </p>
+                    <div className="flex items-start justify-between gap-4 mb-4">
+                      <div className="flex items-center gap-3">
+                        <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center flex-shrink-0 border border-white/10">
+                          <User size={18} className="text-white/40" />
+                        </div>
+                        <h3 className="text-xl font-bold text-white">
+                          {rider.name}
+                        </h3>
+                      </div>
+                      {rider.number && (
+                        <div
+                          className="font-mono text-3xl font-bold text-red-500/80 leading-none"
+                          style={{ fontFamily: "'Orbitron', monospace" }}
+                        >
+                          {rider.number}
+                        </div>
+                      )}
+                    </div>
 
                     <div className="space-y-2 text-sm text-white/50">
                       <div>
-                        <span className="text-white/70">組別：</span> {rider.class}
+                        <span className="text-white/70">組別：</span>{" "}
+                        {rider.classes.join("、")}
                       </div>
-                      <div>
-                        <span className="text-white/70">品牌：</span> {rider.bike}
-                      </div>
+                      {rider.brand && (
+                        <div>
+                          <span className="text-white/70">品牌：</span>{" "}
+                          {rider.brand}
+                        </div>
+                      )}
                       {rider.model && (
                         <div>
-                          <span className="text-white/70">型號：</span> {rider.model}
+                          <span className="text-white/70">型號：</span>{" "}
+                          {rider.model}
                         </div>
                       )}
                       {rider.number && (
                         <div>
-                          <span className="text-white/70">車號：</span> {rider.number}
+                          <span className="text-white/70">車號：</span>{" "}
+                          {rider.number}
                         </div>
                       )}
                     </div>
@@ -231,9 +199,9 @@ export default function Teams() {
   }
 
   // 車隊列表頁 - 小圓圖 + 名稱列表形式
-  const filteredTeams = teamList.filter(([name]) =>
+  const filteredTeams = teamList.filter(([name, riders]) =>
     name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    allTeams[name].riders.some((rider) =>
+    riders.some((rider) =>
       rider.name.toLowerCase().includes(searchTerm.toLowerCase())
     )
   );
@@ -241,7 +209,7 @@ export default function Teams() {
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
-      
+
       {/* Hero Section */}
       <section className="relative py-20 border-b border-white/[0.06]">
         <div className="container">
@@ -249,9 +217,16 @@ export default function Teams() {
             <h1 className="font-heading text-5xl md:text-6xl tracking-widest text-white mb-4">
               車隊介紹
             </h1>
-            <p className="text-lg text-white/70">
-              認識參加 2026 年 TSS 台灣超級摩托車聯賽的所有車隊與車手
+            <p className="text-lg text-white/70 mb-4">
+              認識參加 2026 年 TSS 台灣超級摩托車聯賽第二站（R2）的所有車隊與車手
             </p>
+            <Link
+              href="/round1"
+              className="inline-flex items-center gap-1 text-sm text-red-400 hover:text-red-300 transition-colors"
+            >
+              查看第一站（R1）選手回顧
+              <ChevronRight size={16} />
+            </Link>
           </div>
         </div>
 
@@ -292,62 +267,56 @@ export default function Teams() {
             </p>
           </div>
 
-          {loading ? (
-            <div className="text-center py-20">
-              <p className="text-white/60">載入中...</p>
-            </div>
-          ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-1">
-              {filteredTeams.map(([name, team], idx) => (
-                <motion.div
-                  key={name}
-                  initial={{ opacity: 0, x: -10 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.3, delay: idx * 0.02 }}
-                  viewport={{ once: true }}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-1">
+            {filteredTeams.map(([name, riders], idx) => (
+              <motion.div
+                key={name}
+                initial={{ opacity: 0, x: -10 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.3, delay: idx * 0.02 }}
+                viewport={{ once: true }}
+              >
+                <a
+                  href={`/teams/${encodeURIComponent(name)}`}
+                  className="group flex items-center gap-4 px-4 py-3 rounded-lg hover:bg-white/[0.06] transition-all border border-transparent hover:border-red-500/30"
                 >
-                  <a
-                    href={`/teams/${encodeURIComponent(name)}`}
-                    className="group flex items-center gap-4 px-4 py-3 rounded-lg hover:bg-white/[0.06] transition-all border border-transparent hover:border-red-500/30"
-                  >
-                    {/* Small Round Logo */}
-                    <div className="w-12 h-12 flex-shrink-0 rounded-full bg-white/10 overflow-hidden flex items-center justify-center border border-white/10 group-hover:border-red-500/50 transition-colors">
-                      {team.logo ? (
-                        <img
-                          src={team.logo}
-                          alt={name}
-                          className="w-full h-full object-contain p-1.5"
-                          onError={(e) => {
-                            (e.target as HTMLImageElement).style.display = "none";
-                          }}
-                        />
-                      ) : (
-                        <span className="text-white/30 text-sm font-bold">
-                          {name.charAt(0)}
-                        </span>
-                      )}
-                    </div>
+                  {/* Small Round Logo */}
+                  <div className="w-12 h-12 flex-shrink-0 rounded-full bg-white/10 overflow-hidden flex items-center justify-center border border-white/10 group-hover:border-red-500/50 transition-colors">
+                    {teamLogos[name] ? (
+                      <img
+                        src={teamLogos[name]}
+                        alt={name}
+                        className="w-full h-full object-contain p-1.5"
+                        onError={(e) => {
+                          (e.target as HTMLImageElement).style.display = "none";
+                        }}
+                      />
+                    ) : (
+                      <span className="text-white/30 text-sm font-bold">
+                        {name.charAt(0)}
+                      </span>
+                    )}
+                  </div>
 
-                    {/* Team Name & Rider Count */}
-                    <div className="flex-1 min-w-0">
-                      <h3 className="text-base font-bold text-white truncate group-hover:text-red-400 transition-colors">
-                        {name}
-                      </h3>
-                      <p className="text-xs text-white/40">
-                        {team.riders.length} 位車手
-                      </p>
-                    </div>
+                  {/* Team Name & Rider Count */}
+                  <div className="flex-1 min-w-0">
+                    <h3 className="text-base font-bold text-white truncate group-hover:text-red-400 transition-colors">
+                      {name}
+                    </h3>
+                    <p className="text-xs text-white/40">
+                      {riders.length} 位車手
+                    </p>
+                  </div>
 
-                    {/* Arrow */}
-                    <ChevronRight
-                      size={18}
-                      className="text-white/20 group-hover:text-red-500 transition-colors flex-shrink-0"
-                    />
-                  </a>
-                </motion.div>
-              ))}
-            </div>
-          )}
+                  {/* Arrow */}
+                  <ChevronRight
+                    size={18}
+                    className="text-white/20 group-hover:text-red-500 transition-colors flex-shrink-0"
+                  />
+                </a>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </section>
 

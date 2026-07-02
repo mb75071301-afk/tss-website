@@ -2,77 +2,23 @@
  * Design: Motorsport Editorial — Class detail page with specs and info
  * Multi-language support
  */
-import { useState, useEffect, useLayoutEffect } from "react";
+import { useLayoutEffect } from "react";
 import { useParams, useLocation, Link } from "wouter";
 import { motion } from "framer-motion";
 import { ChevronLeft, User } from "lucide-react";
 import { RACE_CLASSES, RACE_CLASSES_INFO } from "@/lib/data";
+import { classParticipants, type ClassParticipant } from "@/lib/participants";
 import { useLanguage } from "@/contexts/LanguageContext";
-import { useOverrides } from "@/hooks/useOverrides";
-
-interface RiderData {
-  name: string;
-  photo: string;
-  class: string;
-  bike: string;
-  model?: string;
-  number?: number;
-}
-
-interface TeamData {
-  logo: string;
-  riders: RiderData[];
-}
-
-interface TeamsData {
-  teams: Record<string, TeamData>;
-}
 
 export default function ClassDetail() {
   const { classId } = useParams<{ classId: string }>();
   const [, setLocation] = useLocation();
   const { t, language } = useLanguage();
-  const [rawRiderPhotos, setRawRiderPhotos] = useState<Record<string, string>>({});
-  const [teamsData, setTeamsData] = useState<Record<string, TeamData>>({});
-  const [brokenPhotos, setBrokenPhotos] = useState<Record<string, boolean>>({});
-  const { riderOverrideMap } = useOverrides();
 
   // Fix: scroll to top when entering class detail page
   useLayoutEffect(() => {
     window.scrollTo(0, 0);
   }, [classId]);
-
-  useEffect(() => {
-    const loadPhotos = async () => {
-      try {
-        const response = await fetch("/tss_data.json", { cache: "no-store" });
-        const data: TeamsData = await response.json();
-        if (data && data.teams) {
-          setTeamsData(data.teams);
-          const photoMap: Record<string, string> = {};
-          Object.values(data.teams).forEach((team) => {
-            team.riders.forEach((rider) => {
-              if (rider.photo) {
-                photoMap[rider.name] = rider.photo;
-              }
-            });
-          });
-          setRawRiderPhotos(photoMap);
-        }
-      } catch (error) {
-        console.error("Failed to load rider photos:", error);
-      }
-    };
-    loadPhotos();
-  }, []);
-
-  // Apply photo overrides from database
-  const riderPhotos = Object.fromEntries(
-    Object.entries(rawRiderPhotos).map(([name, photo]) => [
-      name,
-      riderOverrideMap.get(name)?.photoUrl || photo,
-    ])
-  );
 
   // Find the class by nameShort
   const classData = RACE_CLASSES.find((c) => c.nameShort === classId);
@@ -168,22 +114,16 @@ export default function ClassDetail() {
                 {language === 'zh' ? '參賽名單' : 'Participants'}
               </h2>
               
-              {/* Get riders for this class — derived live from tss_data.json
-                  so any new form submission shows up automatically. */}
+              {/* Get riders for this class — R2 roster from participants.ts */}
               {(() => {
-                const teamMap: Record<string, string[]> = {};
-                Object.entries(teamsData).forEach(([teamName, team]) => {
-                  team.riders.forEach((rider) => {
-                    if (rider.class === classData.name) {
-                      if (!teamMap[teamName]) teamMap[teamName] = [];
-                      if (!teamMap[teamName].includes(rider.name)) {
-                        teamMap[teamName].push(rider.name);
-                      }
-                    }
-                  });
+                const participants = classParticipants[classId as string] || [];
+                const teamMap: Record<string, ClassParticipant[]> = {};
+                participants.forEach((rider) => {
+                  if (!teamMap[rider.team]) teamMap[rider.team] = [];
+                  teamMap[rider.team].push(rider);
                 });
                 const teamEntries = Object.entries(teamMap);
-                
+
                 if (teamEntries.length === 0) {
                   return (
                     <p className="text-white/50 text-center py-8">
@@ -191,14 +131,14 @@ export default function ClassDetail() {
                     </p>
                   );
                 }
-                
+
                 const totalRiders = teamEntries.reduce((sum, [, riders]) => sum + riders.length, 0);
-                
+
                 return (
                   <div>
                     <p className="text-white/50 text-sm mb-6">
-                      {language === 'zh' 
-                        ? `共 ${totalRiders} 位車手 / ${teamEntries.length} 個車隊` 
+                      {language === 'zh'
+                        ? `共 ${totalRiders} 位車手 / ${teamEntries.length} 個車隊`
                         : `${totalRiders} riders / ${teamEntries.length} teams`}
                     </p>
                     <div className="space-y-6">
@@ -210,29 +150,25 @@ export default function ClassDetail() {
                             </h3>
                           </Link>
                           <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                            {riders.map((name, idx) => {
-                              const photo = riderPhotos[name];
-                              const showPhoto = photo && !brokenPhotos[name];
-                              return (
-                                <div key={idx} className="flex items-center gap-2 text-white/70 text-sm py-1">
-                                  {showPhoto ? (
-                                    <img
-                                      src={photo}
-                                      alt={name}
-                                      className="w-7 h-7 rounded-full object-cover flex-shrink-0 border border-white/20"
-                                      onError={() =>
-                                        setBrokenPhotos((prev) => ({ ...prev, [name]: true }))
-                                      }
-                                    />
+                            {riders.map((rider, idx) => (
+                              <div key={idx} className="flex items-center gap-2 text-white/70 text-sm py-1">
+                                <div className="w-7 h-7 rounded-full bg-white/10 flex items-center justify-center flex-shrink-0 border border-white/10">
+                                  {rider.number ? (
+                                    <span className="font-mono text-[10px] font-bold text-red-400">
+                                      {rider.number}
+                                    </span>
                                   ) : (
-                                    <div className="w-7 h-7 rounded-full bg-white/10 flex items-center justify-center flex-shrink-0 border border-white/10">
-                                      <User size={14} className="text-white/40" />
-                                    </div>
+                                    <User size={14} className="text-white/40" />
                                   )}
-                                  <span>{name}</span>
                                 </div>
-                              );
-                            })}
+                                <span>{rider.name}</span>
+                                {(rider.brand || rider.model) && (
+                                  <span className="text-white/40 text-xs truncate">
+                                    {[rider.brand, rider.model].filter(Boolean).join(" ")}
+                                  </span>
+                                )}
+                              </div>
+                            ))}
                           </div>
                         </div>
                       ))}

@@ -8,6 +8,7 @@ import { LanguageProvider } from "./contexts/LanguageContext";
 import Home from "./pages/Home";
 import Teams from "./pages/Teams";
 import ClassDetail from "./pages/ClassDetail";
+import Round1 from "./pages/Round1";
 import SeoHead from "./components/SeoHead";
 
 function Router() {
@@ -18,12 +19,14 @@ function Router() {
       <Route path={"/teams/:team"} component={Teams} />
       <Route path={"/teams"} component={Teams} />
       <Route path={"/class/:classId"} component={ClassDetail} />
+      <Route path={"/round1"} component={Round1} />
 
       {/* Language-prefixed routes */}
       <Route path={"/:lang/"} component={Home} />
       <Route path={"/:lang/teams/:team"} component={Teams} />
       <Route path={"/:lang/teams"} component={Teams} />
       <Route path={"/:lang/class/:classId"} component={ClassDetail} />
+      <Route path={"/:lang/round1"} component={Round1} />
 
       <Route path={"/404"} component={NotFound} />
       {/* Final fallback route */}

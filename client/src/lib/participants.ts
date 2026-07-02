@@ -157,6 +157,42 @@ export const classParticipants: ClassParticipants = {
   ],
 }
 
+// R2 rider merged across classes (a rider may enter multiple classes)
+export interface TeamRider {
+  name: string;
+  number?: string;
+  brand?: string;
+  model?: string;
+  classes: string[];
+}
+
+// Helper: build the R2 team roster — team name → riders (merged by name,
+// with the list of classes each rider entered)
+export function getR2Teams(): Record<string, TeamRider[]> {
+  const teams: Record<string, TeamRider[]> = {};
+  for (const [classId, participants] of Object.entries(classParticipants)) {
+    for (const p of participants) {
+      if (!teams[p.team]) teams[p.team] = [];
+      const existing = teams[p.team].find((r) => r.name === p.name);
+      if (existing) {
+        if (!existing.classes.includes(classId)) existing.classes.push(classId);
+        if (!existing.number && p.number) existing.number = p.number;
+        if (!existing.brand && p.brand) existing.brand = p.brand;
+        if (!existing.model && p.model) existing.model = p.model;
+      } else {
+        teams[p.team].push({
+          name: p.name,
+          number: p.number,
+          brand: p.brand,
+          model: p.model,
+          classes: [classId],
+        });
+      }
+    }
+  }
+  return teams;
+}
+
 // Helper: group participants by team for a given class
 export function getParticipantsByTeam(classId: string): Record<string, string[]> {
   const participants = classParticipants[classId] || [];

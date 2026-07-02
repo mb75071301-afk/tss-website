@@ -63,6 +63,7 @@ export default function Navbar() {
       "精彩瞬間": "nav.gallery",
       "賽道資訊": "nav.track",
       "車隊介紹": "nav.teams",
+      "第一站回顧": "nav.round1",
       "贊助夥伴": "nav.sponsors",
       "聯絡我們": "nav.contact",
     };
