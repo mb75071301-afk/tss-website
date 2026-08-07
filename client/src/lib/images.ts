@@ -31,9 +31,10 @@ export const IMAGES = {
     "/gallery/gallery_08.jpg",
   ],
 
-  // Record cards - R1 2026 場地最速 (大CC數→小CC數)
+  // Record cards - 2026 場地最速 (大CC數→小CC數)
   records: [
     "/records/record_sp1000.jpg",
+    "/records/record_sp600.jpg",
     "/records/record_400stock.jpg",
     "/records/record_400mod.jpg",
     "/records/record_300stock.jpg",
