@@ -2,15 +2,15 @@ import { useState, useEffect, useMemo } from "react";
 import { Link } from "wouter";
 import { motion } from "framer-motion";
 import { ChevronRight } from "lucide-react";
-import { getR2Teams } from "@/lib/participants";
+import { getCurrentTeams } from "@/lib/participants";
 import { loadTeamLogos } from "@/lib/teamLogos";
 import TeamLogo from "@/components/TeamLogo";
 
 export default function TeamsSection() {
-  // R2 參賽車隊與車手（來自 participants.ts）
-  const teams = useMemo(() => getR2Teams(), []);
+  // R3 參賽車隊與車手（來自 participants.ts）
+  const teams = useMemo(() => getCurrentTeams(), []);
 
-  // 車隊 Logo 沿用報名表單／R1 資料（以正規化隊名比對）
+  // 車隊 Logo 優先使用第三站報名表，舊資料作備援
   const [teamLogos, setTeamLogos] = useState<Record<string, string>>({});
 
   useEffect(() => {
@@ -21,10 +21,11 @@ export default function TeamsSection() {
     nameA.localeCompare(nameB, "zh-TW")
   );
 
-  const totalRiders = Object.values(teams).reduce(
-    (sum, riders) => sum + riders.length,
-    0
-  );
+  const totalRiders = new Set(
+    Object.values(teams)
+      .flat()
+      .map(rider => rider.name)
+  ).size;
 
   return (
     <section id="teams" className="py-12 md:py-20 bg-black">
@@ -44,18 +45,28 @@ export default function TeamsSection() {
             </span>
           </div>
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-3">
-            R2 參賽車隊
+            R3 參賽車隊
           </h2>
           <p className="text-white/60 text-base max-w-2xl mb-3">
-            第二站（R2）共有 {teamList.length} 支註冊車隊參賽，{totalRiders} 位車手齊聚一堂，為榮耀而戰。
+            第三站（R3）共有 {teamList.length} 支註冊車隊參賽，{totalRiders}{" "}
+            位車手齊聚一堂，為榮耀而戰。
           </p>
-          <Link
-            href="/round1"
-            className="inline-flex items-center gap-1 text-sm text-red-400 hover:text-red-300 transition-colors"
-          >
-            查看第一站（R1）選手回顧
-            <ChevronRight size={16} />
-          </Link>
+          <div className="flex flex-wrap gap-x-6 gap-y-2">
+            <Link
+              href="/round2"
+              className="inline-flex items-center gap-1 text-sm text-red-400 hover:text-red-300 transition-colors"
+            >
+              查看第二站（R2）選手回顧
+              <ChevronRight size={16} />
+            </Link>
+            <Link
+              href="/round1"
+              className="inline-flex items-center gap-1 text-sm text-red-400 hover:text-red-300 transition-colors"
+            >
+              查看第一站（R1）選手回顧
+              <ChevronRight size={16} />
+            </Link>
+          </div>
         </motion.div>
 
         {/* Teams List - Compact with small round logos */}

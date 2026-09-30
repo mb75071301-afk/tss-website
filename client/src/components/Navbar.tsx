@@ -64,6 +64,7 @@ export default function Navbar() {
       "賽道資訊": "nav.track",
       "車隊介紹": "nav.teams",
       "第一站回顧": "nav.round1",
+      "第二站回顧": "nav.round2",
       "贊助夥伴": "nav.sponsors",
       "聯絡我們": "nav.contact",
     };
@@ -104,7 +105,7 @@ export default function Navbar() {
         </a>
 
         {/* Desktop Nav */}
-        <div className="hidden lg:flex items-center gap-1">
+        <div className="hidden xl:flex items-center gap-1">
           {NAV_ITEMS.map((item) => {
             const isExternal = item.href.startsWith("/");
             return (
@@ -117,7 +118,7 @@ export default function Navbar() {
                     handleNavClick(item.href);
                   }
                 }}
-                className="relative px-3 py-2 text-sm font-medium text-white/70 hover:text-white transition-colors group"
+                className="relative whitespace-nowrap px-2 py-2 text-xs font-medium text-white/70 hover:text-white transition-colors group"
               >
                 {getNavLabel(item.label)}
                 <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-red-500 group-hover:w-full transition-all duration-300" />
@@ -129,7 +130,7 @@ export default function Navbar() {
         {/* Language Selector & Mobile Toggle */}
         <div className="flex items-center gap-2">
           {/* Desktop Language Selector */}
-          <div className="relative hidden lg:block">
+          <div className="relative hidden xl:block">
             <button
               onClick={() => setLangOpen(!langOpen)}
               className="flex items-center gap-2 px-3 py-2 text-sm font-medium text-white/70 hover:text-white transition-colors"
@@ -175,7 +176,7 @@ export default function Navbar() {
           {/* Mobile Language & Menu Toggle */}
           <button
             onClick={() => setLangOpen(!langOpen)}
-            className="lg:hidden text-white p-2"
+            className="xl:hidden text-white p-2"
             aria-label="Change language"
           >
             <Globe size={20} />
@@ -183,7 +184,7 @@ export default function Navbar() {
 
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
-            className="lg:hidden text-white p-2"
+            className="xl:hidden text-white p-2"
             aria-label="Toggle menu"
           >
             {mobileOpen ? <X size={24} /> : <Menu size={24} />}
@@ -197,7 +198,7 @@ export default function Navbar() {
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }}
-              className="absolute top-16 right-16 lg:hidden bg-black/95 backdrop-blur-lg border border-white/10 rounded-lg overflow-hidden"
+              className="absolute top-16 right-16 xl:hidden bg-black/95 backdrop-blur-lg border border-white/10 rounded-lg overflow-hidden"
             >
               <button
                 onClick={() => handleLanguageChange('zh')}
@@ -232,7 +233,7 @@ export default function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -400 }}
             transition={{ duration: 0.3 }}
-            className="fixed top-16 left-0 right-0 z-40 lg:hidden bg-black/98 backdrop-blur-xl border-b border-white/10 shadow-2xl"
+            className="fixed top-16 left-0 right-0 z-40 xl:hidden bg-black/98 backdrop-blur-xl border-b border-white/10 shadow-2xl"
           >
             <div className="container py-4 flex flex-col gap-0">
               {NAV_ITEMS.map((item) => {
@@ -266,7 +267,7 @@ export default function Navbar() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={() => setMobileOpen(false)}
-            className="fixed inset-0 z-30 lg:hidden bg-black/40 backdrop-blur-sm"
+            className="fixed inset-0 z-30 xl:hidden bg-black/40 backdrop-blur-sm"
           />
         )}
       </AnimatePresence>

@@ -54,6 +54,7 @@ export const NAV_ITEMS = [
   { label: "賽道資訊", href: "#track" },
   { label: "車隊介紹", href: "/teams" },
   { label: "第一站回顧", href: "/round1" },
+  { label: "第二站回顧", href: "/round2" },
   { label: "贊助夥伴", href: "#sponsors" },
   { label: "聯絡我們", href: "#contact" },
 ];

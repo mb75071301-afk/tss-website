@@ -9,6 +9,7 @@ import Home from "./pages/Home";
 import Teams from "./pages/Teams";
 import ClassDetail from "./pages/ClassDetail";
 import Round1 from "./pages/Round1";
+import Round2 from "./pages/Round2";
 import SeoHead from "./components/SeoHead";
 
 function Router() {
@@ -20,6 +21,7 @@ function Router() {
       <Route path={"/teams"} component={Teams} />
       <Route path={"/class/:classId"} component={ClassDetail} />
       <Route path={"/round1"} component={Round1} />
+      <Route path={"/round2"} component={Round2} />
 
       {/* Language-prefixed routes */}
       <Route path={"/:lang/"} component={Home} />
@@ -27,6 +29,7 @@ function Router() {
       <Route path={"/:lang/teams"} component={Teams} />
       <Route path={"/:lang/class/:classId"} component={ClassDetail} />
       <Route path={"/:lang/round1"} component={Round1} />
+      <Route path={"/:lang/round2"} component={Round2} />
 
       <Route path={"/404"} component={NotFound} />
       {/* Final fallback route */}

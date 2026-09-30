@@ -1,18 +1,20 @@
+import round3Logos from "@/data/r3_team_logos.json";
+
 // 車隊 Logo 載入與名稱對照
 //
-// Logo 來源有兩份：
+// 第三站指定 Logo 優先，以下兩份舊資料作備援：
 // - /tss_data.json：prebuild 從報名表單重新產生，logo 可能是同源檔案
 //   （/team-logos/…）或 drive.google.com 縮圖備援
 // - /r1_data.json：R1 凍結快照，logo 為 CDN 圖檔，不受 prebuild 影響
 //
-// R2 名單（participants.ts）的隊名與表單填寫的隊名常有大小寫／空格差異，
+// 目前名單（participants.ts）的隊名與表單填寫的隊名常有大小寫／空格差異，
 // 因此以正規化後的名稱比對，並輔以人工別名表。
 
 interface TeamsJson {
   teams?: Record<string, { logo?: string }>;
 }
 
-// R2 隊名 → 表單／R1 資料中的隊名（正規化仍對不上的才需要列在這裡）
+// 目前隊名 → 表單／R1 資料中的隊名（正規化仍對不上的才需要列在這裡）
 const TEAM_NAME_ALIASES: Record<string, string> = {
   RSV霜暮賽車隊: "RSV 霜暮 Racing Team",
   "YX Racing Team": "YX Racing",
@@ -61,6 +63,11 @@ export async function loadTeamLogos(
 
   const logos: Record<string, string> = {};
   for (const name of teamNames) {
+    const round3Logo = (round3Logos as Record<string, string>)[name];
+    if (round3Logo) {
+      logos[name] = round3Logo;
+      continue;
+    }
     const keys = [name, TEAM_NAME_ALIASES[name]]
       .filter((n): n is string => Boolean(n))
       .map(normalizeTeamName);

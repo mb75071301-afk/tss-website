@@ -61,6 +61,18 @@
     <priority>0.6</priority>
   </url>
 
+  <!-- 第二站選手回顧 (R2) -->
+  <url>
+    <loc>https://taiwansuperbikeseries.com/round2</loc>
+    <xhtml:link rel="alternate" hreflang="zh"        href="https://taiwansuperbikeseries.com/round2"/>
+    <xhtml:link rel="alternate" hreflang="zh-TW"     href="https://taiwansuperbikeseries.com/round2"/>
+    <xhtml:link rel="alternate" hreflang="en"        href="https://taiwansuperbikeseries.com/en/round2"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://taiwansuperbikeseries.com/round2"/>
+    <lastmod>2026-09-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
   <!-- 組別詳情頁面 -->
   <url>
     <loc>https://taiwansuperbikeseries.com/class/ST150</loc>

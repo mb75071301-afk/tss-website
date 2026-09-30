@@ -5,7 +5,7 @@ import { ArrowLeft, ChevronRight, User } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { motion } from "framer-motion";
-import { getR2Teams, type TeamRider } from "@/lib/participants";
+import { getCurrentTeams, type TeamRider } from "@/lib/participants";
 import { loadTeamLogos } from "@/lib/teamLogos";
 import TeamLogo from "@/components/TeamLogo";
 
@@ -31,17 +31,17 @@ export default function Teams() {
       document.title = '車隊介紹 - TSS 台灣超級摩托車聯賽';
       const metaDescription = document.querySelector('meta[name="description"]');
       if (metaDescription) {
-        metaDescription.setAttribute('content', '認識參加 2026 年 TSS 台灣超級摩托車聯賽第二站（R2）的所有車隊與車手，瀏覽完整的車隊名單和車手資訊。');
+        metaDescription.setAttribute('content', '認識參加 2026 年 TSS 台灣超級摩托車聯賽第三站（R3）的所有車隊與車手，瀏覽完整的車隊名單和車手資訊。');
       }
     }
   }, [teamName]);
 
   const [searchTerm, setSearchTerm] = useState<string>("");
 
-  // R2 參賽車隊與車手（來自 participants.ts）
-  const allTeams: Record<string, TeamRider[]> = useMemo(() => getR2Teams(), []);
+  // R3 參賽車隊與車手（來自 participants.ts）
+  const allTeams: Record<string, TeamRider[]> = useMemo(() => getCurrentTeams(), []);
 
-  // 車隊 Logo 沿用報名表單／R1 資料（以正規化隊名比對）
+  // 車隊 Logo 優先使用第三站報名表，舊資料作備援
   const [teamLogos, setTeamLogos] = useState<Record<string, string>>({});
 
   useEffect(() => {
@@ -90,7 +90,7 @@ export default function Teams() {
                   {teamName}
                 </h1>
                 <p className="text-lg text-white/70">
-                  {riders.length} 位車手參賽（R2）
+                  {riders.length} 位車手參賽（R3）
                 </p>
               </div>
             </div>
@@ -98,7 +98,7 @@ export default function Teams() {
 
           {/* Diagonal cut bottom */}
           <div
-            className="absolute bottom-0 left-0 w-full h-16 bg-background"
+            className="pointer-events-none absolute bottom-0 left-0 w-full h-16 bg-background"
             style={{
               clipPath: "polygon(0 8%, 100% 0, 100% 100%, 0 100%)",
               marginTop: "-2px",
@@ -106,7 +106,7 @@ export default function Teams() {
           />
         </section>
 
-        {/* Riders Section - R2 基本資料（車號、姓名、車輛） */}
+        {/* Riders Section - R3 基本資料（車號、姓名、車輛） */}
         <section className="py-16">
           <div className="container">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -153,24 +153,13 @@ export default function Teams() {
                         <span className="text-white/70">組別：</span>{" "}
                         {rider.classes.join("、")}
                       </div>
-                      {rider.brand && (
-                        <div>
-                          <span className="text-white/70">品牌：</span>{" "}
-                          {rider.brand}
+                      {rider.entries.map(entry => (
+                        <div key={entry.classId} className="border-t border-white/10 pt-2">
+                          <span className="text-red-400">{entry.classId}</span>
+                          <span className="ml-2">{[entry.brand, entry.model].filter(Boolean).join(" ")}</span>
+                          {entry.number && <span className="ml-2">#{entry.number}</span>}
                         </div>
-                      )}
-                      {rider.model && (
-                        <div>
-                          <span className="text-white/70">型號：</span>{" "}
-                          {rider.model}
-                        </div>
-                      )}
-                      {rider.number && (
-                        <div>
-                          <span className="text-white/70">車號：</span>{" "}
-                          {rider.number}
-                        </div>
-                      )}
+                      ))}
                     </div>
                   </div>
                 </motion.div>
@@ -204,21 +193,30 @@ export default function Teams() {
               車隊介紹
             </h1>
             <p className="text-lg text-white/70 mb-4">
-              認識參加 2026 年 TSS 台灣超級摩托車聯賽第二站（R2）的所有車隊與車手
+              認識參加 2026 年 TSS 台灣超級摩托車聯賽第三站（R3）的所有車隊與車手
             </p>
-            <Link
+            <div className="flex flex-wrap gap-x-6 gap-y-2">
+<Link
+              href="/round2"
+              className="inline-flex items-center gap-1 text-sm text-red-400 hover:text-red-300 transition-colors"
+            >
+              查看第二站（R2）選手回顧
+              <ChevronRight size={16} />
+            </Link>
+<Link
               href="/round1"
               className="inline-flex items-center gap-1 text-sm text-red-400 hover:text-red-300 transition-colors"
             >
               查看第一站（R1）選手回顧
               <ChevronRight size={16} />
             </Link>
+</div>
           </div>
         </div>
 
         {/* Diagonal cut bottom */}
         <div
-          className="absolute bottom-0 left-0 w-full h-16 bg-background"
+          className="pointer-events-none absolute bottom-0 left-0 w-full h-16 bg-background"
           style={{
             clipPath: "polygon(0 8%, 100% 0, 100% 100%, 0 100%)",
             marginTop: "-2px",

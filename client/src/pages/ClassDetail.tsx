@@ -111,10 +111,10 @@ export default function ClassDetail() {
             {/* Participants List */}
             <div className="p-8 bg-white/[0.02] border border-white/[0.06] mb-8">
               <h2 className="font-heading text-2xl font-bold text-white mb-6">
-                {language === 'zh' ? '參賽名單' : 'Participants'}
+                {language === 'zh' ? '第三站（R3）參賽名單' : 'Round 3 Participants'}
               </h2>
               
-              {/* Get riders for this class — R2 roster from participants.ts */}
+              {/* Get riders for this class — R3 roster from participants.ts */}
               {(() => {
                 const participants = classParticipants[classId as string] || [];
                 const teamMap: Record<string, ClassParticipant[]> = {};

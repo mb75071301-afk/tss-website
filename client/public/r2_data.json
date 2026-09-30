@@ -1,0 +1,1381 @@
+{
+  "round": 2,
+  "year": 2026,
+  "teams": {
+    "極樂HRT with Kushitani TW": {
+      "logo": "",
+      "riders": [
+        {
+          "name": "彭志豪",
+          "intro": "",
+          "photo": "https://lh3.googleusercontent.com/d/1eefLWusq7Kd4H5VhsZQJ_Q2ldZi7K4xT=s200",
+          "class": "Super Stock 150",
+          "classId": "ST150",
+          "bike": "YAMAHA",
+          "model": "R15",
+          "number": "10"
+        },
+        {
+          "name": "梁政勛",
+          "intro": "",
+          "photo": "https://lh3.googleusercontent.com/d/1hpTkx87wOdRU9Vp7B0wYgE5E_RaN8tL0=s200",
+          "class": "Super Stock 150",
+          "classId": "ST150",
+          "bike": "YAMAHA",
+          "model": "R15",
+          "number": "56"
+        },
+        {
+          "name": "沈聖鈞",
+          "intro": "",
+          "photo": "https://lh3.googleusercontent.com/d/1sLA5ns0dfWyEQQhQ0RkQB06ReYsc6SRr=s200",
+          "class": "Super Stock 300",
+          "classId": "ST300",
+          "bike": "YAMAHA",
+          "model": "R3",
+          "number": "4"
+        },
+        {
+          "name": "柯羅比",
+          "intro": "",
+          "photo": "https://lh3.googleusercontent.com/d/14DnkbGmLcJp6rJ8GBpHRcgsvEuo5qKX5=s200",
+          "class": "Super Sport 300",
+          "classId": "SP300",
+          "bike": "YAMAHA",
+          "model": "R3",
+          "number": "51"
+        },
+        {
+          "name": "王口一",
+          "intro": "",
+          "photo": "https://lh3.googleusercontent.com/d/1zFH8H121R0PL3EpCDvqmBDE2bjBSw1NP=s200",
+          "class": "Super Sport 300",
+          "classId": "SP300",
+          "bike": "YAMAHA",
+          "model": "R3",
+          "number": "44"
+        },
+        {
+          "name": "李軒亦",
+          "intro": "",
+          "photo": "https://lh3.googleusercontent.com/d/1FvsgvPXEUvI0tO1ybeivaDUPNsHTxYq4=s200",
+          "class": "Super Sport 300",
+          "classId": "SP300",
+          "bike": "YAMAHA",
+          "model": "R3",
+          "number": "75"
+        },
+        {
+          "name": "鄭力升",
+          "intro": "",
+          "photo": "https://lh3.googleusercontent.com/d/1zwo33C86zGJwLAFHhdB6SDul2k_6Nx-B=s200",
+          "class": "Super Sport 300",
+          "classId": "SP300",
+          "bike": "YAMAHA",
+          "model": "R3",
+          "number": "12"
+        }
+      ]
+    },
+    "波奇": {
+      "logo": "/round2/team-logos/2c9331b535a37990.jpg",
+      "riders": [
+        {
+          "name": "李曜全",
+          "intro": "",
+          "photo": "https://lh3.googleusercontent.com/d/1mN_L9O7vxqeFsr0sStkYTQms30CXJdui=s200",
+          "class": "Super Stock 150",
+          "classId": "ST150",
+          "bike": "SUZUKI",
+          "model": "GSX-R150",
+          "number": "625"
+        }
+      ]
+    },
+    "小鷹精前三名是大鷹精": {
+      "logo": "/round2/team-logos/1206e610908daf75.jpg",
+      "riders": [
+        {
+          "name": "葉圜燁",
+          "intro": "",
+          "photo": "https://lh3.googleusercontent.com/d/1NhNGO2cyrLfoutUI_eYI7LWmjaj6WYAw=s200",
+          "class": "Super Stock 150",
+          "classId": "ST150",
+          "bike": "YAMAHA",
+          "model": "R15",
+          "number": "429"
+        },
+        {
+          "name": "游政浩",
+          "intro": "",
+          "photo": "https://lh3.googleusercontent.com/d/1nelYtbExLPxZiyDjbQzC1oWj4Qx7MVwl=s200",
+          "class": "Super Sport 300",
+          "classId": "SP300",
+          "bike": "YAMAHA",
+          "model": "R3",
+          "number": "26"
+        },
+        {
+          "name": "史青禾",
+          "intro": "",
+          "photo": "https://lh3.googleusercontent.com/d/15dL7-lKT9XlAAhqJaudImF1_CHwj3iwC=s200",
+          "class": "Super Sport 300",
+          "classId": "SP300",
+          "bike": "YAMAHA",
+          "model": "R3",
+          "number": "17"
+        }
+      ]
+    },
+    "RPM x GOD LIGHT racing team": {
+      "logo": "/round2/team-logos/149157a00802c9d5.jpg",
+      "riders": [
+        {
+          "name": "陳政勛",
+          "intro": "",
+          "photo": "https://lh3.googleusercontent.com/d/1tN-2y8w8OBB35bBMgpQPo8J6QfqbneXw=s200",
+          "class": "Super Stock 150",
+          "classId": "ST150",
+          "bike": "SUZUKI",
+          "model": "GSX-R150",
+          "number": "376"
+        },
+        {
+          "name": "廖健宸",
+          "intro": "",
+          "photo": "https://lh3.googleusercontent.com/d/1rBR73hk2SpDcSaRyLI_a6nCcmdRgAsd5=s200",
+          "class": "Super Stock 150",
+          "classId": "ST150",
+          "bike": "YAMAHA",
+          "model": "R15",
+          "number": "84"
+        },
+        {
+          "name": "吳京育",
+          "intro": "",
+          "photo": "https://lh3.googleusercontent.com/d/15yvGZElhvDYJzQrFxt_zjXZiCQRscKYP=s200",
+          "class": "Super Stock 150",
+          "classId": "ST150",
+          "bike": "YAMAHA",
+          "model": "R15",
+          "number": "93"
+        },
+        {
+          "name": "汪蔚廷",
+          "intro": "",
+          "photo": "https://lh3.googleusercontent.com/d/1_92xUFedSSZGZwS4BWn9AQsx99ykY1sj=s200",
+          "class": "Super Sport 150",
+          "classId": "SP150",
+          "bike": "YAMAHA",
+          "model": "R15",
+          "number": "99"
+        },
+        {
+          "name": "何承烜",
+          "intro": "",
+          "photo": "https://lh3.googleusercontent.com/d/1s77FeyERV3mPcDeQzEvFGUPsAOzx36PP=s200",
+          "class": "Super Sport 150",
+          "classId": "SP150",
+          "bike": "SUZUKI",
+          "model": "GSX150",
+          "number": "97"
+        }
+      ]
+    },
+    "UOS Racing Team": {
+      "logo": "",
+      "riders": [
+        {
+          "name": "楊馥輿",
+          "intro": "",
+          "photo": "https://lh3.googleusercontent.com/d/1CPKstthy7qZpnzme7mAIvvkeJ9_gU73n=s200",
+          "class": "Super Stock 150",
+          "classId": "ST150",
+          "bike": "YAMAHA",
+          "model": "R15",
+          "number": "111"
+        }
+      ]
+    },
+    "忠孝車業": {
+      "logo": "/round2/team-logos/cd8b8b29f0e1a360.jpg",
+      "riders": [
+        {
+          "name": "吳義傑",
+          "intro": "",
+          "photo": "https://lh3.googleusercontent.com/d/1nyQMY-OxNTvO0KS3pC0ShJCi-QSkIw6R=s200",
+          "class": "Super Stock 150",
+          "classId": "ST150",
+          "bike": "YAMAHA",
+          "model": "R15",
+          "number": "39"
+        },
+        {
+          "name": "林廷儒",
+          "intro": "",
+          "photo": "https://lh3.googleusercontent.com/d/1Z4CASeory51EHjXvYxR4fGudoIFVwEeq=s200",
+          "class": "Super Stock 300",
+          "classId": "ST300",
+          "bike": "YAMAHA",
+          "model": "R3",
+          "number": "999"
+        },
+        {
+          "name": "劉耘青",
+          "intro": "",
+          "photo": "https://lh3.googleusercontent.com/d/1VLvssvReUrjjF2grhXlaptrqpPbXBsoM=s200",
+          "class": "Super Stock 300",
+          "classId": "ST300",
+          "bike": "KOVE",
+          "model": "350RR",
+          "number": "666"
+        },
+        {
+          "name": "鄭勝元",
+          "intro": "",
+          "photo": "https://lh3.googleusercontent.com/d/1xTkeg8m5kLizQ9a4dmMfNC1YjjkZa_AA=s200",
+          "class": "Super Stock 400",
+          "classId": "ST400",
+          "bike": "KAWASAKI",
+          "model": "NINJA400",
+          "number": "411"
+        },
+        {
+          "name": "趙哲緒",
+          "intro": "",
+          "photo": "https://lh3.googleusercontent.com/d/1tKnL1Gvhp7TWAIiIX23Kqwj4v_VNaI6W=s200",
+          "class": "Super Stock 400",
+          "classId": "ST400",
+          "bike": "KAWASAKI",
+          "model": "NINJA400",
+          "number": "77"
+        },
+        {
+          "name": "唐李輔榮",
+          "intro": "",
+          "photo": "https://lh3.googleusercontent.com/d/18drLZ54uzqlpe5hHpLonwdOLiJXqtEbs=s200",
+          "class": "Super Stock 400",
+          "classId": "ST400",
+          "bike": "KAWASAKI",
+          "model": "NINJA400",
+          "number": "121"
+        },
+        {
+          "name": "陳維克托利亞",
+          "intro": "",
+          "photo": "https://lh3.googleusercontent.com/d/16qmJq8DkHsQ1C1SFf2LwE8YY5zXfSdbl=s200",
+          "class": "Super Pole 1000(Time Attack Challenge)",
+          "classId": "SP1000",
+          "bike": "KAWASAKI",
+          "model": "ZX10R",
+          "number": "2"
+        }
+      ]
+    },
+    "萬威焦點車隊": {
+      "logo": "/round2/team-logos/e9d18b837f78997f.jpg",
+      "riders": [
+        {
+          "name": "施宗德",
+          "intro": "",
+          "photo": "https://lh3.googleusercontent.com/d/1_5qvbAG8EtI5ctzXmS6NARM5_GeLUAHs=s200",
+          "class": "Super Stock 150",
+          "classId": "ST150",
+          "bike": "YAMAHA",
+          "model": "R15",
+          "number": "91"
+        },
+        {
+          "name": "邱聖傑",
+          "intro": "",
+          "photo": "https://lh3.googleusercontent.com/d/1hv1EcGaXDhFauUdcJVGSJmBJl458D8_4=s200",
+          "class": "Super Stock 150",
+          "classId": "ST150",
+          "bike": "YAMAHA",
+          "model": "R15",
+          "number": "13"
+        },
+        {
+          "name": "邱奕傑",
+          "intro": "",
+          "photo": "https://lh3.googleusercontent.com/d/1fT8fjnQ0m6sQEKt7YgdXkLCdfx2v5SUo=s200",
+          "class": "Super Stock 300",
+          "classId": "ST300",
+          "bike": "YAMAHA",
+          "model": "R3",
+          "number": "18"
+        },
+        {
+          "name": "李俊輝",
+          "intro": "",
+          "photo": "https://lh3.googleusercontent.com/d/1m8sciZoL_30i4zASjF4-KJK06rQAT2cu=s200",
+          "class": "Super Sport 300",
+          "classId": "SP300",
+          "bike": "YAMAHA",
+          "model": "R3",
+          "number": "82"
+        },
+        {
+          "name": "張益維",
+          "intro": "",
+          "photo": "https://lh3.googleusercontent.com/d/1AsYY4hq3kxdjlnPnkBcz6EiOvDfEkB3Q=s200",
+          "class": "Super Stock 400",
+          "classId": "ST400",
+          "bike": "KAWASAKI",
+          "model": "NINJA400",
+          "number": "41"
+        },
+        {
+          "name": "婁淳祐",
+          "intro": "",
+          "photo": "https://lh3.googleusercontent.com/d/1A4XJe1s56UfauD7oJ5ldzWrVfRQcR4vN=s200",
+          "class": "Super Stock 400",
+          "classId": "ST400",
+          "bike": "KAWASAKI",
+          "model": "NINJA400",
+          "number": "56"
+        },
+        {
+          "name": "葛奕辰",
+          "intro": "",
+          "photo": "https://lh3.googleusercontent.com/d/1zfqqagxDTGNeoL_mexfabXPbREroo7Eg=s200",
+          "class": "Super Pole 600(Time Attack Challenge)",
+          "classId": "SP600",
+          "bike": "YAMAHA",
+          "model": "R6",
+          "number": "11"
+        },
+        {
+          "name": "沈士弘",
+          "intro": "",
+          "photo": "https://lh3.googleusercontent.com/d/1TtXi8WxTsfXgV-a8bsDsPlL2WAtwwJRr=s200",
+          "class": "Super Pole 1000(Time Attack Challenge)",
+          "classId": "SP1000",
+          "bike": "YAMAHA",
+          "model": "R1",
+          "number": "78"
+        }
+      ]
+    },
+    "AS RACING TEAM": {
+      "logo": "/round2/team-logos/201296b35dddcfa8.jpg",
+      "riders": [
+        {
+          "name": "李為亨",
+          "intro": "",
+          "photo": "https://lh3.googleusercontent.com/d/1091VR4BLE7LsaJPE_fvpFq-9K_ZWvZG4=s200",
+          "class": "Super Stock 150",
+          "classId": "ST150",
+          "bike": "YAMAHA",
+          "model": "R15",
+          "number": "22"
+        },
+        {
+          "name": "呂昶陞",
+          "intro": "",
+          "photo": "https://lh3.googleusercontent.com/d/1BCYjJyHOD8RG6BBLILSjJqeKzx1X1XCE=s200",
+          "class": "Super Stock 300",
+          "classId": "ST300",
+          "bike": "KTM",
+          "model": "RC390",
+          "number": "66"
+        },
+        {
+          "name": "顏昭義",
+          "intro": "",
+          "photo": "https://lh3.googleusercontent.com/d/1askQCsKc1ms8go9AKEuW3vALydGJovXJ=s200",
+          "class": "Super Stock 300",
+          "classId": "ST300",
+          "bike": "KTM",
+          "model": "RC390",
+          "number": "7"
+        },
+        {
+          "name": "鐘蜂棋",
+          "intro": "",
+          "photo": "https://lh3.googleusercontent.com/d/1og7ozhY23rX6ZM73X_tZHQaBw2jwm3l2=s200",
+          "class": "Super Stock 300",
+          "classId": "ST300",
+          "bike": "KTM",
+          "model": "RC390",
+          "number": "78"
+        }
+      ]
+    },
+    "榮全榮新車隊": {
+      "logo": "/round2/team-logos/dee612776c3aaeca.jpg",
+      "riders": [
+        {
+          "name": "朱峻霆",
+          "intro": "",
+          "photo": "https://lh3.googleusercontent.com/d/1_LLyg1gsT3x2_Bfc_7aBFdsplwEX4Hb_=s200",
+          "class": "Super Stock 150",
+          "classId": "ST150",
+          "bike": "YAMAHA",
+          "model": "R15",
+          "number": "9"
+        },
+        {
+          "name": "陳乃源",
+          "intro": "",
+          "photo": "https://lh3.googleusercontent.com/d/1y2uMnhoeO3vEgEMLVSK1FVuubM0u-LJs=s200",
+          "class": "Super Stock 250",
+          "classId": "ST250",
+          "bike": "HONDA",
+          "model": "CBR250RR",
+          "number": "14"
+        },
+        {
+          "name": "朱峻霆",
+          "intro": "",
+          "photo": "https://lh3.googleusercontent.com/d/1_LLyg1gsT3x2_Bfc_7aBFdsplwEX4Hb_=s200",
+          "class": "Super Stock 250",
+          "classId": "ST250",
+          "bike": "HONDA",
+          "model": "CBR250RR",
+          "number": "9"
+        },
+        {
+          "name": "朱清和",
+          "intro": "",
+          "photo": "https://lh3.googleusercontent.com/d/1dlhauKDXEh3AFWcy37xC8dgqMGD2BxeU=s200",
+          "class": "Super Stock 250",
+          "classId": "ST250",
+          "bike": "HONDA",
+          "model": "CBR250RR",
+          "number": "8"
+        },
+        {
+          "name": "曾詠聖",
+          "intro": "",
+          "photo": "https://lh3.googleusercontent.com/d/1icduGGlfMBNo302E8zW1ehekb1O_fTGJ=s200",
+          "class": "Super Stock 250",
+          "classId": "ST250",
+          "bike": "HONDA",
+          "model": "CBR250RR",
+          "number": "27"
+        },
+        {
+          "name": "朱清全",
+          "intro": "",
+          "photo": "https://lh3.googleusercontent.com/d/1SRSIM8J5NYmkJjH0gDIv8JZbG5kr13qK=s200",
+          "class": "Super Sport 250",
+          "classId": "SP250",
+          "bike": "HONDA",
+          "model": "CBR250RR",
+          "number": "5"
+        },
+        {
+          "name": "徐權逸",
+          "intro": "",
+          "photo": "https://lh3.googleusercontent.com/d/1pGjFUM11-rYtHlP2uvMqqLRlfg41CdP0=s200",
+          "class": "Super Sport 250",
+          "classId": "SP250",
+          "bike": "HONDA",
+          "model": "CBR250RR",
+          "number": "333"
+        },
+        {
+          "name": "王勝韋",
+          "intro": "",
+          "photo": "https://lh3.googleusercontent.com/d/1ys2Y_Jq853E93pBYR6Nfeqpx46DCsYNi=s200",
+          "class": "Super Sport 250",
+          "classId": "SP250",
+          "bike": "HONDA",
+          "model": "CBR250RR",
+          "number": "84"
+        },
+        {
+          "name": "陳禹昊",
+          "intro": "",
+          "photo": "https://lh3.googleusercontent.com/d/19g0jqb6lzqBLG70GCzi-cqOo2lbOJrRj=s200",
+          "class": "Super Stock 300",
+          "classId": "ST300",
+          "bike": "YAMAHA",
+          "model": "R3",
+          "number": "321"
+        }
+      ]
+    },
+    "艾拉桑-灝驥重車": {
+      "logo": "/round2/team-logos/1fed25c7603f9488.jpg",
+      "riders": [
+        {
+          "name": "林尚亨",
+          "intro": "",
+          "photo": "https://lh3.googleusercontent.com/d/1EVhc4g-_dv2WD8tG0U0uHciWMN2W0o10=s200",
+          "class": "Super Stock 150",
+          "classId": "ST150",
+          "bike": "SUZUKI",
+          "model": "GSX150",
+          "number": "41"
+        },
+        {
+          "name": "陳信尹",
+          "intro": "",
+          "photo": "https://lh3.googleusercontent.com/d/1GsZOyBwa9_4WN-CJJOc_z8gvuPrM0lTo=s200",
+          "class": "Super Stock 150",
+          "classId": "ST150",
+          "bike": "SUZUKI",
+          "model": "GSX-R150",
+          "number": "67"
+        }
+      ]
+    },
+    "JH Moto Racing Team": {
+      "logo": "/round2/team-logos/df08f599095a6799.jpg",
+      "riders": [
+        {
+          "name": "洪庭羽",
+          "intro": "",
+          "photo": "https://lh3.googleusercontent.com/d/1kqxZgBh1n_esLyaU3oojDDvocjcfqHz9=s200",
+          "class": "Super Stock 150",
+          "classId": "ST150",
+          "bike": "YAMAHA",
+          "model": "R15",
+          "number": "66"
+        },
+        {
+          "name": "邱品翰",
+          "intro": "",
+          "photo": "https://lh3.googleusercontent.com/d/1Od6QwNbkeyzj1Q2k5ktGsXN1T73rZzyO=s200",
+          "class": "Super Pole 600(Time Attack Challenge)",
+          "classId": "SP600",
+          "bike": "HONDA",
+          "model": "CBR600RR",
+          "number": "22"
+        },
+        {
+          "name": "李柏勳",
+          "intro": "",
+          "photo": "https://lh3.googleusercontent.com/d/1aqWFMFl-d5dJnJIYSEnznVneA76WPWLU=s200",
+          "class": "Super Pole 1000(Time Attack Challenge)",
+          "classId": "SP1000",
+          "bike": "HONDA",
+          "model": "CBR1000RR",
+          "number": "52"
+        }
+      ]
+    },
+    "泰陽SUN RACING": {
+      "logo": "/round2/team-logos/566beed36ba30dcf.jpg",
+      "riders": [
+        {
+          "name": "潘建宇",
+          "intro": "",
+          "photo": "https://lh3.googleusercontent.com/d/1pxkPsbwbozhEMgJA230k_pbxnfIlZKYj=s200",
+          "class": "Super Stock 150",
+          "classId": "ST150",
+          "bike": "YAMAHA",
+          "model": "R15",
+          "number": "99"
+        },
+        {
+          "name": "胡偉誠",
+          "intro": "",
+          "photo": "https://lh3.googleusercontent.com/d/1-EvqJJTX7dXLhNKGAY67Y9cbiVRcgxt4=s200",
+          "class": "Super Stock 150",
+          "classId": "ST150",
+          "bike": "YAMAHA",
+          "model": "R15",
+          "number": "11"
+        }
+      ]
+    },
+    "武田重車": {
+      "logo": "/round2/team-logos/1479f4fd165e2a7a.png",
+      "riders": [
+        {
+          "name": "潘柏愷",
+          "intro": "",
+          "photo": "https://lh3.googleusercontent.com/d/1oC8SPYmUdu_GkKab-ltieGyD9Kn0JWbC=s200",
+          "class": "Super Sport 150",
+          "classId": "SP150",
+          "bike": "SUZUKI",
+          "model": "GSX-R150",
+          "number": "27"
+        },
+        {
+          "name": "伏圃儀",
+          "intro": "",
+          "photo": "https://lh3.googleusercontent.com/d/1nGF9XyiZ-EtRuSezP6hKleOqewXVjyEb=s200",
+          "class": "Super Sport 150",
+          "classId": "SP150",
+          "bike": "SUZUKI",
+          "model": "GSX150",
+          "number": "551"
+        },
+        {
+          "name": "劉君眉",
+          "intro": "",
+          "photo": "https://lh3.googleusercontent.com/d/1NMnH85H1yf5Q52HpRu7k4S8SsOYWpUTB=s200",
+          "class": "Super Stock 300",
+          "classId": "ST300",
+          "bike": "YAMAHA",
+          "model": "R3",
+          "number": "33"
+        },
+        {
+          "name": "王俊評",
+          "intro": "",
+          "photo": "https://lh3.googleusercontent.com/d/1S4KWn-xB2AJBv21Cv7V9GqciiVsD18b2=s200",
+          "class": "Super Sport 300",
+          "classId": "SP300",
+          "bike": "YAMAHA",
+          "model": "R3",
+          "number": "28"
+        },
+        {
+          "name": "劉君眉",
+          "intro": "",
+          "photo": "https://lh3.googleusercontent.com/d/1gzlibAfWnO_0BKHRXc568hjrvol-exEb=s200",
+          "class": "Super Sport 300",
+          "classId": "SP300",
+          "bike": "YAMAHA",
+          "model": "R3",
+          "number": "33"
+        },
+        {
+          "name": "連俊福",
+          "intro": "",
+          "photo": "https://lh3.googleusercontent.com/d/1sveR1L3pgBeAJ71ocJp9nZ9QXE9w_NtC=s200",
+          "class": "Super Sport 400",
+          "classId": "SP400",
+          "bike": "KAWASAKI",
+          "model": "NINJA400",
+          "number": "34"
+        },
+        {
+          "name": "蘇洛宇",
+          "intro": "",
+          "photo": "https://lh3.googleusercontent.com/d/1lb4ZPATACExsrjaYJOa7nlMd8HyzmAWI=s200",
+          "class": "Super Pole 600(Time Attack Challenge)",
+          "classId": "SP600",
+          "bike": "HONDA",
+          "model": "CBR600RR",
+          "number": "111"
+        }
+      ]
+    },
+    "RSV霜暮賽車隊": {
+      "logo": "/round2/team-logos/28f060953b752f67.png",
+      "riders": [
+        {
+          "name": "張惟",
+          "intro": "",
+          "photo": "https://lh3.googleusercontent.com/d/11HmbZCF8qhV5Q5FfualUM3GHk1p5CZ4i=s200",
+          "class": "Super Sport 150",
+          "classId": "SP150",
+          "bike": "YAMAHA",
+          "model": "R15",
+          "number": "728"
+        },
+        {
+          "name": "陳仕銘",
+          "intro": "",
+          "photo": "https://lh3.googleusercontent.com/d/1iJH5qhW6wHm6ZRfSRJdA4Yxtj0tbuWEK=s200",
+          "class": "Super Stock 300",
+          "classId": "ST300",
+          "bike": "YAMAHA",
+          "model": "R3",
+          "number": "28"
+        },
+        {
+          "name": "張惟",
+          "intro": "",
+          "photo": "https://lh3.googleusercontent.com/d/1HlR_ixJJibHQUFVHa1gysjAEa7zQf38Z=s200",
+          "class": "Super Stock 300",
+          "classId": "ST300",
+          "bike": "YAMAHA",
+          "model": "R3",
+          "number": "728"
+        },
+        {
+          "name": "王聖華",
+          "intro": "",
+          "photo": "https://lh3.googleusercontent.com/d/1yTqgc6EAd9H_S9faosGhtru_QC_-jWoL=s200",
+          "class": "Super Stock 300",
+          "classId": "ST300",
+          "bike": "YAMAHA",
+          "model": "R3",
+          "number": "17"
+        },
+        {
+          "name": "周亭宇",
+          "intro": "",
+          "photo": "https://lh3.googleusercontent.com/d/1dhIlDlQ7c1uCdAey9wVEaXACkGLYg-Jp=s200",
+          "class": "Super Sport 300",
+          "classId": "SP300",
+          "bike": "YAMAHA",
+          "model": "R3",
+          "number": "652"
+        },
+        {
+          "name": "林威克",
+          "intro": "",
+          "photo": "https://lh3.googleusercontent.com/d/1r06noeV38Uae6U1spvIHqgdoKqV-Bfan=s200",
+          "class": "Super Sport 300",
+          "classId": "SP300",
+          "bike": "YAMAHA",
+          "model": "R3",
+          "number": "226"
+        },
+        {
+          "name": "游子峻",
+          "intro": "",
+          "photo": "https://lh3.googleusercontent.com/d/1Oy7j3HEH_goXhJ_RQhJp6DloHFZ_wCxx=s200",
+          "class": "Super Sport 300",
+          "classId": "SP300",
+          "bike": "YAMAHA",
+          "model": "R3",
+          "number": "222"
+        }
+      ]
+    },
+    "J.L.H RACING TEAM": {
+      "logo": "/round2/team-logos/3db4287db75c48ff.png",
+      "riders": [
+        {
+          "name": "蘇文楷",
+          "intro": "",
+          "photo": "https://lh3.googleusercontent.com/d/1Ato2imPQtAuRu82168y2hAmashrUGGLK=s200",
+          "class": "Super Sport 150",
+          "classId": "SP150",
+          "bike": "SUZUKI",
+          "model": "GSX150",
+          "number": "427"
+        },
+        {
+          "name": "黃冠霖",
+          "intro": "",
+          "photo": "https://lh3.googleusercontent.com/d/1xj-beDpVnkSAiyWaO_dYzOYfEvZyNAUr=s200",
+          "class": "Super Stock 400",
+          "classId": "ST400",
+          "bike": "KAWASAKI",
+          "model": "NINJA400",
+          "number": "310"
+        },
+        {
+          "name": "陳禹翔",
+          "intro": "",
+          "photo": "https://lh3.googleusercontent.com/d/1iejOYVG-6jGXquexoLNm_SQpudcaGAHY=s200",
+          "class": "Super Pole 600(Time Attack Challenge)",
+          "classId": "SP600",
+          "bike": "YAMAHA",
+          "model": "R6",
+          "number": "71"
+        }
+      ]
+    },
+    "IGOL Racing Team": {
+      "logo": "/round2/team-logos/c2072a9f2c7888ae.jpg",
+      "riders": [
+        {
+          "name": "蕭詠議",
+          "intro": "",
+          "photo": "https://lh3.googleusercontent.com/d/16XKdsJt7M2k9FtCC3gk-uxsKeDU4nDgM=s200",
+          "class": "Super Stock 250",
+          "classId": "ST250",
+          "bike": "HONDA",
+          "model": "CBR250RR",
+          "number": "37"
+        },
+        {
+          "name": "程懷文",
+          "intro": "",
+          "photo": "https://lh3.googleusercontent.com/d/15PBJUIjyP3DsUf6vZTzwLjQJDal0eVoV=s200",
+          "class": "Super Sport 250",
+          "classId": "SP250",
+          "bike": "HONDA",
+          "model": "CBR250RR",
+          "number": "56"
+        },
+        {
+          "name": "潘柏光",
+          "intro": "",
+          "photo": "https://lh3.googleusercontent.com/d/1Xqv7bvXQtDIBpSNdurG0LbrXOM48AlDP=s200",
+          "class": "Super Stock 300",
+          "classId": "ST300",
+          "bike": "YAMAHA",
+          "model": "R3",
+          "number": "29"
+        },
+        {
+          "name": "蕭詠議",
+          "intro": "",
+          "photo": "https://lh3.googleusercontent.com/d/1aX-TgXTYFud7TkrIjxupywtlVqyyqjVL=s200",
+          "class": "Super Stock 300",
+          "classId": "ST300",
+          "bike": "YAMAHA",
+          "model": "R3",
+          "number": "73"
+        }
+      ]
+    },
+    "榮全榮新車業": {
+      "logo": "/round2/team-logos/dee612776c3aaeca.jpg",
+      "riders": [
+        {
+          "name": "陳品嘉",
+          "intro": "",
+          "photo": "https://lh3.googleusercontent.com/d/1nnI32jWWG93JQkxd3l6MwwON8794-0Qz=s200",
+          "class": "Super Sport 250",
+          "classId": "SP250",
+          "bike": "HONDA",
+          "model": "CBR250RR",
+          "number": "99"
+        }
+      ]
+    },
+    "R.M Moto": {
+      "logo": "",
+      "riders": [
+        {
+          "name": "李柏毅",
+          "intro": "",
+          "photo": "https://lh3.googleusercontent.com/d/123iIFTpAHv-i80t26vFAVZYMZ31Hu6d3=s200",
+          "class": "Super Stock 300",
+          "classId": "ST300",
+          "bike": "YAMAHA",
+          "model": "R3",
+          "number": "37"
+        },
+        {
+          "name": "許逸辰",
+          "intro": "",
+          "photo": "https://lh3.googleusercontent.com/d/1RR5xxgjihaKHTICN-lAiPQ_ulty4Ocmc=s200",
+          "class": "Super Stock 400",
+          "classId": "ST400",
+          "bike": "KAWASAKI",
+          "model": "NINJA400",
+          "number": "217"
+        }
+      ]
+    },
+    "SRP音速車隊": {
+      "logo": "/round2/team-logos/a03a2c83b3d94e8e.jpg",
+      "riders": [
+        {
+          "name": "陳建倫",
+          "intro": "",
+          "photo": "https://lh3.googleusercontent.com/d/1TFFJq-iaiAyn0DsbOwFz6hPLbjGtaCjn=s200",
+          "class": "Super Stock 300",
+          "classId": "ST300",
+          "bike": "YAMAHA",
+          "model": "R3",
+          "number": "92"
+        },
+        {
+          "name": "張志良",
+          "intro": "",
+          "photo": "https://lh3.googleusercontent.com/d/1rYUT-nDHBkrlRPrbzsV6Av6r-2NWeBgb=s200",
+          "class": "Super Sport 300",
+          "classId": "SP300",
+          "bike": "YAMAHA",
+          "model": "R3",
+          "number": "22"
+        },
+        {
+          "name": "白晉佳",
+          "intro": "",
+          "photo": "https://lh3.googleusercontent.com/d/15DOLyv1iTrfd1irKMzmZRLHfszeyWiH_=s200",
+          "class": "Super Sport 300",
+          "classId": "SP300",
+          "bike": "YAMAHA",
+          "model": "R3",
+          "number": "21"
+        }
+      ]
+    },
+    "菇菇賽道日": {
+      "logo": "/round2/team-logos/14b8cf7110cfac3b.png",
+      "riders": [
+        {
+          "name": "陳冠傑",
+          "intro": "",
+          "photo": "https://lh3.googleusercontent.com/d/1hhMB7hcEna2S12wqlxPhTioX7GPNNsBd=s200",
+          "class": "Super Stock 300",
+          "classId": "ST300",
+          "bike": "YAMAHA",
+          "model": "R3",
+          "number": "1"
+        },
+        {
+          "name": "黃威",
+          "intro": "",
+          "photo": "https://lh3.googleusercontent.com/d/19QdVJZzB38XttyJEe9h0uHYeAn4MZIdJ=s200",
+          "class": "Super Pole 600(Time Attack Challenge)",
+          "classId": "SP600",
+          "bike": "YAMAHA",
+          "model": "R6",
+          "number": "89"
+        },
+        {
+          "name": "羅煜昶",
+          "intro": "",
+          "photo": "https://lh3.googleusercontent.com/d/1I42VoPveueCX81fv2ZFqOneOdTo3IzVu=s200",
+          "class": "Super Pole 1000(Time Attack Challenge)",
+          "classId": "SP1000",
+          "bike": "YAMAHA",
+          "model": "R1",
+          "number": "8"
+        },
+        {
+          "name": "陳冠傑",
+          "intro": "",
+          "photo": "https://lh3.googleusercontent.com/d/1joDRdvQ8lePmzpzzgVVJnswTjmttymCR=s200",
+          "class": "Super Pole 1000(Time Attack Challenge)",
+          "classId": "SP1000",
+          "bike": "BMW",
+          "model": "S1000RR",
+          "number": "1"
+        }
+      ]
+    },
+    "45Racing Team TW": {
+      "logo": "/round2/team-logos/dfdcedd7dc188d2e.jpg",
+      "riders": [
+        {
+          "name": "黃至孝",
+          "intro": "",
+          "photo": "https://lh3.googleusercontent.com/d/1U9VvJLMjpRXUcRgyLx8JMY-k1lppynXV=s200",
+          "class": "Super Stock 300",
+          "classId": "ST300",
+          "bike": "YAMAHA",
+          "model": "R3",
+          "number": "72"
+        },
+        {
+          "name": "胡閔瑞",
+          "intro": "",
+          "photo": "https://lh3.googleusercontent.com/d/1T7EoYhYTloDIUo7siAPx9SnqIRpUCwiR=s200",
+          "class": "Super Stock 300",
+          "classId": "ST300",
+          "bike": "YAMAHA",
+          "model": "R3",
+          "number": "15"
+        },
+        {
+          "name": "洪驊成",
+          "intro": "",
+          "photo": "https://lh3.googleusercontent.com/d/1jXBlM4VjqmAeqOr7IHAXwkYhoDLrFOw1=s200",
+          "class": "Super Sport 300",
+          "classId": "SP300",
+          "bike": "YAMAHA",
+          "model": "R3",
+          "number": "53"
+        },
+        {
+          "name": "傅志豪",
+          "intro": "",
+          "photo": "https://lh3.googleusercontent.com/d/11IdsSNIPb765IqQv_ZV61wso6zQQ2ia-=s200",
+          "class": "Super Sport 300",
+          "classId": "SP300",
+          "bike": "YAMAHA",
+          "model": "R3",
+          "number": "31"
+        },
+        {
+          "name": "李昕",
+          "intro": "",
+          "photo": "https://lh3.googleusercontent.com/d/1KvjgJG2XzZLzbuD7DAyhDL4Td-BRVapo=s200",
+          "class": "Super Stock 400",
+          "classId": "ST400",
+          "bike": "KAWASAKI",
+          "model": "NINJA400",
+          "number": "29"
+        },
+        {
+          "name": "王紹佾",
+          "intro": "",
+          "photo": "https://lh3.googleusercontent.com/d/1RwdsVTrIeqlQsD3zY9MFjUt1VmNIn-iN=s200",
+          "class": "Super Sport 400",
+          "classId": "SP400",
+          "bike": "KAWASAKI",
+          "model": "NINJA400",
+          "number": "35"
+        }
+      ]
+    },
+    "翹班車手NR Racing Team": {
+      "logo": "/round2/team-logos/96d3cfa8b232c64b.jpg",
+      "riders": [
+        {
+          "name": "陳祺昌",
+          "intro": "",
+          "photo": "https://lh3.googleusercontent.com/d/1qgX4UOe20l5xbLOefpsTESmE8W75jvp2=s200",
+          "class": "Super Stock 300",
+          "classId": "ST300",
+          "bike": "YAMAHA",
+          "model": "R3",
+          "number": "77"
+        }
+      ]
+    },
+    "久勝重機 x 98RA": {
+      "logo": "/round2/team-logos/e8d9c7d993e8d4fb.jpg",
+      "riders": [
+        {
+          "name": "侯明騏",
+          "intro": "",
+          "photo": "https://lh3.googleusercontent.com/d/1pGSxdNmYE5WhXJenjLJ3Z-IZKMxH0INP=s200",
+          "class": "Super Stock 300",
+          "classId": "ST300",
+          "bike": "YAMAHA",
+          "model": "R3",
+          "number": "23"
+        },
+        {
+          "name": "黃晧",
+          "intro": "",
+          "photo": "https://lh3.googleusercontent.com/d/1uYZDWPAUhYsdNfL0X9AGxwfINTcN9FTN=s200",
+          "class": "Super Sport 400",
+          "classId": "SP400",
+          "bike": "KAWASAKI",
+          "model": "NINJA400",
+          "number": "98"
+        },
+        {
+          "name": "林冠丞",
+          "intro": "",
+          "photo": "https://lh3.googleusercontent.com/d/11e9_VtYZWyETCNtkQ3GV7ognFJmakpRZ=s200",
+          "class": "Super Sport 400",
+          "classId": "SP400",
+          "bike": "KAWASAKI",
+          "model": "NINJA400",
+          "number": "53"
+        }
+      ]
+    },
+    "YX Racing Team": {
+      "logo": "/round2/team-logos/3e860ef357a53fbb.jpg",
+      "riders": [
+        {
+          "name": "張中瑋",
+          "intro": "",
+          "photo": "https://lh3.googleusercontent.com/d/16GDE5aBH8lxOpvPgAt7hNkHDLWi7-x9z=s200",
+          "class": "Super Stock 300",
+          "classId": "ST300",
+          "bike": "YAMAHA",
+          "model": "R3",
+          "number": "721"
+        },
+        {
+          "name": "許容銓",
+          "intro": "",
+          "photo": "https://lh3.googleusercontent.com/d/18bh2YAud9j17YXhrfu5sI5GmB2O1Hi4U=s200",
+          "class": "Super Stock 300",
+          "classId": "ST300",
+          "bike": "YAMAHA",
+          "model": "R3",
+          "number": "112"
+        },
+        {
+          "name": "黃品紘",
+          "intro": "",
+          "photo": "https://lh3.googleusercontent.com/d/1VRKPXppqTw8v3Xe7gs2Z0esNxpWuUF5I=s200",
+          "class": "Super Sport 400",
+          "classId": "SP400",
+          "bike": "KAWASAKI",
+          "model": "NINJA400",
+          "number": "31"
+        }
+      ]
+    },
+    "豪威青年賽車隊": {
+      "logo": "/round2/team-logos/c7aaaf938a119e03.png",
+      "riders": [
+        {
+          "name": "李信儀",
+          "intro": "",
+          "photo": "https://lh3.googleusercontent.com/d/1QB019c_b01wxYWagSaeDfT23kh5_QVdz=s200",
+          "class": "Super Stock 300",
+          "classId": "ST300",
+          "bike": "YAMAHA",
+          "model": "R3",
+          "number": "22"
+        }
+      ]
+    },
+    "艾銳重機": {
+      "logo": "/round2/team-logos/bbaec0e8130e7f45.jpg",
+      "riders": [
+        {
+          "name": "劉柏宜",
+          "intro": "",
+          "photo": "https://lh3.googleusercontent.com/d/1Mprc6GrG5uMVD91IlJN4hIsi_ZMM_lTP=s200",
+          "class": "Super Sport 300",
+          "classId": "SP300",
+          "bike": "YAMAHA",
+          "model": "R3",
+          "number": "57"
+        }
+      ]
+    },
+    "J-Power 永豐": {
+      "logo": "",
+      "riders": [
+        {
+          "name": "陳敬哲",
+          "intro": "",
+          "photo": "https://lh3.googleusercontent.com/d/1VhGtf5DYMiIrM6SVQt6iKXszvq_b2Ry8=s200",
+          "class": "Super Sport 300",
+          "classId": "SP300",
+          "bike": "YAMAHA",
+          "model": "R3",
+          "number": "2"
+        }
+      ]
+    },
+    "日德重車": {
+      "logo": "/round2/team-logos/508682afda391b4c.jpg",
+      "riders": [
+        {
+          "name": "姜志樺",
+          "intro": "",
+          "photo": "https://lh3.googleusercontent.com/d/16ESnop0IF2GvAV28sajf0gSOjlY9UB0i=s200",
+          "class": "Super Stock 400",
+          "classId": "ST400",
+          "bike": "KAWASAKI",
+          "model": "ZX-4RR",
+          "number": "13"
+        },
+        {
+          "name": "楊浚鈿",
+          "intro": "",
+          "photo": "https://lh3.googleusercontent.com/d/1xJ2a_RRz_TykDOoFfVk9qdNQ5aml5nwN=s200",
+          "class": "Super Stock 400",
+          "classId": "ST400",
+          "bike": "KAWASAKI",
+          "model": "NINJA400",
+          "number": "18"
+        },
+        {
+          "name": "盧品達",
+          "intro": "",
+          "photo": "https://lh3.googleusercontent.com/d/1rww_kUjlFzQaw4SeJODcgztOI2O84oZK=s200",
+          "class": "Super Pole 1000(Time Attack Challenge)",
+          "classId": "SP1000",
+          "bike": "KAWASAKI",
+          "model": "ZX10R",
+          "number": "25"
+        },
+        {
+          "name": "賴晟翔",
+          "intro": "",
+          "photo": "https://lh3.googleusercontent.com/d/1J-DuZA9hHQxxMrifEJdWNTcNMEzgcQo-=s200",
+          "class": "Super Pole 1000(Time Attack Challenge)",
+          "classId": "SP1000",
+          "bike": "KAWASAKI",
+          "model": "ZX10R",
+          "number": "68"
+        },
+        {
+          "name": "洪江坪",
+          "intro": "",
+          "photo": "https://lh3.googleusercontent.com/d/1B7wPDUcPsayA_VFa_Uu7LC7PTRHKLBOy=s200",
+          "class": "Super Pole 1000(Time Attack Challenge)",
+          "classId": "SP1000",
+          "bike": "KAWASAKI",
+          "model": "ZX10R",
+          "number": "77"
+        }
+      ]
+    },
+    "CUSP Racing Team": {
+      "logo": "/round2/team-logos/bb5347a910c1509d.jpg",
+      "riders": [
+        {
+          "name": "呂承禧",
+          "intro": "",
+          "photo": "https://lh3.googleusercontent.com/d/1Mpbhz8ksgwo1y5yUtMTCnAw_m2JTk_ZV=s200",
+          "class": "Super Stock 400",
+          "classId": "ST400",
+          "bike": "KAWASAKI",
+          "model": "NINJA400",
+          "number": "44"
+        }
+      ]
+    },
+    "Peter-Bike 馹達豐 RDF Performance Works": {
+      "logo": "",
+      "riders": [
+        {
+          "name": "蘇仁玄",
+          "intro": "",
+          "photo": "https://lh3.googleusercontent.com/d/1RteeSyzF05pIbKw2zNDeP7CpvE2eFS8D=s200",
+          "class": "Super Sport 400",
+          "classId": "SP400",
+          "bike": "KAWASAKI",
+          "model": "NINJA400",
+          "number": "10"
+        },
+        {
+          "name": "周仕豪",
+          "intro": "",
+          "photo": "https://lh3.googleusercontent.com/d/1YYrevc2YS_X9J4ltD25Lk-v-yRQAFebt=s200",
+          "class": "Super Pole 600(Time Attack Challenge)",
+          "classId": "SP600",
+          "bike": "YAMAHA",
+          "model": "R6",
+          "number": "77"
+        },
+        {
+          "name": "呂昶陞",
+          "intro": "",
+          "photo": "https://lh3.googleusercontent.com/d/1BCYjJyHOD8RG6BBLILSjJqeKzx1X1XCE=s200",
+          "class": "Super Pole 600(Time Attack Challenge)",
+          "classId": "SP600",
+          "bike": "YAMAHA",
+          "model": "R6",
+          "number": "66"
+        },
+        {
+          "name": "陳俊豪",
+          "intro": "",
+          "photo": "https://lh3.googleusercontent.com/d/1aJuBLTjYxJKveEouRhPuPie9D_cwvV5Q=s200",
+          "class": "Super Pole 1000(Time Attack Challenge)",
+          "classId": "SP1000",
+          "bike": "YAMAHA",
+          "model": "R1",
+          "number": "65"
+        },
+        {
+          "name": "張煜堂",
+          "intro": "",
+          "photo": "https://lh3.googleusercontent.com/d/1jAlwgcdm-lYiMdq-oub_LTKPw5mg6IoM=s200",
+          "class": "Super Pole 1000(Time Attack Challenge)",
+          "classId": "SP1000",
+          "bike": "YAMAHA",
+          "model": "R1",
+          "number": "20"
+        },
+        {
+          "name": "常晏榕",
+          "intro": "",
+          "photo": "https://lh3.googleusercontent.com/d/1_ERJ6S__hWZGYpklepIPM05yMJpM74KR=s200",
+          "class": "Super Pole 1000(Time Attack Challenge)",
+          "classId": "SP1000",
+          "bike": "APRILIA",
+          "model": "RSV4 R",
+          "number": "33"
+        },
+        {
+          "name": "徐心仁",
+          "intro": "",
+          "photo": "https://lh3.googleusercontent.com/d/1yo_aCA6ffVU_CJaXq3svULaV4zSJXqLK=s200",
+          "class": "Super Pole 1000(Time Attack Challenge)",
+          "classId": "SP1000",
+          "bike": "YAMAHA",
+          "model": "R1",
+          "number": "9"
+        }
+      ]
+    },
+    "No Name Racing Team": {
+      "logo": "",
+      "riders": [
+        {
+          "name": "吳維晟",
+          "intro": "",
+          "photo": "https://lh3.googleusercontent.com/d/16XXBkNN5FbRCcubeHoxaHG-391RZf07g=s200",
+          "class": "Super Pole 600(Time Attack Challenge)",
+          "classId": "SP600",
+          "bike": "YAMAHA",
+          "model": "R6",
+          "number": "119"
+        },
+        {
+          "name": "楊承濂",
+          "intro": "",
+          "photo": "https://lh3.googleusercontent.com/d/1vOyJL2-pnY64OP-CkdWTXgnaebSzYdd7=s200",
+          "class": "Super Pole 600(Time Attack Challenge)",
+          "classId": "SP600",
+          "bike": "YAMAHA",
+          "model": "R6",
+          "number": "87"
+        },
+        {
+          "name": "郭士煒",
+          "intro": "",
+          "photo": "https://lh3.googleusercontent.com/d/14UofZMCF4hgLypI6MdN9COAQIS01SltY=s200",
+          "class": "Super Pole 1000(Time Attack Challenge)",
+          "classId": "SP1000",
+          "bike": "YAMAHA",
+          "model": "R1",
+          "number": "67"
+        },
+        {
+          "name": "何韋澄",
+          "intro": "",
+          "photo": "https://lh3.googleusercontent.com/d/1PmJn24GG67lqWX_8h46Q-qZGIoUPsq0h=s200",
+          "class": "Super Pole 1000(Time Attack Challenge)",
+          "classId": "SP1000",
+          "bike": "BMW",
+          "model": "S1000RR",
+          "number": "12"
+        }
+      ]
+    },
+    "WillPOWER": {
+      "logo": "/round2/team-logos/e6f7b9552e0c7446.jpg",
+      "riders": [
+        {
+          "name": "潘佳宏",
+          "intro": "",
+          "photo": "https://lh3.googleusercontent.com/d/1oUVC9WdV2h3e5g12gPn8Iff9YBP8-l7V=s200",
+          "class": "Super Pole 600(Time Attack Challenge)",
+          "classId": "SP600",
+          "bike": "SUZUKI",
+          "model": "GSX-R600",
+          "number": "34"
+        },
+        {
+          "name": "林昱甫",
+          "intro": "",
+          "photo": "https://lh3.googleusercontent.com/d/1dHt0NCehXULconMpkQJMj7dnHj2RBTHW=s200",
+          "class": "Super Pole 600(Time Attack Challenge)",
+          "classId": "SP600",
+          "bike": "MV AGUSTA",
+          "model": "F3 RR",
+          "number": "89"
+        },
+        {
+          "name": "郭和嘉",
+          "intro": "",
+          "photo": "https://lh3.googleusercontent.com/d/12BIsuhn4Du15FIeu1bj6QnprrGN3f2rW=s200",
+          "class": "Super Pole 1000(Time Attack Challenge)",
+          "classId": "SP1000",
+          "bike": "BMW",
+          "model": "S1000RR",
+          "number": "79"
+        },
+        {
+          "name": "李昌庭",
+          "intro": "",
+          "photo": "https://lh3.googleusercontent.com/d/1_qWGtOPoruQI4bQq1HKNlYV5g6dmREhq=s200",
+          "class": "Super Pole 1000(Time Attack Challenge)",
+          "classId": "SP1000",
+          "bike": "APRILIA",
+          "model": "RSV4 STD",
+          "number": "97"
+        }
+      ]
+    },
+    "武人重車": {
+      "logo": "",
+      "riders": [
+        {
+          "name": "黃文鑫",
+          "intro": "",
+          "photo": "https://lh3.googleusercontent.com/d/1-VOIUCPXPiGcoDbVJtRlK5WHE5HRvro3=s200",
+          "class": "Super Pole 1000(Time Attack Challenge)",
+          "classId": "SP1000",
+          "bike": "YAMAHA",
+          "model": "R1",
+          "number": "99"
+        }
+      ]
+    }
+  }
+}
