@@ -19,6 +19,11 @@ export default function TeamLogo({
 }: TeamLogoProps) {
   const [failed, setFailed] = useState(false);
 
+  // GUGU's R3 logo is a black wordmark on a transparent background.
+  // Scope the white backing to this asset, leaving other logos unchanged.
+  const needsWhiteBackground =
+    !failed && Boolean(logo?.includes("1i9lqiXCxY2qjqH7G61ymihykCwJ1ZCnR"));
+
   useEffect(() => {
     setFailed(false);
   }, [logo]);
@@ -27,7 +32,8 @@ export default function TeamLogo({
     <div
       className={cn(
         "flex-shrink-0 rounded-full bg-white/10 overflow-hidden flex items-center justify-center border border-white/10",
-        className
+        className,
+        needsWhiteBackground && "bg-white"
       )}
     >
       {logo && !failed ? (
