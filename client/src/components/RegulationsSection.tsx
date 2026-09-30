@@ -1,13 +1,15 @@
 /*
- * R2 2026 Registration CTA section
+ * Race regulations section
  */
 import { motion } from "framer-motion";
-import { ExternalLink, FileText } from "lucide-react";
+import { FileText } from "lucide-react";
 import { IMAGES } from "@/lib/images";
+import { useLanguage } from "@/contexts/LanguageContext";
 
-export default function RegistrationSection() {
+export default function RegulationsSection() {
+  const { language } = useLanguage();
   return (
-    <section id="registration" className="relative py-20 lg:py-28 overflow-hidden">
+    <section id="regulations" className="relative py-14 lg:py-20 overflow-hidden">
       {/* Background with racing action image */}
       <div className="absolute inset-0">
         <img
@@ -30,29 +32,17 @@ export default function RegistrationSection() {
           {/* Label */}
           <div className="flex items-center justify-center gap-4 mb-6">
             <div className="w-12 h-0.5 bg-red-500" />
-            <span className="font-heading text-red-500 text-sm tracking-[0.3em]">REGISTRATION OPEN</span>
+            <span className="font-heading text-red-500 text-sm tracking-[0.3em]">RACE REGULATIONS</span>
             <div className="w-12 h-0.5 bg-red-500" />
           </div>
 
           {/* Title */}
           <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4">
-            2026 TSS 超級摩托車聯賽
+            {language === "zh" ? "賽事規章" : "Race Regulations"}
           </h2>
-          <p className="font-heading text-xl sm:text-2xl lg:text-3xl text-red-500 font-bold mb-10">
-            第二站報名
-          </p>
 
-          {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a
-              href="https://tss.pse.is/8zs66e"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-3 bg-red-600 hover:bg-red-700 text-white px-8 py-4 font-heading text-lg tracking-wider transition-all hover:scale-105 rounded"
-            >
-              <ExternalLink size={20} />
-              立即報名
-            </a>
+          {/* Official regulations link */}
+          <div className="flex justify-center mt-8">
             <a
               href="https://tss.pse.is/8w32rx"
               target="_blank"
@@ -60,7 +50,7 @@ export default function RegistrationSection() {
               className="inline-flex items-center justify-center gap-3 border-2 border-white/40 hover:border-white text-white px-8 py-4 font-heading text-lg tracking-wider transition-all hover:bg-white/10 rounded"
             >
               <FileText size={20} />
-              賽事規章
+              {language === "zh" ? "查看賽事規章" : "View Regulations"}
             </a>
           </div>
         </motion.div>
