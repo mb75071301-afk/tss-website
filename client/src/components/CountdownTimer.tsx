@@ -5,8 +5,8 @@
 import { useState, useEffect } from "react";
 import { useLanguage } from "@/contexts/LanguageContext";
 
-// Next race: 2026-07-04 09:00 (UTC+8)
-const TARGET = new Date("2026-07-04T09:00:00+08:00").getTime();
+// Next race: 2026-10-03 09:00 (UTC+8)
+const TARGET = new Date("2026-10-03T09:00:00+08:00").getTime();
 
 interface TimeLeft {
   days: number;
@@ -70,7 +70,7 @@ export default function CountdownTimer() {
               className="inline-block bg-red-600 text-white text-xs font-bold tracking-[0.15em] px-2.5 py-0.5 rounded mb-1.5"
               style={{ fontFamily: "'Orbitron', monospace" }}
             >
-              R2
+              R3
             </span>
             <div
               className="text-white text-lg sm:text-xl font-bold tracking-wide"
@@ -79,7 +79,7 @@ export default function CountdownTimer() {
               {isZh ? "大鵬灣國際賽車場" : "DaPeng Bay International Circuit"}
             </div>
             <div className="text-white/40 text-xs mt-0.5 tracking-wide">
-              {isZh ? "2026 年 7 月 4 日（六）09:00" : "July 4, 2026 (Sat) 09:00"}
+              {isZh ? "2026 年 10 月 3 日（六）09:00" : "October 3, 2026 (Sat) 09:00"}
             </div>
           </div>
 
